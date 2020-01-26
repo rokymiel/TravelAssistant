@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.NotePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="name" Placeholder="Введите название"  FontSize="Large"
+                   TextChanged="OnNameChanged"></Entry>
+            <Editor x:Name="text" Placeholder="Введите заметку" AutoSize="TextChanges"
+                    TextChanged="OnTextChanged"></Editor>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

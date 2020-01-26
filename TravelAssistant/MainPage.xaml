@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:TravelAssistant.View"
+       x:Class="TravelAssistant.MainPage"
+       FlyoutBehavior="Disabled">
+    <TabBar>
+        <Tab Title="Сегодня"
+             Icon="today.png">
+            <ShellContent>
+                <views:TodayPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Записи"
+             Icon="tasks.png">
+            <ShellContent>
+                <views:NotesPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Карта"
+             Icon="map.png">
+            <ShellContent>
+                <views:MapPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Другое"
+             Icon="menu.png">
+            <ShellContent>
+                <views:OtherPage/>
+            </ShellContent>
+        </Tab>
+        
+    </TabBar>
+
+</Shell>
