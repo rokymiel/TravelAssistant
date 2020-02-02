@@ -10,9 +10,7 @@
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNotesClicked" />
                 </Frame.GestureRecognizers>
-                <Frame Padding="20" BackgroundColor="Yellow">
-
-                </Frame>
+                
             </Frame>
             <Frame Padding="150"
                    Margin="10"

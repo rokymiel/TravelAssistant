@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.ReminderPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Готово"
+                     Clicked="OnDoneClicked">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Editor x:Name="Name" Placeholder="Введите напоминание"  FontSize="Large"
+                    AutoSize="TextChanges"
+                   ></Editor>
+            <Editor x:Name="Description" Placeholder="Введите заметку" AutoSize="TextChanges"
+                   ></Editor>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,16 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.RemindersPage"
              Title="Напоминания">
-    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+"
+                     Clicked="CreateNewReminder">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView>
+        <ListView x:Name="listView"
+                ItemsSource="{Binding items}"
+                HasUnevenRows="true"
+                VerticalOptions="FillAndExpand"
+                >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10" Orientation="Horizontal" >
+                        <RelativeLayout Padding="10"  >
                             <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
-                            
-                        </StackLayout>
+
+                        </RelativeLayout>
                         <ViewCell.ContextActions>
                             <MenuItem Text="Delete"
                                       CommandParameter="{Binding .}"

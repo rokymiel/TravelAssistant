@@ -40,7 +40,7 @@ namespace TravelAssistant.View
                 }
                 else
                 {
-                    items.Add(item);
+                    items?.Add(item);
                 }
                 // Убрать сортировку при неизменении заметок.
                 // Убрать Выделение после выбора.

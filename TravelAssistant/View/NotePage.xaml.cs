@@ -8,8 +8,7 @@ namespace TravelAssistant.View
 {
     public partial class NotePage : ContentPage
     {
-        public Note note;
-        private bool isCheinged = false;
+        private Note note;
         public NotePage()
         {
             InitializeComponent();
@@ -26,18 +25,18 @@ namespace TravelAssistant.View
         }
         void OnNameChanged(object sender, TextChangedEventArgs e)
         {
-            note.Name = name.Text;
+            note.Name = Name.Text;
         }
         void OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            note.Text = text.Text;
+            note.Text = Text.Text;
         }
         protected override void OnAppearing()
         {
             if (note != null)
             {
-                name.Text = note.Name;
-                text.Text = note.Text;
+                Name.Text = note.Name;
+                Text.Text = note.Text;
             }
         }
 
@@ -56,7 +55,7 @@ namespace TravelAssistant.View
                 note.Name = "Без названия";
             }
             note.Date = DateTime.Now;
-            isCheinged = false;
+            
             NotesPage.Update(note);
             MessagingCenter.Send(this,"AddItem",note);
             
