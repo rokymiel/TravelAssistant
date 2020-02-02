@@ -59,7 +59,7 @@ namespace TravelAssistant.View
             isCheinged = false;
             NotesPage.Update(note);
             MessagingCenter.Send(this,"AddItem",note);
-
+            
         }
     }
 }

@@ -11,5 +11,17 @@ namespace TravelAssistant.View
         {
             InitializeComponent();
         }
+
+        async void OnNotesClicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new NotesPage());
+        }
+        async void OnRemindersClicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new RemindersPage());
+        }
+
+        
+
     }
 }

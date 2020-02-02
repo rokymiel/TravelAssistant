@@ -23,12 +23,11 @@ namespace TravelAssistant.View
         {
             await Navigation.PushAsync(new NotePage());
         }
-        async void OnSelectedNote(object sender, SelectionChangedEventArgs args)
-        {
-            var selectedItem = args.CurrentSelection.FirstOrDefault() as Note;
-            await Navigation.PushAsync(new NotePage(selectedItem));
+        async void OnSelectedNote(object sender, SelectedItemChangedEventArgs args)         {
+            
+            var item = args.SelectedItem as Note;             if (item == null)                 return;                          await Navigation.PushAsync(new NotePage(item));              // Manually deselect item.             listView.SelectedItem = null;         }
 
-        }
+
         public static void Update(Note item)
         {
 
@@ -62,7 +61,9 @@ namespace TravelAssistant.View
         }
         void OnDelete(object sender, EventArgs e)
         {
+            
             var i = ((MenuItem)sender).CommandParameter as Note;
+            
             items.Remove(i);
         }
         protected override void OnAppearing()
@@ -71,13 +72,13 @@ namespace TravelAssistant.View
             {
                 //listView.ItemsSource = items;
                 listView.IsVisible = true;
-                noNotesLable.IsVisible = false;
+                //noNotesLable.IsVisible = false;
 
             }
             else
             {
-                listView.IsVisible = false;
-                noNotesLable.IsVisible = true;
+                //listView.IsVisible = false;
+                //noNotesLable.IsVisible = true;
             }
             listView.ItemsSource = items;
         }

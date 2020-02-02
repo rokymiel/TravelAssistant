@@ -2,41 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.NotesPage"
              Title="Заметки"
              >
-
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+"
                      Clicked="CreateNewNote">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <RelativeLayout>
-            <Label x:Name="noNotesLable"
-                Text="Заметок нет"
-                   FontSize="20"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
-                                Property=Width,
-                                Factor=1}"
-     RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent,
-                                Property=Height,
-                                Factor=1}"
-                   
-                   />
-            <CollectionView
+
+        <ListView
                 x:Name="listView"
                 ItemsSource="{Binding items}"
-                SelectionMode="Single"
-                SelectionChanged="OnSelectedNote"
+                HasUnevenRows="true"
                 VerticalOptions="FillAndExpand"
+                ItemSelected="OnSelectedNote"
                 >
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-
-            </CollectionView>
-        </RelativeLayout>
-
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" >
+                            <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
+                            <Label Text="{Binding Text}" LineBreakMode="NoWrap" TextColor="Black" FontSize="14"></Label>
+                        </StackLayout>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                      CommandParameter="{Binding .}"
+                                      Clicked="OnDelete"
+                                      IsDestructive="True"/>
+                        </ViewCell.ContextActions>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

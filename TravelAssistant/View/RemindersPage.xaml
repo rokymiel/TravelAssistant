@@ -1,6 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.RemindersPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.RemindersPage"
+             Title="Напоминания">
+    
     <ContentPage.Content>
-
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal" >
+                            <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
+                            
+                        </StackLayout>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                      CommandParameter="{Binding .}"
+                                      IsDestructive="True"/>
+                        </ViewCell.ContextActions>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

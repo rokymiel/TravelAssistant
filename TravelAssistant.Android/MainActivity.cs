@@ -20,6 +20,7 @@ namespace TravelAssistant.Droid
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

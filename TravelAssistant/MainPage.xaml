@@ -1,35 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+       android:TabbedPage.ToolbarPlacement="Bottom"
+        android:TabbedPage.IsSwipePagingEnabled="False"
        xmlns:views="clr-namespace:TravelAssistant.View"
        x:Class="TravelAssistant.MainPage"
-       FlyoutBehavior="Disabled">
-    <TabBar>
-        <Tab Title="Сегодня"
+          
+            
+       >
+    
+        <NavigationPage Title="Сегодня"
              Icon="today.png">
-            <ShellContent>
+            <x:Arguments>
                 <views:TodayPage/>
-            </ShellContent>
-        </Tab>
-        <Tab Title="Записи"
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Записи"
              Icon="tasks.png">
-            <ShellContent>
-                <views:NotesPage/>
-            </ShellContent>
-        </Tab>
-        <Tab Title="Карта"
+            <x:Arguments>
+                <views:TasksPage/>
+            </x:Arguments>
+        </NavigationPage>
+       <NavigationPage Title="Карта"
              Icon="map.png">
-            <ShellContent>
+            <x:Arguments>
                 <views:MapPage/>
-            </ShellContent>
-        </Tab>
-        <Tab Title="Другое"
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Другое"
              Icon="menu.png">
-            <ShellContent>
+            <x:Arguments>
                 <views:OtherPage/>
-            </ShellContent>
-        </Tab>
+            </x:Arguments>
+        </NavigationPage>
         
-    </TabBar>
+ 
 
-</Shell>
+</TabbedPage>
