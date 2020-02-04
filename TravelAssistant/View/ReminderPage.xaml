@@ -6,12 +6,47 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Editor x:Name="Name" Placeholder="Введите напоминание"  FontSize="Large"
+        <ScrollView>
+            <StackLayout>
+                <Editor x:Name="Name" Placeholder="Введите напоминание"  FontSize="Large"
                     AutoSize="TextChanges"
                    ></Editor>
-            <Editor x:Name="Description" Placeholder="Введите заметку" AutoSize="TextChanges"
+                <Editor x:Name="Description" Placeholder="Введите заметку" AutoSize="TextChanges"
                    ></Editor>
-        </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Напомнить по дате и времени." TextColor="Black" FontSize="Medium"/>
+                    <Switch x:Name="styleSwitch" IsToggled="False" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <DatePicker x:Name="DateReminder" IsVisible="False"
+                        MinimumDate="{Binding MinDate}"
+                        Date="{Binding SelectedDate}">
+                    <DatePicker.Triggers>
+                        <DataTrigger TargetType="DatePicker"
+                                 Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
+                                 Value="False">
+                            <Setter Property="IsVisible"
+                                Value="True"/>
+                            <Setter Property="IsVisible"
+                                Value="False" />
+                        </DataTrigger>
+                    </DatePicker.Triggers>
+                </DatePicker>
+                <TimePicker x:Name="TimePicker" IsVisible="False"
+                        Time="{Binding SelectedTime}">
+                    <TimePicker.Triggers>
+                        <DataTrigger TargetType="TimePicker"
+                                 Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
+                                 Value="False">
+                            <Setter Property="IsVisible"
+                                Value="True"/>
+                            <Setter Property="IsVisible"
+                                Value="False" />
+                        </DataTrigger>
+                    </TimePicker.Triggers>
+
+                </TimePicker>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

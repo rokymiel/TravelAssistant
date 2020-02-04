@@ -45,6 +45,7 @@ namespace TravelAssistant.View
                 // Убрать сортировку при неизменении заметок.
                 // Убрать Выделение после выбора.
                 items = new ObservableCollection<Note>(items.OrderByDescending(x => x.Date));
+                
             }
 
         }

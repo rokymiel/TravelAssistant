@@ -16,7 +16,10 @@ namespace TravelAssistant.View
         async void OnDoneClicked(object sender,EventArgs e)
         {
             if (!String.IsNullOrEmpty(Name.Text)) {
-                reminder.Id = Guid.NewGuid().ToString();
+                if (string.IsNullOrEmpty(reminder.Id))
+                {
+                    reminder.Id = Guid.NewGuid().ToString();
+                }
                 reminder.Name = Name.Text;
                 reminder.Description = Description.Text;
                 RemindersPage.AddReminder(reminder);
@@ -24,5 +27,6 @@ namespace TravelAssistant.View
            await  Navigation.PopAsync();
         }
 
+        
     }
 }
