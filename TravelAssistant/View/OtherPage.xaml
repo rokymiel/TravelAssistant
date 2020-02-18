@@ -1,12 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelAssistant.View.OtherPage"
-             
+             Title="Ёще"
              >
-    <StackLayout Padding="10">
-        <Label Text="Профиль" TextColor="Black" FontSize="Medium"/>
-        <Label Text="Финансы" TextColor="Black" FontSize="Medium"/>
-        <Label Text="Аудиогид" TextColor="Black" FontSize="Medium"/>
-        <Label Text="Настройки" TextColor="Black" FontSize="Medium"/>
-    </StackLayout>
+    <TableView Intent="Menu" >
+        <TableRoot  >
+            <TableSection  >
+                <ViewCell >
+                    <StackLayout Padding="10" Orientation="Horizontal" >
+                        <Label Text="Профиль" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text=">" TextColor="Black" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell Tapped="OnFinanceTabbed" >
+                    <StackLayout Padding="10" Orientation="Horizontal" >
+                        <Label Text="Финансы" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text=">" TextColor="Black" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Padding="10" Orientation="Horizontal" >
+                        <Label Text="Аудиогид" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text=">" TextColor="Black" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Padding="10" Orientation="Horizontal" >
+                        <Label Text="Настройки" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text=">" TextColor="Black" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+
 </ContentPage>

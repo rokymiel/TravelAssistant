@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.TasksPage"
              xmlns:views="clr-namespace:TravelAssistant.View"
              Title="Записи">
-    <ScrollView>
+    <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
         <StackLayout >
             <Frame Padding="150"
                    Margin="10"
@@ -10,7 +10,7 @@
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNotesClicked" />
                 </Frame.GestureRecognizers>
-                
+
             </Frame>
             <Frame Padding="150"
                    Margin="10"
@@ -19,6 +19,46 @@
                     <TapGestureRecognizer Tapped="OnRemindersClicked" />
                 </Frame.GestureRecognizers>
             </Frame>
+            <Frame Padding="150"
+                   Margin="10"
+                   BackgroundColor="Gray">
+                <Frame.Content>
+                    <StackLayout>
+                        <Button x:Name="imageButton" Clicked="OnPickPhotoButtonClicked"
+                                />
+                        <Image x:Name="image"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="150"
+                                       WidthRequest="150"
+                                       Aspect="AspectFill" />
+                    </StackLayout>
+                </Frame.Content>
+            </Frame>
+            <StackLayout Padding="10" Orientation="Horizontal">
+                <Label   Text="Документы"  TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" Clicked="OnPickPhotoButtonClicked" />
+            </StackLayout>
+            <CollectionView x:Name="col"
+                            HorizontalScrollBarVisibility="Never"
+                            VerticalScrollBarVisibility="Never"
+                            HeightRequest="150"
+                            SelectionMode="Single"
+                            SelectionChanged="OnDocumentSelectionChanged"
+                            ItemsSource="{Binding documents}" ItemsLayout="HorizontalList" >
+                <CollectionView.ItemTemplate >
+                    <DataTemplate >
+                        <StackLayout HeightRequest="150" WidthRequest="150" >
+                            <Frame BackgroundColor="Gray"
+                                   CornerRadius="10"
+                                   HorizontalOptions="FillAndExpand" HeightRequest="150" WidthRequest="150"  VerticalOptions="FillAndExpand" Margin="10" >
+                                <Image Source="{Binding Image}"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="150"
+                                       WidthRequest="150" 
+                                       Aspect="AspectFill" ></Image>
+                                
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
         </StackLayout>
     </ScrollView>
 </ContentPage>

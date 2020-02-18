@@ -2,17 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.MapPage">
     <RelativeLayout>
 
-        <StackLayout>
-            <Image Source="mapSample.png" Aspect="Fill">
-
-            </Image>
-        </StackLayout>
-            
-        <Image Source="searchphoto.png"
-               Margin="5"
-               >
-
-            </Image>
+        
 
      </RelativeLayout>
 </ContentPage>

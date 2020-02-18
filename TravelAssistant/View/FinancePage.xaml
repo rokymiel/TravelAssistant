@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelAssistant.View.FinancePage"
+             Title="Финансы">
+    <ContentPage.Content>
+        <StackLayout  Orientation="Vertical" >
+            
+            <StackLayout HeightRequest="200" BackgroundColor="Gray">
+
+                <StackLayout VerticalOptions="EndAndExpand" Padding="20,5,20,5">
+                    <ProgressBar ScaleY="4" Progress="0.6" ProgressColor="Orange"/>
+                    <StackLayout Orientation="Horizontal"   >
+                        <Label Text="Всего: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                        <Label Text="1000" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"  >
+                        <Label Text="Осталось: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                        <Label Text="400" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                    </StackLayout>
+                </StackLayout>
+
+            </StackLayout>
+            <StackLayout Padding="10,0,10,0" Orientation="Horizontal" VerticalOptions="Center">
+                <Label   Text="Операции" TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+            <CollectionView x:Name="finEvents"
+                            HorizontalScrollBarVisibility="Never"
+                            VerticalScrollBarVisibility="Never"
+                            SelectionMode="Single"
+                            ItemsSource="{Binding labels}">
+                <CollectionView.ItemTemplate >
+                    <DataTemplate >
+                        <StackLayout   >
+                            <Frame BackgroundColor="Gray"
+                                   CornerRadius="20"
+                                   HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10" >
+                                <Label Text="{Binding Text}" Padding="10,0,0,0"/>
+
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

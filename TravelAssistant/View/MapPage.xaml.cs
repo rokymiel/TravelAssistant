@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TravelAssistant.View
@@ -10,6 +10,7 @@ namespace TravelAssistant.View
         public MapPage()
         {
             InitializeComponent();
+           
         }
     }
 }

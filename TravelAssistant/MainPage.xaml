@@ -3,38 +3,40 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
        android:TabbedPage.ToolbarPlacement="Bottom"
-        android:TabbedPage.IsSwipePagingEnabled="False"
+       android:TabbedPage.IsSwipePagingEnabled="False"
        xmlns:views="clr-namespace:TravelAssistant.View"
        x:Class="TravelAssistant.MainPage"
           
             
        >
     
-        <NavigationPage Title="Сегодня"
-             Icon="today.png">
+        <NavigationPage Title="Сегодя"
+             IconImageSource="today"
+                        >
             <x:Arguments>
                 <views:TodayPage/>
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="Записи"
-             Icon="tasks.png">
+             IconImageSource="tasks"
+                        >
             <x:Arguments>
                 <views:TasksPage/>
             </x:Arguments>
         </NavigationPage>
        <NavigationPage Title="Карта"
-             Icon="map.png">
+             IconImageSource="map"
+                       >
             <x:Arguments>
                 <views:MapPage/>
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="Другое"
-             Icon="menu.png">
+             IconImageSource="menu"
+                        >
             <x:Arguments>
                 <views:OtherPage/>
             </x:Arguments>
         </NavigationPage>
-        
- 
 
 </TabbedPage>

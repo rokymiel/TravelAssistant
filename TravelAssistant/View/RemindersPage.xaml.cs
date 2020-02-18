@@ -23,5 +23,12 @@ namespace TravelAssistant.View
         {
             items?.Add(reminder);
         }
+
+        void RemoveReminder(System.Object sender, System.EventArgs e)
+        {
+            var i = ((MenuItem)sender).CommandParameter as Reminder;
+
+            items.Remove(i);
+        }
     }
 }

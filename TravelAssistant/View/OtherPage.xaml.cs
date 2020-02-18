@@ -10,6 +10,12 @@ namespace TravelAssistant.View
         public OtherPage()
         {
             InitializeComponent();
+            
+        }
+
+        async void OnFinanceTabbed(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new FinancePage());
         }
     }
 }

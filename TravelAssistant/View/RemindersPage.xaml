@@ -22,6 +22,7 @@
                         <ViewCell.ContextActions>
                             <MenuItem Text="Delete"
                                       CommandParameter="{Binding .}"
+                                      Clicked="RemoveReminder"
                                       IsDestructive="True"/>
                         </ViewCell.ContextActions>
                     </ViewCell>

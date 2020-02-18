@@ -8,6 +8,7 @@ using Xamarin.Forms;
 
 namespace TravelAssistant
 {
+     
     public partial class MainPage : TabbedPage
     {
         public MainPage()
