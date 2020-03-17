@@ -11,37 +11,51 @@ namespace TravelAssistant.View
 
     public partial class FinancePage : ContentPage
     {
-        public int currentMoney;
-        public int allMoney;
+        public Money money;
         ObservableCollection<MoneyOperation> operations { get; set; }
         //static BindingList<MoneyOperation> bOperations = new BindingList<MoneyOperation>();
         public FinancePage()
         {
             InitializeComponent();
             operations = new ObservableCollection<MoneyOperation>();
-            
+            var list = App.moneyOperationManager.GetMoneyOperations();
+            list.Reverse();
+            list.ForEach(x => operations.Add(x));
+            money = App.moneyManager.GetMoney();
+            if (money == null)
+            {
+                money = new Money() { Id = Guid.NewGuid().ToString() };
+                App.moneyManager.AddItem(money);
+            }
+            if(money.AllMoney!=0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
+            currentMoneyLabel.Text = money.CurrentMoney.ToString();
+
+            allMoneyLabel.Text = money.AllMoney.ToString();
             finEvents.ItemsSource = operations;
-            finEvents.IsVisible = true;
         }
         public void AddOperation(MoneyOperation moneyOperation)
         {
             //operations.Add(moneyOperation);
             operations.Insert(0, moneyOperation);
+            App.moneyOperationManager.AddItem(moneyOperation);
             Console.WriteLine(operations.Count);
             if (moneyOperation.Type == MoneyOperation.OperationType.Add)
             {
-                currentMoney += moneyOperation.Money;
-                allMoney += moneyOperation.Money;
-                allMoneyLabel.Text = allMoney.ToString();
-                currentMoneyLabel.Text = currentMoney.ToString();
-                moneyBar.Progress = ((double)currentMoney / allMoney);
+                money.CurrentMoney += moneyOperation.Money;
+
+                money.AllMoney += moneyOperation.Money;
+                App.moneyManager.Update(money);
+                allMoneyLabel.Text = money.AllMoney.ToString();
+                currentMoneyLabel.Text = money.CurrentMoney.ToString();
+                if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
 
             }
             else
             {
-                currentMoney -= moneyOperation.Money;
-                currentMoneyLabel.Text = currentMoney.ToString();
-                moneyBar.Progress = ((double)currentMoney / allMoney);
+                money.CurrentMoney -= moneyOperation.Money;
+                App.moneyManager.Update(money);
+                currentMoneyLabel.Text = money.CurrentMoney.ToString();
+                if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
             }
 
 

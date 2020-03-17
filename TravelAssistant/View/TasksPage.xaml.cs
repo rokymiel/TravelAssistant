@@ -16,10 +16,13 @@ namespace TravelAssistant.View
             InitializeComponent();
             BindingContext = VM;
             VM.GetImage += OnImageGetted;
+            documents = new ObservableCollection<Document>();
+            //App.documentManager.GetDocuments().ForEach(x => documents.Add(x));
             col.ItemsSource = documents;
+            
         }
         private static PhotoModel VM = new PhotoModel();
-        static ObservableCollection<Document> documents = new ObservableCollection<Document>();
+        static ObservableCollection<Document> documents;
         async void OnNotesClicked(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new NotesPage());
@@ -51,7 +54,7 @@ namespace TravelAssistant.View
             document.Id= Guid.NewGuid().ToString();
             document.Image = e.Image;
             documents.Add(document);
-
+            //App.documentManager.AddItem(document);
             //(sender as Button).IsEnabled = true;
         }
         async void OnPickPhotoButtonClicked(object sender, EventArgs e)
@@ -71,7 +74,6 @@ namespace TravelAssistant.View
             VM.GetImageAndRun();
             document.Image = VM.ImageSource;
             documents.Add(document);
-            
             (sender as Button).IsEnabled = true;
         }
 

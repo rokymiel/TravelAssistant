@@ -20,12 +20,14 @@
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.6" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
     <Folder Include="ViewModel\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
+    <Folder Include="Managers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModel\MyPage.xaml.cs" />

@@ -14,7 +14,8 @@ namespace TravelAssistant.View
         {
             InitializeComponent();
             items = new ObservableCollection<Note>();
-
+            App.notesManger.GetNotes().ForEach(x=>items.Add(x));
+            items = new ObservableCollection<Note>(items.OrderByDescending(x => x.Date));
             listView.ItemsSource = items;
 
 
@@ -37,10 +38,12 @@ namespace TravelAssistant.View
                 if (index >= 0)
                 {
                     items[index] = item;
+                    App.notesManger.Update(item);
                 }
                 else
                 {
                     items?.Add(item);
+                    App.notesManger.AddItem(item);
                 }
                 // Убрать сортировку при неизменении заметок.
                 // Убрать Выделение после выбора.
@@ -66,6 +69,7 @@ namespace TravelAssistant.View
             var i = ((MenuItem)sender).CommandParameter as Note;
             
             items.Remove(i);
+            App.notesManger.DeleteItem(i);
         }
         protected override void OnAppearing()
         {

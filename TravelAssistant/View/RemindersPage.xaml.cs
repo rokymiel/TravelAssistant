@@ -13,6 +13,7 @@ namespace TravelAssistant.View
         {
             InitializeComponent();
             items = new ObservableCollection<Reminder>();
+            App.remindersManger.GetReminder().ForEach(x => items.Add(x));
             listView.ItemsSource = items;
         }
         async void CreateNewReminder(object sender, EventArgs e)
@@ -22,6 +23,7 @@ namespace TravelAssistant.View
         public static void AddReminder(Reminder reminder)
         {
             items?.Add(reminder);
+            App.remindersManger.AddItem(reminder);
         }
 
         void RemoveReminder(System.Object sender, System.EventArgs e)
@@ -29,6 +31,7 @@ namespace TravelAssistant.View
             var i = ((MenuItem)sender).CommandParameter as Reminder;
 
             items.Remove(i);
+            App.remindersManger.DeleteItem(i);
         }
     }
 }

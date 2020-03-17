@@ -1,6 +1,8 @@
 ﻿using System;
+using SQLite;
 namespace TravelAssistant.Models
 {
+    
     public class Note:Item
     {
         public string Name { get; set; }

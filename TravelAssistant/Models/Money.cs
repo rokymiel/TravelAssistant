@@ -1,11 +1,9 @@
 ﻿using System;
 namespace TravelAssistant.Models
 {
-    public class Money
+    public class Money:Item
     {
-        
-        public Money()
-        {
-        }
+        public int CurrentMoney { get; set; }
+        public int AllMoney { get; set; }
     }
 }

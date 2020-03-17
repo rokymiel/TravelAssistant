@@ -31,12 +31,12 @@ namespace TravelAssistant.View
                 }
                 
             }
-            if (minusCheckBox.IsChecked&&Main.currentMoney>0&& !string.IsNullOrEmpty(minusDesrEntry.Text))
+            if (minusCheckBox.IsChecked&&Main.money.CurrentMoney>0&& !string.IsNullOrEmpty(minusDesrEntry.Text))
             {
                 int value;
                 if (int.TryParse(minusEntry.Text, out value))
                 {
-                    if (value<=Main.currentMoney) {
+                    if (value<=Main.money.CurrentMoney) {
                         MoneyOperation moneyOperation = new MoneyOperation();
                         moneyOperation.Money = value;
                         moneyOperation.Description = minusDesrEntry.Text;
