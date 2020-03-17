@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.AddOperationPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Готово"
+                     Clicked="OnDoneClicked">
+
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal">
+                <ScrollView Orientation="Horizontal" >
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  >
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="20" >
+                            <CheckBox x:Name="addCheckBox" IsChecked="False" CheckedChanged="addCheckBox_CheckedChanged"/>
+                            <Label Text="Пополнение" FontSize="Subtitle" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="addLabel_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="20">
+                            <CheckBox x:Name="minusCheckBox" IsChecked="False" CheckedChanged="minusCheckBox_CheckedChanged"/>
+                            <Label Text="Трата" FontSize="Subtitle" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="minusLabel_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout >
+                </ScrollView>
+
+            </StackLayout>
+            <StackLayout Padding="10" IsVisible="False">
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout"
+                                 Binding="{Binding Source={x:Reference addCheckBox}, Path=IsChecked}"
+                                 Value="False">
+
+                        <Setter Property="IsVisible"
+                                Value="True"/>
+                        <Setter Property="IsVisible"
+                                Value="False"/>
+
+                    </DataTrigger>
+                </StackLayout.Triggers>
+                <Label Text="Пополнить бюджет" FontSize="Title"/>
+                <Entry x:Name="addEntry" TextChanged="addEntry_TextChanged"/>
+                <Label x:Name="wrongAddFormat" Text="Неверный формат данных!" TextColor="Red" IsVisible="False"/>
+            </StackLayout>
+            <StackLayout Padding="10" IsVisible="False">
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout"
+                                 Binding="{Binding Source={x:Reference minusCheckBox}, Path=IsChecked}"
+                                 Value="False">
+
+                        <Setter Property="IsVisible"
+                                Value="True"/>
+                        <Setter Property="IsVisible"
+                                Value="False"/>
+
+                    </DataTrigger>
+                </StackLayout.Triggers>
+                <Label Text="Добавить трату" FontSize="Title"/>
+                <Entry x:Name="minusDesrEntry" Placeholder="Название покупки"/>
+                <Entry x:Name="minusEntry" TextChanged="minusEntry_TextChanged"/>
+                <Label x:Name="wrongMinusFormat" Text="Неверный формат данных!" TextColor="Red" IsVisible="False"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

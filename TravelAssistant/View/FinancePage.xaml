@@ -4,38 +4,43 @@
              Title="Финансы">
     <ContentPage.Content>
         <StackLayout  Orientation="Vertical" >
-            
+
             <StackLayout HeightRequest="200" BackgroundColor="Gray">
 
                 <StackLayout VerticalOptions="EndAndExpand" Padding="20,5,20,5">
-                    <ProgressBar ScaleY="4" Progress="0.6" ProgressColor="Orange"/>
+                    <ProgressBar x:Name="moneyBar" ScaleY="4" Progress="0" ProgressColor="Orange"/>
                     <StackLayout Orientation="Horizontal"   >
                         <Label Text="Всего: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                        <Label Text="1000" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                        <Label x:Name="allMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"  >
                         <Label Text="Осталось: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                        <Label Text="400" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                        <Label x:Name="currentMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
                     </StackLayout>
                 </StackLayout>
 
             </StackLayout>
             <StackLayout Padding="10,0,10,0" Orientation="Horizontal" VerticalOptions="Center">
                 <Label   Text="Операции" TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
-                <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" />
+                <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" Clicked="OnOperationAdd"/>
             </StackLayout>
             <CollectionView x:Name="finEvents"
                             HorizontalScrollBarVisibility="Never"
                             VerticalScrollBarVisibility="Never"
                             SelectionMode="Single"
-                            ItemsSource="{Binding labels}">
+                            ItemsSource="{Binding operations}"
+                            >
                 <CollectionView.ItemTemplate >
                     <DataTemplate >
                         <StackLayout   >
-                            <Frame BackgroundColor="Gray"
+                            <Frame BackgroundColor="White"
                                    CornerRadius="20"
                                    HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10" >
-                                <Label Text="{Binding Text}" Padding="10,0,0,0"/>
+                                <StackLayout HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand">
+                                    <Label Text="{Binding GetType}" Padding="10,0,0,0"/>
+                                    <Label Text="{Binding Description}" Padding="10,0,0,0"/>
+                                    <Label Text="{Binding Money}" Padding="10,0,0,0"/>
+                                </StackLayout>
 
                             </Frame>
                         </StackLayout>

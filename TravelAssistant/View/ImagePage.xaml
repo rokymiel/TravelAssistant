@@ -1,8 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.ImagePage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             BackgroundColor="Black"
+             x:Class="TravelAssistant.View.ImagePage"
+             x:Name="imagePage">
     <ContentPage.Content>
-        <StackLayout >
-            <Image x:Name="image" Aspect="AspectFit" HeightRequest="200" WidthRequest="200" HorizontalOptions ="FillAndExpand" VerticalOptions="FillAndExpand"/>
+        <StackLayout x:Name="imageBack"
+            HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+            <ffimageloading:CachedImage
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+			    x:Name="image" Aspect="AspectFill">
+                <ffimageloading:CachedImage.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Down" Swiped="SwipeGestureRecognizer_Swiped"/>
+                </ffimageloading:CachedImage.GestureRecognizers>
+            </ffimageloading:CachedImage>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

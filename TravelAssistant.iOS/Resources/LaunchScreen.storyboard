@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X5k-f2-b5h">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238" />
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -9,31 +9,56 @@
             <objects>
                 <viewController id="X5k-f2-b5h" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Y8P-hJ-Z43" />
-                        <viewControllerLayoutGuide type="bottom" id="9ZL-r4-8FZ" />
+                        <viewControllerLayoutGuide type="top" id="Y8P-hJ-Z43"/>
+                        <viewControllerLayoutGuide type="bottom" id="9ZL-r4-8FZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yd7-JS-zBw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600" />
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" />
+                    <view key="view" contentMode="scaleAspectFit" id="yd7-JS-zBw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
-                                <rect key="frame" x="270" y="270" width="60" height="60" />
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0" />
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2694" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="137" y="304" width="141" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" image="OpenIcon"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB" />
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="2694"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2768"/>
+                                <exclude reference="2773"/>
+                                <exclude reference="2778"/>
+                                <exclude reference="2783"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="2694"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="2768"/>
+                                <include reference="2773"/>
+                                <include reference="2778"/>
+                                <include reference="2783"/>
+                            </mask>
+                            <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.849843561649323" green="0.131391047713974" blue="0.393652444667603" alpha="1"/>
+                        </variation>
                         <constraints>
-                            <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39" />
-                            <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41" />
+                            <constraint id="2768" firstAttribute="trailingMargin" secondItem="2694" secondAttribute="trailing" constant="116"/>
+                            <constraint id="2773" firstItem="2694" firstAttribute="top" secondItem="Y8P-hJ-Z43" secondAttribute="bottom" constant="284"/>
+                            <constraint id="2778" firstItem="2694" firstAttribute="leading" secondItem="yd7-JS-zBw" secondAttribute="leadingMargin" constant="117"/>
+                            <constraint id="2783" firstItem="9ZL-r4-8FZ" firstAttribute="top" secondItem="2694" secondAttribute="bottom" constant="304"/>
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder" />
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349" y="339" />
+            <point key="canvasLocation" x="349" y="339"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-60.png" width="180" height="180" />
+        <image name="OpenIcon" width="397" height="257"/>
     </resources>
 </document>

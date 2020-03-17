@@ -14,5 +14,12 @@ namespace TravelAssistant.View
             Console.WriteLine((source as ImageSource));
             image.Source = source;
         }
+
+
+        async void SwipeGestureRecognizer_Swiped(System.Object sender, Xamarin.Forms.SwipedEventArgs e)
+        {
+            
+            await Navigation.PopModalAsync();
+        }
     }
 }

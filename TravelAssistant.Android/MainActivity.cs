@@ -9,6 +9,8 @@ using Android.OS;
 using System.Threading.Tasks;
 using System.IO;
 using Android.Content;
+using FFImageLoading.Forms.Platform;
+using Plugin.CurrentActivity;
 
 namespace TravelAssistant.Droid
 {
@@ -27,6 +29,9 @@ namespace TravelAssistant.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            CachedImageRenderer.Init(enableFastRenderer: true);
+            CachedImageRenderer.InitImageViewHandler();
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             Instance = this;
             LoadApplication(new App());

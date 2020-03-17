@@ -20,8 +20,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Fill in a reason why your app needs access to location.</string>
 	<key>MinimumOSVersion</key>
-	<string>13.0</string>
+	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>TravelAssistant</string>
 	<key>CFBundleVersion</key>
@@ -30,11 +32,15 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>TravelAssistant</string>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleIdentifier</key>
 	<string>CRSoft.Travel-Assistant</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs access to the camera to take photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs access to photos.</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>
 </plist>
