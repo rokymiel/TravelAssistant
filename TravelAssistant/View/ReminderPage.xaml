@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.ReminderPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelAssistant.View.ReminderPage" Title="Создать напоминание">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Готово"
                      Clicked="OnDoneClicked">
@@ -7,14 +8,14 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
+            <StackLayout Padding="10">
                 <Editor x:Name="Name" Placeholder="Введите напоминание"  FontSize="Large"
                     AutoSize="TextChanges"
                    ></Editor>
                 <Editor x:Name="Description" Placeholder="Введите заметку" AutoSize="TextChanges"
                    ></Editor>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Напомнить по дате и времени." TextColor="Black" FontSize="Medium"/>
+                    <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Напомнить по дате и времени." TextColor="Black"/>
                     <Switch x:Name="styleSwitch" IsToggled="False" HorizontalOptions="EndAndExpand"/>
                 </StackLayout>
 
@@ -32,7 +33,7 @@
                         </DataTrigger>
                     </DatePicker.Triggers>
                 </DatePicker>
-                <TimePicker x:Name="TimePicker" IsVisible="False"
+                <TimePicker x:Name="TimeReminder" IsVisible="False"
                         Time="{Binding SelectedTime}">
                     <TimePicker.Triggers>
                         <DataTrigger TargetType="TimePicker"

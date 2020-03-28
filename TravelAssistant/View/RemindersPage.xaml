@@ -10,15 +10,19 @@
         <ListView x:Name="listView"
                 ItemsSource="{Binding items}"
                 HasUnevenRows="true"
+                  ItemSelected="OnReminderSelected"
                 VerticalOptions="FillAndExpand"
                 >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <RelativeLayout Padding="10"  >
-                            <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
-
-                        </RelativeLayout>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <StackLayout Padding="10,0,0,0">
+                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
+                                <Label Text="{Binding Description}" LineBreakMode="NoWrap" TextColor="Black" FontSize="14"></Label>
+                            </StackLayout>
+                            <Label Text="{Binding StringDate}" TextColor="Gray" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
                         <ViewCell.ContextActions>
                             <MenuItem Text="Delete"
                                       CommandParameter="{Binding .}"

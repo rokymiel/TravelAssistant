@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
              x:Class="TravelAssistant.View.FinancePage"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              Title="Финансы">
     <ContentPage.Content>
         <StackLayout  Orientation="Vertical" >
-
-            <StackLayout HeightRequest="200" BackgroundColor="Gray">
-
-                <StackLayout VerticalOptions="EndAndExpand" Padding="20,5,20,5">
-                    <ProgressBar x:Name="moneyBar" ScaleY="4" Progress="0" ProgressColor="Orange"/>
-                    <StackLayout Orientation="Horizontal"   >
-                        <Label Text="Всего: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                        <Label x:Name="allMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+            <yummy:PancakeView  CornerRadius="20" Margin="10" HasShadow="True" BackgroundColor="White"  HeightRequest="200">
+                    <StackLayout VerticalOptions="EndAndExpand" Padding="20">
+                        <StackLayout Orientation="Horizontal"   >
+                            <Label Text="Всего: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                            <Label x:Name="allMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,20"  >
+                            <Label Text="Осталось: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                            <Label x:Name="currentMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                        </StackLayout>
+                        <ProgressBar x:Name="moneyBar" ScaleY="4" Progress="0" ProgressColor="Orange"/>
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal"  >
-                        <Label Text="Осталось: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                        <Label x:Name="currentMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                    </StackLayout>
-                </StackLayout>
 
-            </StackLayout>
+            </yummy:PancakeView>
             <StackLayout Padding="10,0,10,0" Orientation="Horizontal" VerticalOptions="Center">
                 <Label   Text="Операции" TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
                 <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" Clicked="OnOperationAdd"/>

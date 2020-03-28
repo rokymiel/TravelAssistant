@@ -5,7 +5,7 @@ namespace TravelAssistant.Models
     public class Item
     {
         [PrimaryKey]
-        public string Id { get; set; }
+        public virtual string Id { get; set; }
         public Item() { }
 
     }

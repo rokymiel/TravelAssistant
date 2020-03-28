@@ -13,11 +13,13 @@ namespace TravelAssistant
         string dbMoneyPath => FileAccessManager.GetLocalFilePath("money.db3");
         string dbMoneyOperationsPath => FileAccessManager.GetLocalFilePath("moneyOperations.db3");
         string dbDocumentsPath => FileAccessManager.GetLocalFilePath("notes.db3");
+        string dbPlacesPath => FileAccessManager.GetLocalFilePath("placess.db3");
         public static SQLManger<Note> notesManger;
         public static SQLManger<Reminder> remindersManger;
         public static SQLManger<Money> moneyManager;
         public static SQLManger<MoneyOperation> moneyOperationManager;
-        //public static SQLManger<Document> documentManager;
+        public static SQLManger<Document> documentManager;
+        public static SQLManger<Place> placesManager;
         public App()
         {
             InitializeComponent();
@@ -25,7 +27,8 @@ namespace TravelAssistant
             remindersManger = new SQLManger<Reminder>(dbRemindersPath);
             moneyManager = new SQLManger<Money>(dbMoneyPath);
             moneyOperationManager = new SQLManger<MoneyOperation>(dbMoneyOperationsPath);
-            //documentManager = new SQLManger<Document>(dbDocumentsPath);
+            documentManager = new SQLManger<Document>(dbDocumentsPath);
+            placesManager = new SQLManger<Place>(dbPlacesPath);
             MainPage = new MainPage();
         }
 

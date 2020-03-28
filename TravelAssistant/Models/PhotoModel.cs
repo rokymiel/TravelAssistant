@@ -121,6 +121,7 @@ namespace TravelAssistant.Models
                     storageStatus = results[Permission.Storage];
                     semaphore.Release();
                 }
+                ImageEventArgs args= new ImageEventArgs();
                 if (storageStatus == PermissionStatus.Granted)
                 {
                     await CrossMedia.Current.Initialize();
@@ -130,6 +131,8 @@ namespace TravelAssistant.Models
                         return;
 
                     ImageSource = ImageSource.FromFile(file.Path);
+                     args.Path=file.Path;
+                    args.Image = ImageSource;
                     //var temp = await MakePredictionRequest(file.Path);
 
                     file.Dispose();
@@ -137,13 +140,18 @@ namespace TravelAssistant.Models
                 }
                 ResultIsVisible = true;
                 IndicatorIsRunning = false;
-                GetImage?.Invoke(this, new ImageEventArgs(ImageSource));
+                //if (args != null)
+                //{
+                //    GetImage?.Invoke(this, new ImageEventArgs(ImageSource));
+                //}
+                GetImage?.Invoke(this, args);
             }
             catch (Exception ex)
             {
                 ResultIsVisible = true;
                 IndicatorIsRunning = false;
                 ResultText = ex.ToString();
+                Console.WriteLine(ex.Message);
                 //TODO Повесить обработчики
                 //Debug.WriteLine(ex);
             }

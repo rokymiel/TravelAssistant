@@ -11,6 +11,7 @@ using System.IO;
 using Android.Content;
 using FFImageLoading.Forms.Platform;
 using Plugin.CurrentActivity;
+using Android;
 
 namespace TravelAssistant.Droid
 {
@@ -18,7 +19,13 @@ namespace TravelAssistant.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         internal static MainActivity Instance { get; private set; }
+        const int RequestLocationId = 0;
 
+        readonly string[] LocationPermissions =
+        {
+             Manifest.Permission.AccessCoarseLocation,
+             Manifest.Permission.AccessFineLocation
+        };
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -35,6 +42,22 @@ namespace TravelAssistant.Droid
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             Instance = this;
             LoadApplication(new App());
+        }
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            if ((int)Build.VERSION.SdkInt >= 23)
+            {
+                if (CheckSelfPermission(Manifest.Permission.AccessFineLocation) != Permission.Granted)
+                {
+                    RequestPermissions(LocationPermissions, RequestLocationId);
+                }
+                else
+                {
+                    // Permissions already granted - display a message.
+                }
+            }
         }
         public static readonly int PickImageId = 1000;
 
@@ -64,7 +87,13 @@ namespace TravelAssistant.Droid
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (requestCode == RequestLocationId)
+            {
+            }
+            else
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
     }
 }

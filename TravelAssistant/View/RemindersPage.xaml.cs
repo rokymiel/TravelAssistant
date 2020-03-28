@@ -33,5 +33,10 @@ namespace TravelAssistant.View
             items.Remove(i);
             App.remindersManger.DeleteItem(i);
         }
+
+        void OnReminderSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+
+        }
     }
 }

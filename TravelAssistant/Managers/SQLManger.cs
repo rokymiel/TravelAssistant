@@ -79,6 +79,19 @@ namespace TravelAssistant.Managers
 
             return new List<Document>();
         }
+        public List<Place> GetPlaces()
+        {
+            try
+            {
+                return connection.Table<Place>().ToList();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+
+            return new List<Place>();
+        }
         public void Update(Item item)
         {
             connection.Update(item);
@@ -93,7 +106,10 @@ namespace TravelAssistant.Managers
         {
             connection.Delete(item);
         }
-
+        public bool ContainsPlace(Place item)
+        {
+            return connection.Find<Place>(item.Id)!=null;
+        }
 
     }
 }

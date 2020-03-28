@@ -1,4 +1,5 @@
 ﻿using System;
+using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 
 namespace TravelAssistant.Models
@@ -9,6 +10,9 @@ namespace TravelAssistant.Models
         {
             Image = imageSource;
         }
+        public ImageEventArgs(string path) { Path = path; }
+        public ImageEventArgs() { }
         public ImageSource Image { get; set; }
+        public string Path { get; set; }
     }
 }

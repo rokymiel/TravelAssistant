@@ -1,8 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelAssistant.View.MapPage">
-    <RelativeLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelAssistant.View.MapPage"
+             Title="Карта"
+             >
+    
 
-        
+        <maps:Map x:Name="map"
+                  IsShowingUser="True"
+                  ItemsSource="{Binding placesPin}"
+                  >
+            <maps:Map.ItemTemplate>
+                <DataTemplate>
+                    <maps:Pin Position="{Binding Position}"
+                              Address="{Binding Address}"
+                              Label="{Binding Description}"
+                              InfoWindowClicked="Pin_InfoWindowClicked"/>
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
 
-     </RelativeLayout>
+        </maps:Map>
 </ContentPage>

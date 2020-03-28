@@ -13,20 +13,27 @@ namespace TravelAssistant.View
             InitializeComponent();
             reminder = new Reminder();
         }
-        async void OnDoneClicked(object sender,EventArgs e)
+        async void OnDoneClicked(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(Name.Text)) {
+            if (!String.IsNullOrEmpty(Name.Text))
+            {
                 if (string.IsNullOrEmpty(reminder.Id))
                 {
                     reminder.Id = Guid.NewGuid().ToString();
                 }
                 reminder.Name = Name.Text;
                 reminder.Description = Description.Text;
+                if (styleSwitch.IsToggled)
+                {
+
+                    reminder.Date = new DateTime(DateReminder.Date.Ticks + TimeReminder.Time.Ticks);
+                }
+
                 RemindersPage.AddReminder(reminder);
             }
-           await  Navigation.PopAsync();
+            await Navigation.PopAsync();
         }
 
-        
+
     }
 }

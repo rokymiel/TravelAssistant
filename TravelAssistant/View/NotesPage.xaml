@@ -15,11 +15,12 @@
                 HasUnevenRows="true"
                 VerticalOptions="FillAndExpand"
                 ItemSelected="OnSelectedNote"
+            
                 >
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10" >
+                <DataTemplate >
+                    <ViewCell >
+                        <StackLayout Padding="20" >
                             <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
                             <Label Text="{Binding Text}" LineBreakMode="NoWrap" TextColor="Black" FontSize="14"></Label>
                         </StackLayout>

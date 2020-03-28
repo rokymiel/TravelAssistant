@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using Xamarin.Forms.PancakeView;
 using TravelAssistant.Models;
 using System.ComponentModel;
 using System.Linq;

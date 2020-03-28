@@ -8,6 +8,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label Margin="10" Text="Выберите тип операции" FontSize="Title" VerticalOptions="Start" HorizontalOptions="Center" />
             <StackLayout Orientation="Horizontal">
                 <ScrollView Orientation="Horizontal" >
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  >
