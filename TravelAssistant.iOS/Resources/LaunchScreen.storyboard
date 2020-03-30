@@ -43,7 +43,7 @@
                                 <include reference="2778"/>
                                 <include reference="2783"/>
                             </mask>
-                            <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.849843561649323" green="0.131391047713974" blue="0.393652444667603" alpha="1"/>
+                            <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.849843561649323" green="0.131391048431396" blue="0.393652439117432" alpha="1"/>
                         </variation>
                         <constraints>
                             <constraint id="2768" firstAttribute="trailingMargin" secondItem="2694" secondAttribute="trailing" constant="116"/>

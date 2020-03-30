@@ -33,7 +33,7 @@ namespace TravelAssistant.View
         private string GetCurrentDate()
         {
             var date = DateTime.Now;
-            return (int)date.DayOfWeek + " " + date.ToString("dddd");
+            return date.Day + " " + date.ToString("dddd");
         }
         private bool isFirstGetLocation = true;
         protected override void OnAppearing()

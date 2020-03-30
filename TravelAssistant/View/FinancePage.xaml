@@ -4,6 +4,9 @@
              x:Class="TravelAssistant.View.FinancePage"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              Title="Финансы">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="ⓘ" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout  Orientation="Vertical" >
             <yummy:PancakeView  CornerRadius="20" Margin="10" HasShadow="True" BackgroundColor="White"  HeightRequest="200">

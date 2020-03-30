@@ -2,23 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="TravelAssistant.View.MapPage"
              Title="Карта"
              >
-    
-
+    <RelativeLayout  BackgroundColor="Beige" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
         <maps:Map x:Name="map"
                   IsShowingUser="True"
                   ItemsSource="{Binding placesPin}"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Width,Factor=1}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Height,Factor=1}"
+                  MapClicked="map_MapClicked"
                   >
-            <maps:Map.ItemTemplate>
+            <maps:Map.ItemTemplate >
                 <DataTemplate>
                     <maps:Pin Position="{Binding Position}"
                               Address="{Binding Address}"
                               Label="{Binding Description}"
-                              InfoWindowClicked="Pin_InfoWindowClicked"/>
+
+                              InfoWindowClicked="Pin_InfoWindowClicked"
+                              MarkerClicked="Pin_MarkerClicked"
+                              
+                              />
+
                 </DataTemplate>
             </maps:Map.ItemTemplate>
-
         </maps:Map>
+
+        <yummy:PancakeView x:Name="infoView"
+            CornerRadius="20,20,0,0" VerticalOptions="EndAndExpand"
+                           BackgroundColor="White"
+                           HasShadow="True"
+                           HeightRequest="150"
+                           IsVisible="False"
+                           RelativeLayout.WidthConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Width,Factor=1}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Height,Factor=1}"
+                           >
+            <StackLayout Padding="20">
+                <Label x:Name="infoName" FontSize="Title" FontAttributes="Bold"/>
+                <Label x:Name="infoAddress" FontSize="Subtitle"/>
+            </StackLayout>
+        </yummy:PancakeView>
+    </RelativeLayout>
 </ContentPage>

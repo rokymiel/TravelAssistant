@@ -28,7 +28,7 @@
                                HasShadow="True"
                                BackgroundColor="White">
                         <StackLayout  Padding="20">
-                            <Label Text="Финансы"/>
+                            <Label Text="Финансы" FontSize="Body"/>
                             <StackLayout Orientation="Horizontal"   >
                                 <Label x:Name="currentMoneyLabel"  TextColor="Black" FontSize="Subtitle"  />
                                 <Label Text="/" TextColor="Black" FontSize="Subtitle"/>
@@ -45,7 +45,7 @@
                     <StackLayout HeightRequest="150" WidthRequest="150">
 
                         <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                                   CornerRadius="10"
+                                   CornerRadius="20"
                                     HeightRequest="150" WidthRequest="150"   Margin="10" >
                             <StackLayout>
                                 <Label x:Name="placeNameLabel" FontSize="Subtitle" Text="{Binding Name}" />

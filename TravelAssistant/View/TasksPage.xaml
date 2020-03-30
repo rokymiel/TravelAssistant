@@ -17,7 +17,7 @@
                     <yummy:PancakeView VerticalOptions="StartAndExpand" HeightRequest="75"
                                
                                CornerRadius="20"
-                               BackgroundColor="MediumVioletRed" >
+                               BackgroundColor="#da1c5a" >
 
                         <Label Text="Заметки"  TextColor="White" FontSize="Title" VerticalOptions="Center" Margin="20,0,0,0"/>
                     </yummy:PancakeView>
@@ -37,7 +37,7 @@
                     <yummy:PancakeView VerticalOptions="StartAndExpand" HeightRequest="75"
                                
                                CornerRadius="20"
-                               BackgroundColor="MediumVioletRed" >
+                               BackgroundColor="#da1c5a" >
 
                         <Label Text="Напоминания" TextColor="White" FontSize="Title" VerticalOptions="Center" Margin="20,0,0,0"/>
                     </yummy:PancakeView>

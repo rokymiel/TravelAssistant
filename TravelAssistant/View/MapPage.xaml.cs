@@ -94,5 +94,21 @@ namespace TravelAssistant.View
             
             //Console.WriteLine((sender as Pin).Label);
         }
+
+        void map_MapClicked(System.Object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
+        {
+            
+            infoView.IsVisible = false;
+        }
+
+        async void Pin_MarkerClicked(System.Object sender, Xamarin.Forms.Maps.PinClickedEventArgs e)
+        {
+            e.HideInfoWindow = true;
+            infoView.Opacity = 0;
+            infoView.IsVisible = true;
+            infoName.Text=(sender as Pin).Label;
+            infoAddress.Text = (sender as Pin).Address;
+            await infoView.FadeTo(1,200);
+        }
     }
 }
