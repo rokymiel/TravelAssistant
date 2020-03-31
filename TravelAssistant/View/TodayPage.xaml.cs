@@ -19,13 +19,14 @@ namespace TravelAssistant.View
     {
         string recUrl = "https://api.foursquare.com/v2/venues/explore?client_id=GMDFIDPK1TFXA45NFQVXDI15K2HEV5OHOHDRTAY2HG1XMUSQ&client_secret=NLRNJD0BN32HSXPIRQRMXDU5FYGYV4CVQ1LRWUV15UGOORDR&v=20190425";
         public Money money;
+        private bool isFirstGetLocation = true;
         public TodayPage()
         {
 
             InitializeComponent();
             places = new ObservableCollection<Place>();
             RecomendationCards.ItemsSource = places;
-            
+
 
             //GetLocation();
 
@@ -35,7 +36,6 @@ namespace TravelAssistant.View
             var date = DateTime.Now;
             return date.Day + " " + date.ToString("dddd");
         }
-        private bool isFirstGetLocation = true;
         protected override void OnAppearing()
         {
             date.Text = GetCurrentDate();
@@ -49,9 +49,68 @@ namespace TravelAssistant.View
             if (isFirstGetLocation)
             {
                 indicator.IsRunning = true;
-                GetLocationAndRecomendation();
+                Action action = DoWeather;
+                action += DoReq;
+                GetLocation(action);
                 //indicator.IsRunning = false;
                 isFirstGetLocation = false;
+            }
+        }
+        const string weatherUrlPrefix = "https://ru.api.openweathermap.org/data/2.5/weather?";//lat=35&lon=139
+        const string weatherUrlSafix = "&units=metric&lang=ru&appid=339905ee10b8292e3cf6d11569aacf96";
+        public WeatherInfo weatherInfo;
+        private void WeatherUpdate()
+        {
+            
+            currentTempLabel.Text = GetStringTemperarure((int)weatherInfo.CurrentTemperature);
+            minMaxTemLabel.Text = $"{GetStringTemperarure((int)weatherInfo.MinimumTemperature)} " +
+                $"{GetStringTemperarure((int)weatherInfo.MaximumTemperature)}";
+            if (weatherInfo.Condition != null && weatherInfo.Condition.Length > 0)
+                weatherDescrLabel.Text = $"{UpFirstChar(weatherInfo.Condition[0].Description)}";
+            weatherCityLabel.Text = weatherInfo.City;
+            feelsLabel.Text = $"Ощушается как {GetStringTemperarure((int)weatherInfo.FeelsLikeTemperature)}";
+        }
+        public string GetStringTemperarure(int temp)
+        {
+            return temp > 0 ? "+" + temp + "°" : temp + "°";
+        }
+        public string UpFirstChar(string s)
+        {
+           var safix= s.Substring(1);
+            
+            return char.ToUpper(s[0])+safix;
+        }
+        // TODO Исправить косяк с задержкой при запросе:
+        //      1. Использовать другое Api
+        //      !2. Кешировать
+        //      3. при долдгом запросе просто выводить сообщение об ошибке
+        private void DoWeather()
+        {
+            if (location != null)
+            {
+                try
+                {
+                    DateTime time = DateTime.Now;
+                    WebRequest request = WebRequest.Create(weatherUrlPrefix + $"lat={GetDouble(location.Latitude)}&lon={GetDouble(location.Longitude)}" + weatherUrlSafix);
+                    WebResponse responseW = request.GetResponse();
+                    string response;
+                    using (StreamReader streamReader = new StreamReader(responseW.GetResponseStream()))
+                    {
+                        response = streamReader.ReadToEnd();
+                    }
+                    WeatherResponse weather = JsonConvert.DeserializeObject<WeatherResponse>(response);
+                    Console.WriteLine(DateTime.Now - time);
+                    weatherInfo = new WeatherInfo(weather);
+                    WeatherUpdate();
+                }
+                catch (WebException ex)
+                {
+                    DisplayAlert("Ошибка", "Проблемы с интернетом", "OK");
+                }
+                catch (Exception)
+                {
+                    DisplayAlert("Ошибка", "Произошла непредвиденная ошибка", "OK");
+                }
             }
         }
         private void DoReq()
@@ -59,10 +118,10 @@ namespace TravelAssistant.View
             if (location != null)
             {
                 string safix = $"&ll={GetDouble(location.Latitude)},{GetDouble(location.Longitude)}&categoryId=4d4b7104d754a06370d81259&limit=10&radius=2000";
-                recUrl += safix;
+
                 try
                 {
-                    PlacesInfo placesInfo = GetPlacesRecomendation(recUrl);
+                    PlacesInfo placesInfo = GetPlacesRecomendation(recUrl + safix);
                     //Console.WriteLine(placesInfo.ToString());
                     if (placesInfo.meta.code == 200)
                     {
@@ -110,7 +169,7 @@ namespace TravelAssistant.View
 
         Position pLocation;
         Xamarin.Essentials.Location location;
-        private async void GetLocationAndRecomendation()
+        private async void GetLocation(Action action)
         {
             try
             {
@@ -122,7 +181,8 @@ namespace TravelAssistant.View
                 if (location != null)
                 {
                     //Console.WriteLine($"Latitude: {location.Latitude:f5}, Longitude: {location.Longitude:f5}, Altitude: {location.Altitude}");
-                    DoReq();
+                    //DoReq();
+                    action();
                 }
             }
             catch (Xamarin.Essentials.FeatureNotSupportedException fnsEx)

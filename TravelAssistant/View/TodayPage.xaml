@@ -37,6 +37,27 @@
                             <ProgressBar x:Name="moneyBar"  ScaleY="4" Progress="0" ProgressColor="Orange"/>
                         </StackLayout>
                     </yummy:PancakeView>
+                    <yummy:PancakeView HorizontalOptions="FillAndExpand" 
+                               Margin="10"
+                               CornerRadius="20"
+                               HasShadow="True"
+                               BackgroundColor="White"
+                               x:Name="weatherView">
+                        <StackLayout  Padding="20">
+                            <Label Text="Погода" FontSize="Body"/>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout>
+                                    <Label x:Name="currentTempLabel" Text="-" FontSize="Title" FontAttributes="Bold"/>
+                                    <Label x:Name="minMaxTemLabel" Text="- -"/>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label x:Name="weatherCityLabel" Text="-" FontSize="Subtitle"/>
+                                    <Label x:Name="weatherDescrLabel" Text="-"/>
+                                    <Label x:Name="feelsLabel" Text="Ощушается как -"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </yummy:PancakeView>
                     <Label   Text="Рекомендации" Margin="10"  TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
                 </StackLayout>
             </CollectionView.Header>

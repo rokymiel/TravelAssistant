@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="TravelAssistant.View.PlaceDatailsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="detailsLayout">
+                <Label Text="{Binding Name}" Margin="30,10,30,0" FontSize="Title"/>
+                <StackLayout>
+                    <Label Text="{Binding Address}" Margin="20,20,0,0" FontSize="Subtitle"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand">
+                    <yummy:PancakeView Margin="10" HeightRequest="200" CornerRadius="20"  >
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <maps:Map x:Name="placeMap"  >
+
+                                <maps:Map.Pins>
+                                    <maps:Pin x:Name="placePin"
+                                              Label="Default"
+                                            Type="Place">
+
+                                    </maps:Pin>
+                                </maps:Map.Pins>
+                            </maps:Map>
+                        </StackLayout>
+                    </yummy:PancakeView>
+                    <Button Text="Добавить на карту" Clicked="Button_Clicked" Margin="0,0,0,10" FontSize="Subtitle" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
