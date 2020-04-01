@@ -1,15 +1,17 @@
 ﻿using System;
+using System.IO;
 using Plugin.Media.Abstractions;
 using SQLite;
 using Xamarin.Forms;
 
 namespace TravelAssistant.Models
 {
-    public class Document:Item
+    public class Document : Item
     {
         public string Path { get; set; }
+        public byte[] ByteImage { get; set; }
         [Ignore]
-        public ImageSource Image { get; set; }
-        
+        public ImageSource Image { get => ImageSource.FromStream(() => new MemoryStream(ByteImage));  }
+
     }
 }

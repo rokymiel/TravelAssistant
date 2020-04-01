@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using FFImageLoading.Forms;
+using Plugin.Media;
 using TravelAssistant.Models;
 using TravelAssistant.Services;
 using Xamarin.Forms;
@@ -18,9 +20,9 @@ namespace TravelAssistant.View
             VM.GetImage += OnImageGetted;
             documents = new ObservableCollection<Document>();
             
-            //var s=App.documentManager.GetDocuments();
+            var s=App.documentManager.GetDocuments();
             //s.ForEach(x=> x.Image=ImageSource.FromFile(x.Path));
-            //s.ForEach(x=>documents.Add(x));
+            s.ForEach(x=>documents.Add(x));
             col.ItemsSource = documents;
             
         }
@@ -43,8 +45,30 @@ namespace TravelAssistant.View
         {
             await Navigation.PushAsync(new RemindersPage());
         }
+        async void DeleteImage_Invoked(System.Object sender, System.EventArgs e)
+        {
+            if (await DisplayAlert("Удалить фотографию?", "Фотография будет удалена, данное действие необратимо.", "Удалить", "Отмена"))
+            {
+                var document = (Document)(sender as SwipeItemView).CommandParameter;
+                documents.Remove(document);
+                App.documentManager.DeleteItem(document);
+            }
+        }
+        async void Image_Tapped(System.Object sender, System.EventArgs e)
+        {
+            Console.WriteLine();
+            Console.WriteLine((e as TappedEventArgs));
+            var item = (Document)(sender as CachedImage).BindingContext;
+
+            if (item == null)
+            {
+                return;
+            }
+            await Navigation.PushModalAsync(new ImagePage(item.Image));
+        }
         async void OnDocumentSelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
         {
+            Console.WriteLine("22222222222");
             var item = e.CurrentSelection.FirstOrDefault() as Document;                          if (item == null)
             {
 
@@ -64,10 +88,12 @@ namespace TravelAssistant.View
             
             Document document = new Document();
             document.Id= Guid.NewGuid().ToString();
-            document.Image = e.Image;
+            //document.Image = e.Image;
+            document.ByteImage = e.ByteImage;
+            //document.Image = ;
             document.Path = e.Path;
             documents.Add(document);
-            //App.documentManager.AddItem(document);
+            App.documentManager.AddItem(document);
             //App.documentManager.AddItem(document);
             //(sender as Button).IsEnabled = true;
         }
@@ -86,13 +112,15 @@ namespace TravelAssistant.View
             //}
             Document document = new Document();
             VM.GetImageAndRun();
-            document.Image = VM.ImageSource;
+            //document.Image = VM.ImageSource;
             documents.Add(document);
             
 
             (sender as Button).IsEnabled = true;
         }
 
+        
+        //SelectionChanged="OnDocumentSelectionChanged"
 
     }
 }

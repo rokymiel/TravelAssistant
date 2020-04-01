@@ -74,6 +74,7 @@ namespace TravelAssistant.Models
                             return;
 
                         ImageSource = ImageSource.FromFile(file.Path);
+                        
                         //var temp = await MakePredictionRequest(file.Path);
 
                         //Делает махинации с Vision по сделанной фото
@@ -129,10 +130,20 @@ namespace TravelAssistant.Models
                     var file = await CrossMedia.Current.PickPhotoAsync();
                     if (file == null)
                         return;
-
+                    byte[] imageArray = null;
+                    if (file != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            var stream = file.GetStream();
+                            stream.CopyTo(ms);
+                            imageArray = ms.ToArray();
+                        }
+                    }
                     ImageSource = ImageSource.FromFile(file.Path);
                      args.Path=file.Path;
                     args.Image = ImageSource;
+                    args.ByteImage = imageArray;
                     //var temp = await MakePredictionRequest(file.Path);
 
                     file.Dispose();

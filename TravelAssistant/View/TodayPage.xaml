@@ -30,9 +30,9 @@
                         <StackLayout  Padding="20">
                             <Label Text="Финансы" TextColor="Black" FontSize="Body"/>
                             <StackLayout Orientation="Horizontal"   >
-                                <Label x:Name="currentMoneyLabel"  TextColor="Black" FontSize="Subtitle"  />
+                                <Label x:Name="currentMoneyLabel" Text="0"  TextColor="Black" FontSize="Subtitle"  />
                                 <Label Text="/" TextColor="Black" FontSize="Subtitle"/>
-                                <Label x:Name="allMoneyLabel"  TextColor="Black" FontSize="Subtitle"  />
+                                <Label x:Name="allMoneyLabel" Text="0"  TextColor="Black" FontSize="Subtitle"  />
                             </StackLayout>
                             <ProgressBar x:Name="moneyBar"  ScaleY="4" Progress="0" ProgressColor="Orange"/>
                         </StackLayout>

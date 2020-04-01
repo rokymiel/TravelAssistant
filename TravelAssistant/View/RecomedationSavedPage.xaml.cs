@@ -26,11 +26,14 @@ namespace TravelAssistant.View
             await Navigation.PopModalAsync();
         }
 
-        void Delete_Clicked(System.Object sender, System.EventArgs e)
+        async void Delete_Clicked(System.Object sender, System.EventArgs e)
         {
-            var place=(Place)(sender as SwipeItem).CommandParameter;
-            places.Remove(place);
-            App.placesManager.DeleteItem(place);
+            if (await DisplayAlert("Удалить сохраненное место?", "Сохранение будет удалено, данное действие необратимо.", "Удалить", "Отмена"))
+            {
+                var place = (Place)(sender as SwipeItemView).CommandParameter;
+                places.Remove(place);
+                App.placesManager.DeleteItem(place);
+            }
         }
     }
 }

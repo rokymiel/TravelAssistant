@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace TravelAssistant.Models
 {
-    public class ImageEventArgs:EventArgs
+    public class ImageEventArgs : EventArgs
     {
         public ImageEventArgs(ImageSource imageSource)
         {
@@ -14,5 +14,6 @@ namespace TravelAssistant.Models
         public ImageEventArgs() { }
         public ImageSource Image { get; set; }
         public string Path { get; set; }
+        public byte[] ByteImage { get; set; }
     }
 }

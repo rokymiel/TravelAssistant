@@ -7,7 +7,7 @@
              Title="Записи">
     <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
         <StackLayout >
-            
+
             <yummy:PancakeView HorizontalOptions="FillAndExpand" HeightRequest="150"
                                Margin="10"
                                CornerRadius="20"
@@ -57,31 +57,47 @@
                             VerticalScrollBarVisibility="Never"
                             HeightRequest="160"
                             SelectionMode="Single"
-                            SelectionChanged="OnDocumentSelectionChanged"
+                            
                             ItemsSource="{Binding documents}" ItemsLayout="HorizontalList" >
                 <CollectionView.ItemTemplate >
                     <DataTemplate >
-                        <StackLayout HeightRequest="160" WidthRequest="160" >
-                            <yummy:PancakeView CornerRadius="15" HasShadow="True" BorderThickness="4"
+                        <SwipeView>
+                            <SwipeView.TopItems>
+                                <SwipeItems >
+                                    <SwipeItemView  Invoked="DeleteImage_Invoked"
+                                   VerticalOptions="EndAndExpand"
+                                   CommandParameter="{Binding .}">
+                                        <yummy:PancakeView CornerRadius="15" VerticalOptions="EndAndExpand"  Margin="20,20,20,0" WidthRequest="150"  BackgroundColor="Red">
+                                           <Label VerticalOptions="Center" Margin="10" HorizontalOptions="Center" Text="Delete" FontSize="Title" TextColor="White"/>
+                                    
+                                        </yummy:PancakeView>
+                                    </SwipeItemView>
+
+                                </SwipeItems>
+                            </SwipeView.TopItems>
+                            <StackLayout HeightRequest="160" WidthRequest="160" BackgroundColor="Transparent" >
+                                <yummy:PancakeView CornerRadius="15" HasShadow="True" BorderThickness="4"
                                                VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                                                HeightRequest="150" WidthRequest="150"
                                                Margin="20"
                                                >
 
 
-                                <ffimageloading:CachedImage HorizontalOptions="Center"
+                                    <ffimageloading:CachedImage HorizontalOptions="Center"
                                                             VerticalOptions="Center"
-                                                            
-			                                            WidthRequest="150" HeightRequest="150"
+			                                                WidthRequest="150" HeightRequest="150"
                                                             Aspect="AspectFill"
-                                                            Source="{Binding Image}"
-                                                            
-			                    >
-                                </ffimageloading:CachedImage>
+                                                            Source="{Binding Image}">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="Image_Tapped" />
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                    </ffimageloading:CachedImage>
+                                    
 
 
-                            </yummy:PancakeView>
-                        </StackLayout>
+                                </yummy:PancakeView>
+                            </StackLayout>
+                        </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
