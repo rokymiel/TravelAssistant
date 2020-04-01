@@ -16,17 +16,17 @@ namespace TravelAssistant.View
             InitializeComponent();
             placesPin = new ObservableCollection<PinLocation>();
             //map.ItemsSource = placesPin;
-            
+
         }
-        
+
         ObservableCollection<PinLocation> placesPin;
         protected override void OnAppearing()
         {
             placesPin = new ObservableCollection<PinLocation>();
-            App.placesManager.GetPlaces().ForEach(x=> placesPin.Add(new PinLocation(x.Address,x.Name,new Position(x.Lat,x.Lng))));
+            App.placesManager.GetPlaces().ForEach(x => placesPin.Add(new PinLocation(x.Address, x.Name, new Position(x.Lat, x.Lng))));
             map.ItemsSource = placesPin;
-            GetLocation();
-            
+            GetLocation(DoSome);
+
         }
         private void DoSome()
         {
@@ -35,7 +35,7 @@ namespace TravelAssistant.View
             map.MoveToRegion(mapSpan);
         }
         Xamarin.Essentials.Location location;
-        private async void GetLocation()
+        private async void GetLocation(Action action)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace TravelAssistant.View
                 if (location != null)
                 {
                     //Console.WriteLine($"Latitude: {location.Latitude:f5}, Longitude: {location.Longitude:f5}, Altitude: {location.Altitude}");
-                    DoSome();
+                    action();
                 }
             }
             catch (Exception ex)
@@ -91,24 +91,31 @@ namespace TravelAssistant.View
 
         void Pin_InfoWindowClicked(System.Object sender, Xamarin.Forms.Maps.PinClickedEventArgs e)
         {
-            
+
             //Console.WriteLine((sender as Pin).Label);
         }
 
         void map_MapClicked(System.Object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
-            
             infoView.IsVisible = false;
         }
 
         async void Pin_MarkerClicked(System.Object sender, Xamarin.Forms.Maps.PinClickedEventArgs e)
         {
             e.HideInfoWindow = true;
+            // Перемещение пина к центру карты.
+            GetLocation(delegate
+            {
+                var pin = sender as Pin;
+                MapSpan mapSpan = new MapSpan(pin.Position, 0.01, 0.01);
+                map.MoveToRegion(mapSpan);
+
+            });
             infoView.Opacity = 0;
             infoView.IsVisible = true;
-            infoName.Text=(sender as Pin).Label;
+            infoName.Text = (sender as Pin).Label;
             infoAddress.Text = (sender as Pin).Address;
-            await infoView.FadeTo(1,200);
+            await infoView.FadeTo(1, 200);
         }
     }
 }

@@ -12,7 +12,7 @@
                                Margin="10"
                                CornerRadius="20"
                                HasShadow="True"
-                               BackgroundColor="White" >
+                               BackgroundColor="White" x:Name="notesCardView" >
                 <StackLayout  >
                     <yummy:PancakeView VerticalOptions="StartAndExpand" HeightRequest="75"
                                
@@ -32,7 +32,7 @@
                                Margin="10"
                                CornerRadius="20"
                                HasShadow="True"
-                               BackgroundColor="White" >
+                               BackgroundColor="White" x:Name="remindersCardView" >
                 <StackLayout  >
                     <yummy:PancakeView VerticalOptions="StartAndExpand" HeightRequest="75"
                                

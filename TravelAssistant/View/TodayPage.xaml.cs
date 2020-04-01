@@ -290,9 +290,9 @@ namespace TravelAssistant.View
         }
         private async void StartAnimation()
         {
-            await recomedationSavedButton.FadeTo(0.3, 250);
+            await recomedationSavedButton.FadeTo(0.4, 200);
             await Task.Delay(100);
-            await recomedationSavedButton.FadeTo(1, 250);
+            await recomedationSavedButton.FadeTo(1, 200);
         }
     }
 }

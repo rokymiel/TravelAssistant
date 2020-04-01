@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using FFImageLoading.Forms;
 using Plugin.Media;
 using TravelAssistant.Models;
 using TravelAssistant.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.PancakeView;
 
 namespace TravelAssistant.View
 {
@@ -35,14 +37,22 @@ namespace TravelAssistant.View
             notesCountLabel.Text = $"Всего: {notesCount}";
             remindersCountLabel.Text = $"Всего: {remindersCount}";
         }
+        private async void StartAnimation(PancakeView pancake)
+        {
+            await pancake.FadeTo(0.4, 200);
+            await Task.Delay(100);
+            await pancake.FadeTo(1, 200);
+        }
         private static PhotoModel VM = new PhotoModel();
         static ObservableCollection<Document> documents;
         async void OnNotesClicked(System.Object sender, System.EventArgs e)
         {
+            //StartAnimation(notesCardView);
             await Navigation.PushAsync(new NotesPage());
         }
         async void OnRemindersClicked(System.Object sender, System.EventArgs e)
         {
+            //StartAnimation(remindersCardView);
             await Navigation.PushAsync(new RemindersPage());
         }
         async void DeleteImage_Invoked(System.Object sender, System.EventArgs e)
