@@ -26,13 +26,22 @@ namespace TravelAssistant.Models
                 Id = response.id;
                 Condition = response.main;
                 Description = response.description;
+                Icon = GetFormatedIconPath(response.icon);
+                
             }
+            public string GetFormatedIconPath(string icon)
+            {
+                return icon.Substring(2)+icon.Substring(0,2);
+            }
+
             public int Id { get; set; }
             public string Condition { get; set; }
             /// <summary>
             /// In local language.
             /// </summary>
             public string Description { get; set; }
+            public string Icon { get; set; }
+            public string IconPath { get => $"{Icon}.png"; }
             public static WeatherCondition[] GetCondisionsArray(WeatherSituationRespose[] respose)
             {
                 WeatherCondition[] conditions = new WeatherCondition[respose.Length];

@@ -114,6 +114,42 @@
     <ImageAsset Include="Assets.xcassets\recomendation.imageset\recomendation.png" />
     <ImageAsset Include="Assets.xcassets\recomendation.imageset\recomendation%402x.png" />
     <ImageAsset Include="Assets.xcassets\recomendation.imageset\recomendation%403x.png" />
+    <ImageAsset Include="Assets.xcassets\d01.imageset\01d%402x.png" />
+    <ImageAsset Include="Assets.xcassets\d01.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\n01.imageset\01n%402x.png" />
+    <ImageAsset Include="Assets.xcassets\n01.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\d02.imageset\02d%402x.png" />
+    <ImageAsset Include="Assets.xcassets\d02.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\n02.imageset\02n%402x.png" />
+    <ImageAsset Include="Assets.xcassets\n02.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\d03.imageset\03d%402x.png" />
+    <ImageAsset Include="Assets.xcassets\d03.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\n03.imageset\03n%402x.png" />
+    <ImageAsset Include="Assets.xcassets\n03.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\d04.imageset\04d%402x.png" />
+    <ImageAsset Include="Assets.xcassets\d04.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\n04.imageset\04n%402x.png" />
+    <ImageAsset Include="Assets.xcassets\n04.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\d09.imageset\09d%402x.png" />
+    <ImageAsset Include="Assets.xcassets\d09.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\n09.imageset\09n%402x.png" />
+    <ImageAsset Include="Assets.xcassets\n09.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\d10.imageset\10d%402x.png" />
+    <ImageAsset Include="Assets.xcassets\d10.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\n10.imageset\10n%402x.png" />
+    <ImageAsset Include="Assets.xcassets\n10.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\d11.imageset\11d%402x.png" />
+    <ImageAsset Include="Assets.xcassets\d11.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\n11.imageset\11n%402x.png" />
+    <ImageAsset Include="Assets.xcassets\n11.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\d13.imageset\13d%402x.png" />
+    <ImageAsset Include="Assets.xcassets\d13.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\n13.imageset\13n%402x.png" />
+    <ImageAsset Include="Assets.xcassets\n13.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\d50.imageset\50d%402x.png" />
+    <ImageAsset Include="Assets.xcassets\d50.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\n50.imageset\50n%402x.png" />
+    <ImageAsset Include="Assets.xcassets\n50.imageset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -186,5 +222,23 @@
     <Folder Include="Assets.xcassets\OpenIcon.imageset\" />
     <Folder Include="Assets.xcassets\LoadBack.imageset\" />
     <Folder Include="Assets.xcassets\recomendation.imageset\" />
+    <Folder Include="Assets.xcassets\d01.imageset\" />
+    <Folder Include="Assets.xcassets\n01.imageset\" />
+    <Folder Include="Assets.xcassets\d02.imageset\" />
+    <Folder Include="Assets.xcassets\n02.imageset\" />
+    <Folder Include="Assets.xcassets\d03.imageset\" />
+    <Folder Include="Assets.xcassets\n03.imageset\" />
+    <Folder Include="Assets.xcassets\d04.imageset\" />
+    <Folder Include="Assets.xcassets\n04.imageset\" />
+    <Folder Include="Assets.xcassets\d09.imageset\" />
+    <Folder Include="Assets.xcassets\n09.imageset\" />
+    <Folder Include="Assets.xcassets\d10.imageset\" />
+    <Folder Include="Assets.xcassets\n10.imageset\" />
+    <Folder Include="Assets.xcassets\d11.imageset\" />
+    <Folder Include="Assets.xcassets\n11.imageset\" />
+    <Folder Include="Assets.xcassets\d13.imageset\" />
+    <Folder Include="Assets.xcassets\n13.imageset\" />
+    <Folder Include="Assets.xcassets\d50.imageset\" />
+    <Folder Include="Assets.xcassets\n50.imageset\" />
   </ItemGroup>
 </Project>

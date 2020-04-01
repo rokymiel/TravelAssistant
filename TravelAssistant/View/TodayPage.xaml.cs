@@ -62,12 +62,15 @@ namespace TravelAssistant.View
         public WeatherInfo weatherInfo;
         private void WeatherUpdate()
         {
-            
+
             currentTempLabel.Text = GetStringTemperarure((int)weatherInfo.CurrentTemperature);
             minMaxTemLabel.Text = $"{GetStringTemperarure((int)weatherInfo.MinimumTemperature)} " +
                 $"{GetStringTemperarure((int)weatherInfo.MaximumTemperature)}";
             if (weatherInfo.Condition != null && weatherInfo.Condition.Length > 0)
+            {
                 weatherDescrLabel.Text = $"{UpFirstChar(weatherInfo.Condition[0].Description)}";
+                weatherIcon.Source = weatherInfo.Condition[0].IconPath;
+            }
             weatherCityLabel.Text = weatherInfo.City;
             feelsLabel.Text = $"Ощушается как {GetStringTemperarure((int)weatherInfo.FeelsLikeTemperature)}";
         }
@@ -77,9 +80,9 @@ namespace TravelAssistant.View
         }
         public string UpFirstChar(string s)
         {
-           var safix= s.Substring(1);
-            
-            return char.ToUpper(s[0])+safix;
+            var safix = s.Substring(1);
+
+            return char.ToUpper(s[0]) + safix;
         }
         // TODO Исправить косяк с задержкой при запросе:
         //      1. Использовать другое Api
@@ -280,10 +283,10 @@ namespace TravelAssistant.View
 
         async void FinanceWidget_Tapped(System.Object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync( new FinancePage());
+            await Navigation.PushAsync(new FinancePage());
         }
 
-       async void RecomedationSaved_Clicked(System.Object sender, System.EventArgs e)
+        async void RecomedationSaved_Clicked(System.Object sender, System.EventArgs e)
         {
             StartAnimation();
             await Navigation.PushModalAsync(new NavigationPage(new RecomedationSavedPage()));

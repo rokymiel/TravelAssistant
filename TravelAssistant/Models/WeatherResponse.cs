@@ -43,6 +43,7 @@ namespace TravelAssistant.Models
         public int id;
         public string main;
         public string description;
+        public string icon;
         public override string ToString()
         {
             return $"\tid={id}{Environment.NewLine}" +

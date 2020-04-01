@@ -49,6 +49,7 @@
                         <StackLayout  Padding="20">
                             <Label Text="Погода" TextColor="Black" FontSize="Body"/>
                             <StackLayout Orientation="Horizontal">
+                                <Image x:Name="weatherIcon" Scale="1.5"/>
                                 <StackLayout>
                                     <Label x:Name="currentTempLabel" TextColor="Black" Text="-" FontSize="Title" FontAttributes="Bold"/>
                                     <Label x:Name="minMaxTemLabel" TextColor="Black" Text="- -"/>
