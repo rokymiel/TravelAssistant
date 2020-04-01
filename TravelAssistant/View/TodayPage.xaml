@@ -28,7 +28,7 @@
                                HasShadow="True"
                                BackgroundColor="White">
                         <StackLayout  Padding="20">
-                            <Label Text="Финансы" FontSize="Body"/>
+                            <Label Text="Финансы" TextColor="Black" FontSize="Body"/>
                             <StackLayout Orientation="Horizontal"   >
                                 <Label x:Name="currentMoneyLabel"  TextColor="Black" FontSize="Subtitle"  />
                                 <Label Text="/" TextColor="Black" FontSize="Subtitle"/>
@@ -36,6 +36,9 @@
                             </StackLayout>
                             <ProgressBar x:Name="moneyBar"  ScaleY="4" Progress="0" ProgressColor="Orange"/>
                         </StackLayout>
+                        <yummy:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FinanceWidget_Tapped"/>
+                        </yummy:PancakeView.GestureRecognizers>
                     </yummy:PancakeView>
                     <yummy:PancakeView HorizontalOptions="FillAndExpand" 
                                Margin="10"
@@ -44,21 +47,24 @@
                                BackgroundColor="White"
                                x:Name="weatherView">
                         <StackLayout  Padding="20">
-                            <Label Text="Погода" FontSize="Body"/>
+                            <Label Text="Погода" TextColor="Black" FontSize="Body"/>
                             <StackLayout Orientation="Horizontal">
                                 <StackLayout>
-                                    <Label x:Name="currentTempLabel" Text="-" FontSize="Title" FontAttributes="Bold"/>
-                                    <Label x:Name="minMaxTemLabel" Text="- -"/>
+                                    <Label x:Name="currentTempLabel" TextColor="Black" Text="-" FontSize="Title" FontAttributes="Bold"/>
+                                    <Label x:Name="minMaxTemLabel" TextColor="Black" Text="- -"/>
                                 </StackLayout>
                                 <StackLayout>
-                                    <Label x:Name="weatherCityLabel" Text="-" FontSize="Subtitle"/>
-                                    <Label x:Name="weatherDescrLabel" Text="-"/>
-                                    <Label x:Name="feelsLabel" Text="Ощушается как -"/>
+                                    <Label x:Name="weatherCityLabel" TextColor="Black" Text="-" FontSize="Subtitle"/>
+                                    <Label x:Name="weatherDescrLabel" TextColor="Black" Text="-"/>
+                                    <Label x:Name="feelsLabel" TextColor="Black" Text="Ощушается как -"/>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
                     </yummy:PancakeView>
-                    <Label   Text="Рекомендации" Margin="10"  TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                    <StackLayout Padding="10" Orientation="Horizontal">
+                        <Label   Text="Рекомендации"  TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                        <Button ImageSource="recomendation.png" x:Name="recomedationSavedButton"  BackgroundColor="Transparent" Clicked="RecomedationSaved_Clicked" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
                 </StackLayout>
             </CollectionView.Header>
             <CollectionView.ItemTemplate>
@@ -69,8 +75,8 @@
                                    CornerRadius="20"
                                     HeightRequest="150" WidthRequest="150"   Margin="10" >
                             <StackLayout>
-                                <Label x:Name="placeNameLabel" FontSize="Subtitle" Text="{Binding Name}" />
-                                <Label x:Name="placeAdress" Text="{Binding Address}"/>
+                                <Label x:Name="placeNameLabel" TextColor="Black" FontSize="Subtitle" Text="{Binding Name}" />
+                                <Label x:Name="placeAdress" TextColor="Black" Text="{Binding Address}"/>
                             </StackLayout>
                         </Frame>
                     </StackLayout>

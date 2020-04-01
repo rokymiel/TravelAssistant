@@ -12,6 +12,7 @@ using Plugin.Geolocator.Abstractions;
 using System.Globalization;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace TravelAssistant.View
 {
@@ -275,6 +276,23 @@ namespace TravelAssistant.View
             }
             await Navigation.PushAsync(new PlaceDatailsPage(item));
             RecomendationCards.SelectedItem = null;
+        }
+
+        async void FinanceWidget_Tapped(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync( new FinancePage());
+        }
+
+       async void RecomedationSaved_Clicked(System.Object sender, System.EventArgs e)
+        {
+            StartAnimation();
+            await Navigation.PushModalAsync(new NavigationPage(new RecomedationSavedPage()));
+        }
+        private async void StartAnimation()
+        {
+            await recomedationSavedButton.FadeTo(0.3, 250);
+            await Task.Delay(100);
+            await recomedationSavedButton.FadeTo(1, 250);
         }
     }
 }

@@ -110,6 +110,10 @@
     <ImageAsset Include="Assets.xcassets\LoadBack.imageset\Background Copy%403x.png" />
     <ImageAsset Include="Assets.xcassets\LoadBack.imageset\Contents.json" />
     <InterfaceDefinition Include="Resources\TravelStartSrceen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\recomendation.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\recomendation.imageset\recomendation.png" />
+    <ImageAsset Include="Assets.xcassets\recomendation.imageset\recomendation%402x.png" />
+    <ImageAsset Include="Assets.xcassets\recomendation.imageset\recomendation%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -120,13 +124,13 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
     <PackageReference Include="GoogleApi">
       <Version>3.9.10</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.Maps">
-      <Version>4.5.0.396</Version>
+      <Version>4.5.0.495</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading">
       <Version>2.4.11.982</Version>
@@ -150,7 +154,7 @@
       <Version>4.0.1.5</Version>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody">
-      <Version>3.2.6</Version>
+      <Version>3.2.7</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Geolocator">
       <Version>4.5.0.6</Version>
@@ -181,5 +185,6 @@
     <Folder Include="Services\" />
     <Folder Include="Assets.xcassets\OpenIcon.imageset\" />
     <Folder Include="Assets.xcassets\LoadBack.imageset\" />
+    <Folder Include="Assets.xcassets\recomendation.imageset\" />
   </ItemGroup>
 </Project>

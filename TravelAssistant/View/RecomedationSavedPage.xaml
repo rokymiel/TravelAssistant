@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Сохраненное"
+             x:Class="TravelAssistant.View.RecomedationSavedPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Готово" Clicked="ToolbarItem_Clicked" >
+
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <CollectionView x:Name="RecomendationSavedCards"
+                            HorizontalScrollBarVisibility="Never"
+                            VerticalScrollBarVisibility="Never"
+                            SelectionMode="Single"
+                            
+                            
+                            ItemsSource="{Binding places}" ItemsLayout="VerticalList">
+            <CollectionView.Header>
+                <StackLayout >
+                    <Label Margin="20" x:Name="noSavesLabel" Text="Сохраненных мест пока нет" IsVisible="False" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete" 
+                                   BackgroundColor="Red"
+                                   Invoked="Delete_Clicked"
+                                           CommandParameter="{Binding .}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <StackLayout BackgroundColor="Transparent" HeightRequest="150" WidthRequest="150">
+
+                            <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                   CornerRadius="20"
+                                    HeightRequest="150" WidthRequest="150"   Margin="10" >
+                                <StackLayout>
+                                    <Label x:Name="placeNameLabel" TextColor="Black" FontSize="Subtitle" Text="{Binding Name}" />
+                                    <Label x:Name="placeAdress" TextColor="Black" Text="{Binding Address}"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>
