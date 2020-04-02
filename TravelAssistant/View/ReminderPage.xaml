@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TravelAssistant.View.ReminderPage" Title="Создать напоминание">
+             x:Class="TravelAssistant.View.ReminderPage"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Title="Создать напоминание">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Готово"
                      Clicked="OnDoneClicked">
@@ -14,39 +16,53 @@
                    ></Editor>
                 <Editor x:Name="Description" Placeholder="Введите заметку" AutoSize="TextChanges"
                    ></Editor>
-                <StackLayout Orientation="Horizontal">
-                    <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Напомнить по дате и времени." TextColor="Black"/>
-                    <Switch x:Name="styleSwitch" IsToggled="False" HorizontalOptions="EndAndExpand"/>
-                </StackLayout>
-
-                <DatePicker x:Name="DateReminder" IsVisible="False"
+                <yummy:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="20">
+                    <StackLayout Orientation="Horizontal" Padding="10">
+                        <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Приоритет:" TextColor="Black"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Button x:Name="nonPriority" Text="-нет-" FontSize="Micro"  CornerRadius="15" HeightRequest="30" WidthRequest="50" Clicked="nonPriority_Clicked"   BackgroundColor="White"/>
+                            <Button x:Name="priority1" CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="White" Clicked="Priority1_Clicked"/>
+                            <Button x:Name="priority2" CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="White" Clicked="Priority2_Clicked"/>
+                            <Button x:Name="priority3" CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="White" Clicked="Priority3_Clicked"/>
+                            <Button x:Name="priority4" CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="White" Clicked="Priority4_Clicked"/>
+                        </StackLayout>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <yummy:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="20">
+                    <StackLayout Padding="10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Напомнить по дате и времени." TextColor="Black"/>
+                            <Switch x:Name="styleSwitch" IsToggled="False" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <DatePicker x:Name="DateReminder" IsVisible="False"
                         MinimumDate="{Binding MinDate}"
                         Date="{Binding SelectedDate}">
-                    <DatePicker.Triggers>
-                        <DataTrigger TargetType="DatePicker"
+                            <DatePicker.Triggers>
+                                <DataTrigger TargetType="DatePicker"
                                  Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
                                  Value="False">
-                            <Setter Property="IsVisible"
+                                    <Setter Property="IsVisible"
                                 Value="True"/>
-                            <Setter Property="IsVisible"
+                                    <Setter Property="IsVisible"
                                 Value="False" />
-                        </DataTrigger>
-                    </DatePicker.Triggers>
-                </DatePicker>
-                <TimePicker x:Name="TimeReminder" IsVisible="False"
+                                </DataTrigger>
+                            </DatePicker.Triggers>
+                        </DatePicker>
+                        <TimePicker x:Name="TimeReminder" IsVisible="False"
                         Time="{Binding SelectedTime}">
-                    <TimePicker.Triggers>
-                        <DataTrigger TargetType="TimePicker"
+                            <TimePicker.Triggers>
+                                <DataTrigger TargetType="TimePicker"
                                  Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
                                  Value="False">
-                            <Setter Property="IsVisible"
+                                    <Setter Property="IsVisible"
                                 Value="True"/>
-                            <Setter Property="IsVisible"
+                                    <Setter Property="IsVisible"
                                 Value="False" />
-                        </DataTrigger>
-                    </TimePicker.Triggers>
-
-                </TimePicker>
+                                </DataTrigger>
+                            </TimePicker.Triggers>
+                        </TimePicker>
+                    </StackLayout>
+                </yummy:PancakeView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

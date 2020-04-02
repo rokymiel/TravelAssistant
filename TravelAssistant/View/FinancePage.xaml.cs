@@ -76,6 +76,10 @@ namespace TravelAssistant.View
             //operations.Add(moneyOperation2);
             //operations.Add(moneyOperation2);
         }
+
+        void Delete_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
     }
 
 }

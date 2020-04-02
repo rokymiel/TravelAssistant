@@ -27,14 +27,19 @@
                                CornerRadius="20"
                                HasShadow="True"
                                BackgroundColor="White">
-                        <StackLayout  Padding="20">
-                            <Label Text="Финансы" TextColor="Black" FontSize="Body"/>
-                            <StackLayout Orientation="Horizontal"   >
+                        <StackLayout  >
+                            <yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="StartAndExpand" BackgroundColor="#da1c5a">
+                                <StackLayout Margin="20,10,20,10" Orientation="Horizontal">
+                                    <Image Source="finIcon.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                    <Label Text="Финансы" VerticalOptions="Center"  TextColor="White" FontSize="Body"/>
+                                </StackLayout>
+                            </yummy:PancakeView>
+                            <StackLayout Margin="20,10,20,0"  Orientation="Horizontal"   >
                                 <Label x:Name="currentMoneyLabel" Text="0"  TextColor="Black" FontSize="Subtitle"  />
                                 <Label Text="/" TextColor="Black" FontSize="Subtitle"/>
                                 <Label x:Name="allMoneyLabel" Text="0"  TextColor="Black" FontSize="Subtitle"  />
                             </StackLayout>
-                            <ProgressBar x:Name="moneyBar"  ScaleY="4" Progress="0" ProgressColor="Orange"/>
+                            <ProgressBar x:Name="moneyBar"  Margin="20,0,20,20" ScaleY="4" Progress="0" ProgressColor="Orange"/>
                         </StackLayout>
                         <yummy:PancakeView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="FinanceWidget_Tapped"/>
@@ -46,18 +51,25 @@
                                HasShadow="True"
                                BackgroundColor="White"
                                x:Name="weatherView">
-                        <StackLayout  Padding="20">
-                            <Label Text="Погода" TextColor="Black" FontSize="Body"/>
-                            <StackLayout Orientation="Horizontal">
-                                <Image x:Name="weatherIcon" Scale="1.5"/>
-                                <StackLayout>
-                                    <Label x:Name="currentTempLabel" TextColor="Black" Text="-" FontSize="Title" FontAttributes="Bold"/>
-                                    <Label x:Name="minMaxTemLabel" TextColor="Black" Text="- -"/>
+                        <StackLayout  >
+                            <yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="StartAndExpand" BackgroundColor="#da1c5a">
+                                <StackLayout Margin="20,10,20,10" Orientation="Horizontal">
+                                    <Image  Source="weatherIcon" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                                    <Label Text="Погода" VerticalOptions="Center"  TextColor="White" FontSize="Body"/>
                                 </StackLayout>
-                                <StackLayout>
-                                    <Label x:Name="weatherCityLabel" TextColor="Black" Text="-" FontSize="Subtitle"/>
-                                    <Label x:Name="weatherDescrLabel" TextColor="Black" Text="-"/>
-                                    <Label x:Name="feelsLabel" TextColor="Black" Text="Ощушается как -"/>
+                            </yummy:PancakeView>
+                            <StackLayout Padding="20,0,20,20">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image x:Name="weatherIcon" Scale="1.5"/>
+                                    <StackLayout>
+                                        <Label x:Name="currentTempLabel" TextColor="Black" Text="-" FontSize="Title" FontAttributes="Bold"/>
+                                        <Label x:Name="minMaxTemLabel" TextColor="Black" Text="- -"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label x:Name="weatherCityLabel" TextColor="Black" Text="-" FontSize="Subtitle"/>
+                                        <Label x:Name="weatherDescrLabel" TextColor="Black" Text="-"/>
+                                        <Label x:Name="feelsLabel" TextColor="Black" Text="Ощушается как -"/>
+                                    </StackLayout>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>

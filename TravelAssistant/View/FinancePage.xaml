@@ -10,17 +10,17 @@
     <ContentPage.Content>
         <StackLayout  Orientation="Vertical" >
             <yummy:PancakeView  CornerRadius="20" Margin="10" HasShadow="True" BackgroundColor="White"  HeightRequest="200">
-                    <StackLayout VerticalOptions="EndAndExpand" Padding="20">
-                        <StackLayout Orientation="Horizontal"   >
-                            <Label Text="Всего: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                            <Label x:Name="allMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal" Margin="0,0,0,20"  >
-                            <Label Text="Осталось: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                            <Label x:Name="currentMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                        </StackLayout>
-                        <ProgressBar x:Name="moneyBar" ScaleY="4" Progress="0" ProgressColor="Orange"/>
+                <StackLayout VerticalOptions="EndAndExpand" Padding="20">
+                    <StackLayout Orientation="Horizontal"   >
+                        <Label Text="Всего: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                        <Label x:Name="allMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
                     </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,0,0,20"  >
+                        <Label Text="Осталось: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                        <Label x:Name="currentMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+                    </StackLayout>
+                    <ProgressBar x:Name="moneyBar" ScaleY="4" Progress="0" ProgressColor="Orange"/>
+                </StackLayout>
 
             </yummy:PancakeView>
             <StackLayout Padding="10,0,10,0" Orientation="Horizontal" VerticalOptions="Center">
@@ -35,18 +35,32 @@
                             >
                 <CollectionView.ItemTemplate >
                     <DataTemplate >
-                        <StackLayout   >
-                            <Frame BackgroundColor="White"
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItemView  
+                                   Invoked="Delete_Clicked"
+                                   CommandParameter="{Binding .}">
+                                        <yummy:PancakeView CornerRadius="20" Margin="10"  BackgroundColor="Red">
+                                            <Label VerticalOptions="Center" Margin="10" HorizontalOptions="Center" Text="Delete" FontSize="Title" TextColor="White"/>
+                                        </yummy:PancakeView>
+                                    </SwipeItemView>
+
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <StackLayout BackgroundColor="Transparent"  >
+                                <Frame BackgroundColor="White"
                                    CornerRadius="20"
                                    HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10" >
-                                <StackLayout HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand">
-                                    <Label Text="{Binding GetType}" Padding="10,0,0,0"/>
-                                    <Label Text="{Binding Description}" Padding="10,0,0,0"/>
-                                    <Label Text="{Binding Money}" Padding="10,0,0,0"/>
-                                </StackLayout>
+                                    <StackLayout HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand">
+                                        <Label Text="{Binding GetType}" Padding="10,0,0,0"/>
+                                        <Label Text="{Binding Description}" Padding="10,0,0,0"/>
+                                        <Label Text="{Binding Money}" Padding="10,0,0,0"/>
+                                    </StackLayout>
 
-                            </Frame>
-                        </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 

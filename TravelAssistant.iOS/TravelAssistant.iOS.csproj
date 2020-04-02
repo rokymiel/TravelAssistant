@@ -150,6 +150,11 @@
     <ImageAsset Include="Assets.xcassets\d50.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\n50.imageset\50n%402x.png" />
     <ImageAsset Include="Assets.xcassets\n50.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\finIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\finIcon.imageset\icons8-цветные-96-2.png" />
+    <ImageAsset Include="Assets.xcassets\weatherIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\weatherIcon.imageset\icons8-частичная-облачность-96.png" />
+    <ImageAsset Include="Assets.xcassets\weatherIcon.imageset\icons8-частичная-облачность-96-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -240,5 +245,7 @@
     <Folder Include="Assets.xcassets\n13.imageset\" />
     <Folder Include="Assets.xcassets\d50.imageset\" />
     <Folder Include="Assets.xcassets\n50.imageset\" />
+    <Folder Include="Assets.xcassets\finIcon.imageset\" />
+    <Folder Include="Assets.xcassets\weatherIcon.imageset\" />
   </ItemGroup>
 </Project>

@@ -103,11 +103,13 @@ namespace TravelAssistant.View
         async void Pin_MarkerClicked(System.Object sender, Xamarin.Forms.Maps.PinClickedEventArgs e)
         {
             e.HideInfoWindow = true;
+            
             // Перемещение пина к центру карты.
             GetLocation(delegate
             {
                 var pin = sender as Pin;
-                MapSpan mapSpan = new MapSpan(pin.Position, 0.01, 0.01);
+                
+                MapSpan mapSpan = new MapSpan(pin.Position, map.VisibleRegion.LatitudeDegrees, map.VisibleRegion.LongitudeDegrees);
                 map.MoveToRegion(mapSpan);
 
             });

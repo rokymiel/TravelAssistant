@@ -8,6 +8,7 @@ namespace TravelAssistant.Models
         public string Name { get; set; }
         public string Text { get; set; }
         public DateTime Date { get; set; }
+        public string FormatedDate { get => $"{Date.Day},{Date.ToString("ddd")}"; } 
 
         
     }

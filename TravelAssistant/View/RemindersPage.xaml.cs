@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using TravelAssistant.Models;
 using Xamarin.Forms;
 
@@ -14,16 +15,20 @@ namespace TravelAssistant.View
             InitializeComponent();
             items = new ObservableCollection<Reminder>();
             App.remindersManger.GetReminder().ForEach(x => items.Add(x));
+            if (items.Count > 0)
+                items = new ObservableCollection<Reminder>(items.OrderByDescending(x => x.Priority));
             listView.ItemsSource = items;
         }
         async void CreateNewReminder(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ReminderPage());
+            await Navigation.PushAsync(new ReminderPage(this));
         }
-        public static void AddReminder(Reminder reminder)
+        public void AddReminder(Reminder reminder)
         {
             items?.Add(reminder);
             App.remindersManger.AddItem(reminder);
+            items = new ObservableCollection<Reminder>(items.OrderByDescending(x => x.Priority));
+            listView.ItemsSource = items;
         }
 
         void RemoveReminder(System.Object sender, System.EventArgs e)

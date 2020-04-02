@@ -106,6 +106,10 @@ namespace TravelAssistant.Managers
         {
             connection.Delete(item);
         }
+        public void DeleteAll()
+        {
+            connection.DeleteAll<T>();
+        }
         public bool ContainsPlace(Place item)
         {
             return connection.Find<Place>(item.Id)!=null;
