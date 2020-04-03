@@ -10,7 +10,6 @@ namespace TravelAssistant.Models
             MinimumTemperature = weather.main.temp_min;
             MaximumTemperature = weather.main.temp_max;
             FeelsLikeTemperature = weather.main.feels_like;
-            DateOfRequest = DateTime.Now;
             Condition = WeatherCondition.GetCondisionsArray(weather.weather);
 
         }

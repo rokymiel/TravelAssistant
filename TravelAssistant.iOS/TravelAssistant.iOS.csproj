@@ -155,6 +155,9 @@
     <ImageAsset Include="Assets.xcassets\weatherIcon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\weatherIcon.imageset\icons8-частичная-облачность-96.png" />
     <ImageAsset Include="Assets.xcassets\weatherIcon.imageset\icons8-частичная-облачность-96-1.png" />
+    <ImageAsset Include="Assets.xcassets\updateIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\updateIcon.imageset\icons8-повторяющееся-уведомление-30.png" />
+    <ImageAsset Include="Assets.xcassets\updateIcon.imageset\icons8-повторяющееся-уведомление-60-2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -247,5 +250,6 @@
     <Folder Include="Assets.xcassets\n50.imageset\" />
     <Folder Include="Assets.xcassets\finIcon.imageset\" />
     <Folder Include="Assets.xcassets\weatherIcon.imageset\" />
+    <Folder Include="Assets.xcassets\updateIcon.imageset\" />
   </ItemGroup>
 </Project>

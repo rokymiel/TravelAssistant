@@ -96,7 +96,6 @@ namespace TravelAssistant.Managers
         {
             connection.Update(item);
         }
-
         public void AddItem(T item)
         {
             int result = 0;

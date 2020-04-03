@@ -64,8 +64,9 @@ namespace TravelAssistant.View
         {
 
             currentTempLabel.Text = GetStringTemperarure((int)weatherInfo.CurrentTemperature);
-            minMaxTemLabel.Text = $"{GetStringTemperarure((int)weatherInfo.MinimumTemperature)} " +
-                $"{GetStringTemperarure((int)weatherInfo.MaximumTemperature)}";
+            minTemLabel.Text = $"{GetStringTemperarure((int)weatherInfo.MinimumTemperature)}";
+            maxTemLabel.Text = $"{GetStringTemperarure((int)weatherInfo.MaximumTemperature)}";
+            dateOfRequest.Text = weatherInfo.DateOfRequest.ToString("H:mm");
             if (weatherInfo.Condition != null && weatherInfo.Condition.Length > 0)
             {
                 weatherDescrLabel.Text = $"{UpFirstChar(weatherInfo.Condition[0].Description)}";
@@ -92,6 +93,21 @@ namespace TravelAssistant.View
         {
             if (location != null)
             {
+
+                if (App.Current.Properties.ContainsKey("weatherJSON") && App.Current.Properties.ContainsKey("weatherDate"))
+                {
+                    //DateTime oldWeather = App.Current.Properties["weather"] as WeatherInfo;
+                    var dor = (DateTime)App.Current.Properties["weatherDate"];
+                    var res = DateTime.Now - dor;
+                    if (res.Minutes < 2)
+                    {
+                        weatherInfo = new WeatherInfo( JsonConvert.DeserializeObject<WeatherResponse>((string)App.Current.Properties["weatherJSON"]));
+                        weatherInfo.DateOfRequest = dor;
+                        WeatherUpdate();
+                        return;
+                    }
+                }
+
                 try
                 {
                     DateTime time = DateTime.Now;
@@ -104,15 +120,20 @@ namespace TravelAssistant.View
                     }
                     WeatherResponse weather = JsonConvert.DeserializeObject<WeatherResponse>(response);
                     Console.WriteLine(DateTime.Now - time);
-                    weatherInfo = new WeatherInfo(weather);
+                    weatherInfo = new WeatherInfo(weather) { DateOfRequest=DateTime.Now};
+                    App.Current.Properties["weatherJSON"]= response;
+                    App.Current.Properties["weatherDate"]= DateTime.Now;
+
+
                     WeatherUpdate();
                 }
                 catch (WebException ex)
                 {
                     DisplayAlert("Ошибка", "Проблемы с интернетом", "OK");
                 }
-                catch (Exception)
+                catch (Exception ex )
                 {
+                    Console.WriteLine(ex.Message);
                     DisplayAlert("Ошибка", "Произошла непредвиденная ошибка", "OK");
                 }
             }
@@ -207,8 +228,9 @@ namespace TravelAssistant.View
             catch (Exception ex)
             {
                 // Unable to get location
-                await DisplayAlert("Ошибка", "Не удается определить местоположение", "OK");
-                //Console.WriteLine("AAAA" + ex.Message);
+
+                await DisplayAlert("Ошибка", "Не удается определить местоположение "+ex.Message, "OK");
+                Console.WriteLine("AAAA" + ex.Message);
 
             }
         }

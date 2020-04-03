@@ -11318,7 +11318,10 @@ namespace TravelAssistant.Droid
 			public const int tooltip_frame_light = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int weatherIcon = 2131165352;
+			public const int updateIcon = 2131165352;
+			
+			// aapt resource value: 0x7F0700A9
+			public const int weatherIcon = 2131165353;
 			
 			static Drawable()
 			{
