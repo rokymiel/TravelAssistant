@@ -85,6 +85,12 @@ namespace TravelAssistant.View
 
             return char.ToUpper(s[0]) + safix;
         }
+        void WeatherUpdate_Clicked(System.Object sender, System.EventArgs e)
+        {
+            weatherUpdate = true;
+            GetLocation(DoWeather);
+        }
+        bool weatherUpdate = false;
         // TODO Исправить косяк с задержкой при запросе:
         //      1. Использовать другое Api
         //      !2. Кешировать
@@ -101,13 +107,18 @@ namespace TravelAssistant.View
                     var res = DateTime.Now - dor;
                     if (res.Minutes < 2)
                     {
-                        weatherInfo = new WeatherInfo( JsonConvert.DeserializeObject<WeatherResponse>((string)App.Current.Properties["weatherJSON"]));
+                        if (weatherUpdate)
+                        {
+                            Console.WriteLine("DONE");
+                            weatherUpdate = false;
+                            return;
+                        }
+                        weatherInfo = new WeatherInfo(JsonConvert.DeserializeObject<WeatherResponse>((string)App.Current.Properties["weatherJSON"]));
                         weatherInfo.DateOfRequest = dor;
                         WeatherUpdate();
                         return;
                     }
                 }
-
                 try
                 {
                     DateTime time = DateTime.Now;
@@ -120,9 +131,9 @@ namespace TravelAssistant.View
                     }
                     WeatherResponse weather = JsonConvert.DeserializeObject<WeatherResponse>(response);
                     Console.WriteLine(DateTime.Now - time);
-                    weatherInfo = new WeatherInfo(weather) { DateOfRequest=DateTime.Now};
-                    App.Current.Properties["weatherJSON"]= response;
-                    App.Current.Properties["weatherDate"]= DateTime.Now;
+                    weatherInfo = new WeatherInfo(weather) { DateOfRequest = DateTime.Now };
+                    App.Current.Properties["weatherJSON"] = response;
+                    App.Current.Properties["weatherDate"] = DateTime.Now;
 
 
                     WeatherUpdate();
@@ -131,7 +142,7 @@ namespace TravelAssistant.View
                 {
                     DisplayAlert("Ошибка", "Проблемы с интернетом", "OK");
                 }
-                catch (Exception ex )
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     DisplayAlert("Ошибка", "Произошла непредвиденная ошибка", "OK");
@@ -229,7 +240,7 @@ namespace TravelAssistant.View
             {
                 // Unable to get location
 
-                await DisplayAlert("Ошибка", "Не удается определить местоположение "+ex.Message, "OK");
+                await DisplayAlert("Ошибка", "Не удается определить местоположение " + ex.Message, "OK");
                 Console.WriteLine("AAAA" + ex.Message);
 
             }
@@ -319,5 +330,7 @@ namespace TravelAssistant.View
             await Task.Delay(100);
             await recomedationSavedButton.FadeTo(1, 200);
         }
+
+
     }
 }

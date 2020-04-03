@@ -58,7 +58,7 @@
                                     <Label Text="Погода" VerticalOptions="Center"  TextColor="White" FontSize="Body"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center" Orientation="Horizontal">
                                         <Label x:Name="dateOfRequest"  VerticalOptions="Center"   TextColor="White" FontSize="Body"/>
-                                        <ImageButton Source="updateIcon.png" BackgroundColor="Transparent"  VerticalOptions="Center" HeightRequest="20" WidthRequest="20" />
+                                        <ImageButton Source="updateIcon.png" BackgroundColor="Transparent" Clicked="WeatherUpdate_Clicked"  VerticalOptions="Center" HeightRequest="20" WidthRequest="20" />
                                     </StackLayout>
 
 
