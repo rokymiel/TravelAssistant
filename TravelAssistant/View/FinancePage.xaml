@@ -8,63 +8,66 @@
         <ToolbarItem Text="ⓘ" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout  Orientation="Vertical" >
-            <yummy:PancakeView  CornerRadius="20" Margin="10" HasShadow="True" BackgroundColor="White"  HeightRequest="200">
-                <StackLayout VerticalOptions="EndAndExpand" Padding="20">
-                    <StackLayout Orientation="Horizontal"   >
-                        <Label Text="Всего: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                        <Label x:Name="allMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" Margin="0,0,0,20"  >
-                        <Label Text="Осталось: " TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                        <Label x:Name="currentMoneyLabel" Text="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-                    </StackLayout>
-                    <ProgressBar x:Name="moneyBar" ScaleY="4" Progress="0" ProgressColor="Orange"/>
-                </StackLayout>
 
-            </yummy:PancakeView>
-            <StackLayout Padding="10,0,10,0" Orientation="Horizontal" VerticalOptions="Center">
-                <Label   Text="Операции" TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
-                <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" Clicked="OnOperationAdd"/>
-            </StackLayout>
-            <CollectionView x:Name="finEvents"
+        <CollectionView x:Name="finEvents"
                             HorizontalScrollBarVisibility="Never"
                             VerticalScrollBarVisibility="Never"
                             SelectionMode="Single"
                             ItemsSource="{Binding operations}"
                             >
-                <CollectionView.ItemTemplate >
-                    <DataTemplate >
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems>
-                                    <SwipeItemView  
+            <CollectionView.Header>
+                <StackLayout>
+                    <yummy:PancakeView  CornerRadius="20" Margin="10" HasShadow="True" BackgroundColor="White" >
+                        <StackLayout  Padding="20">
+
+                            <Label x:Name="currentMoneyLabel" HorizontalOptions="CenterAndExpand" Text="0" TextColor="Black" FontSize="40" FontAttributes="Bold" />
+
+                            <StackLayout Orientation="Horizontal"   >
+                                <Label Text="Всего: " TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" />
+                                <Label x:Name="allMoneyLabel" Text="0" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <ProgressBar x:Name="moneyBar" ScaleY="4" Progress="0" ProgressColor="Orange"/>
+                        </StackLayout>
+
+                    </yummy:PancakeView>
+                    <StackLayout Padding="10,0,10,0" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label   Text="Операции" TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                        <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" Clicked="OnOperationAdd"/>
+                    </StackLayout>
+                </StackLayout>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate >
+                <DataTemplate >
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItemView  
                                    Invoked="Delete_Clicked"
                                    CommandParameter="{Binding .}">
-                                        <yummy:PancakeView CornerRadius="20" Margin="10"  BackgroundColor="Red">
-                                            <Label VerticalOptions="Center" Margin="10" HorizontalOptions="Center" Text="Delete" FontSize="Title" TextColor="White"/>
-                                        </yummy:PancakeView>
-                                    </SwipeItemView>
+                                    <yummy:PancakeView CornerRadius="20" Margin="10"  BackgroundColor="Red">
+                                        <Label VerticalOptions="Center" Margin="10" HorizontalOptions="Center" Text="Delete" FontSize="Title" TextColor="White"/>
+                                    </yummy:PancakeView>
+                                </SwipeItemView>
 
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <StackLayout BackgroundColor="Transparent"  >
-                                <Frame BackgroundColor="White"
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <StackLayout BackgroundColor="Transparent"  >
+                            <yummy:PancakeView BackgroundColor="White" HasShadow="True"
                                    CornerRadius="20"
-                                   HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10" >
-                                    <StackLayout HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand">
-                                        <Label Text="{Binding GetType}" Padding="10,0,0,0"/>
-                                        <Label Text="{Binding Description}" Padding="10,0,0,0"/>
-                                        <Label Text="{Binding Money}" Padding="10,0,0,0"/>
-                                    </StackLayout>
+                                   HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10,15,10,15" >
+                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal"   VerticalOptions="FillAndExpand">
 
-                                </Frame>
-                            </StackLayout>
-                        </SwipeView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                                    <Label Text="{Binding GetOperationType}" VerticalOptions="Center" TextColor="Black" FontSize="Subtitle" Padding="20,20,0,20"/>
+                                    <Label Text="{Binding MoneyString}" TextColor="{Binding IsAddType}" VerticalOptions="Center" HorizontalOptions="EndAndExpand" FontSize="Subtitle" Padding="10,0,20,0"/>
+                                </StackLayout>
 
-            </CollectionView>
-        </StackLayout>
+                            </yummy:PancakeView>
+                        </StackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
     </ContentPage.Content>
 </ContentPage>

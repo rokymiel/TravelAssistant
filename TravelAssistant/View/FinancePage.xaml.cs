@@ -28,10 +28,10 @@ namespace TravelAssistant.View
                 money = new Money() { Id = Guid.NewGuid().ToString() };
                 App.moneyManager.AddItem(money);
             }
-            if(money.AllMoney!=0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
-            currentMoneyLabel.Text = money.CurrentMoney.ToString();
+            if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
+            currentMoneyLabel.Text = string.Format($"{money.CurrentMoney:N}");
 
-            allMoneyLabel.Text = money.AllMoney.ToString();
+            allMoneyLabel.Text = string.Format($"{money.AllMoney:N}");
             finEvents.ItemsSource = operations;
         }
         public void AddOperation(MoneyOperation moneyOperation)
@@ -46,8 +46,8 @@ namespace TravelAssistant.View
 
                 money.AllMoney += moneyOperation.Money;
                 App.moneyManager.Update(money);
-                allMoneyLabel.Text = money.AllMoney.ToString();
-                currentMoneyLabel.Text = money.CurrentMoney.ToString();
+                allMoneyLabel.Text = string.Format($"{money.AllMoney:N}");
+                currentMoneyLabel.Text = string.Format($"{money.CurrentMoney:N}");
                 if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
 
             }
@@ -55,7 +55,7 @@ namespace TravelAssistant.View
             {
                 money.CurrentMoney -= moneyOperation.Money;
                 App.moneyManager.Update(money);
-                currentMoneyLabel.Text = money.CurrentMoney.ToString();
+                currentMoneyLabel.Text = string.Format($"{money.CurrentMoney:N}");
                 if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
             }
 
