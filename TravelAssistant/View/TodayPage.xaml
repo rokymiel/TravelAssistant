@@ -66,15 +66,15 @@
                             </yummy:PancakeView>
                             <StackLayout Padding="20,0,20,20">
                                 <StackLayout Orientation="Horizontal">
-                                    <Image x:Name="weatherIcon" Scale="1.5"/>
-                                    <StackLayout VerticalOptions="Center">
-                                        <Label x:Name="currentTempLabel" HorizontalOptions="Center" TextColor="Black" Text="-" FontSize="Title" FontAttributes="Bold"/>
+                                    <Image x:Name="weatherIcon" Scale="1.5" />
+                                    <StackLayout VerticalOptions="Center" >
+                                        <Label x:Name="currentTempLabel" HorizontalOptions="Center" TextColor="Black" Text="-" FontSize="Subtitle" FontAttributes="Bold"/>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label x:Name="minTemLabel"  TextColor="Black" Text="-"/>
-                                            <Label x:Name="maxTemLabel"  TextColor="Black" Text="-"/>
+                                            <Label x:Name="minTemLabel" FontSize="Micro" TextColor="Black" Text="-"/>
+                                            <Label x:Name="maxTemLabel" FontSize="Micro"  TextColor="Black" Text="-"/>
                                         </StackLayout>
                                     </StackLayout>
-                                    <StackLayout>
+                                    <StackLayout  >
                                         <Label x:Name="weatherCityLabel" TextColor="Black" Text="-" FontSize="Subtitle"/>
                                         <Label x:Name="weatherDescrLabel" TextColor="Black" Text="-"/>
                                         <Label x:Name="feelsLabel" TextColor="Black" Text="Ощушается как -"/>

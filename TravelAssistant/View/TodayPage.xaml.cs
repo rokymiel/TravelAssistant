@@ -64,12 +64,13 @@ namespace TravelAssistant.View
         {
 
             currentTempLabel.Text = GetStringTemperarure((int)weatherInfo.CurrentTemperature);
-            minTemLabel.Text = $"{GetStringTemperarure((int)weatherInfo.MinimumTemperature)}";
-            maxTemLabel.Text = $"{GetStringTemperarure((int)weatherInfo.MaximumTemperature)}";
+
+            minTemLabel.Text = GetStringTemperarure((int)weatherInfo.MinimumTemperature);
+            maxTemLabel.Text = GetStringTemperarure((int)weatherInfo.MaximumTemperature);
             dateOfRequest.Text = weatherInfo.DateOfRequest.ToString("H:mm");
             if (weatherInfo.Condition != null && weatherInfo.Condition.Length > 0)
             {
-                weatherDescrLabel.Text = $"{UpFirstChar(weatherInfo.Condition[0].Description)}";
+                weatherDescrLabel.Text = UpFirstChar(weatherInfo.Condition[0].Description);
                 weatherIcon.Source = weatherInfo.Condition[0].IconPath;
             }
             weatherCityLabel.Text = weatherInfo.City;
@@ -105,7 +106,7 @@ namespace TravelAssistant.View
                     //DateTime oldWeather = App.Current.Properties["weather"] as WeatherInfo;
                     var dor = (DateTime)App.Current.Properties["weatherDate"];
                     var res = DateTime.Now - dor;
-                    if (res.Minutes < 2)
+                    if (res.Ticks < 2 * TimeSpan.TicksPerMinute)
                     {
                         if (weatherUpdate)
                         {
