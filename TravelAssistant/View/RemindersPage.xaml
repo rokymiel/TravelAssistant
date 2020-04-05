@@ -16,13 +16,15 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10" Orientation="Horizontal">
-                            <StackLayout Padding="10,0,0,0">
+                        <StackLayout Padding="10" Orientation="Horizontal" >
+                            <CheckBox BindingContext="{Binding .}" IsChecked="False" CheckedChanged="CheckBox_CheckedChanged" />
+                            <StackLayout >
                                 <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
                                 <Label Text="{Binding Description}" LineBreakMode="NoWrap" TextColor="Black" FontSize="14"></Label>
+                                <Label Text="{Binding StringDate}" TextColor="{Binding DateColor}" />
                             </StackLayout>
                             <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
-                                <Label Text="{Binding StringDate}" TextColor="Gray" />
+                                
                                 <Label Text="{Binding Priority}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>

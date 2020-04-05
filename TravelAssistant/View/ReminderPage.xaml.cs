@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Plugin.LocalNotification;
 using TravelAssistant.Models;
 using Xamarin.Forms;
 
@@ -31,6 +32,19 @@ namespace TravelAssistant.View
                 {
 
                     reminder.Date = new DateTime(DateReminder.Date.Ticks + TimeReminder.Time.Ticks);
+                    if (reminder.Date >= DateTime.Now)
+                    {
+                        reminder.HasNotification = true;
+                        reminder.NotificationId= Page.remindersID.FreeId;
+                        var notification = new NotificationRequest
+                        {
+                            NotificationId = reminder.NotificationId,
+                            Title = reminder.Name,
+                            Description = GetNotificationDescription(reminder.Description),
+                            NotifyTime = reminder.Date// Used for Scheduling local notification, if not specified notification will show immediately.
+                        };
+                        NotificationCenter.Current.Show(notification);
+                    }
                 }
 
 
@@ -41,6 +55,13 @@ namespace TravelAssistant.View
                 Page.AddReminder(reminder);
                 MessagingCenter.Send(this, "AddItem", reminder);
             }
+        }
+        string GetNotificationDescription(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return "Без описнаия.";
+            else
+                return value;
         }
 
         void Priority1_Clicked(System.Object sender, System.EventArgs e)

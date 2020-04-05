@@ -31,9 +31,13 @@ namespace TravelAssistant.iOS
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();
-            
+            Plugin.LocalNotification.NotificationCenter.AskPermission();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
+        }
+        public override void WillEnterForeground(UIApplication uiApplication)
+        {
+            Plugin.LocalNotification.NotificationCenter.ResetApplicationIconBadgeNumber(uiApplication);
         }
     }
 }

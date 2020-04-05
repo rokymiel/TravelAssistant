@@ -13,6 +13,7 @@ namespace TravelAssistant.Managers
         public SQLManger(string dbPath)
         {
             connection = new SQLiteConnection(dbPath);
+
             connection.CreateTable<T>();
         }
         public List<Note> GetNotes()
@@ -111,7 +112,7 @@ namespace TravelAssistant.Managers
         }
         public bool ContainsPlace(Place item)
         {
-            return connection.Find<Place>(item.Id)!=null;
+            return connection.Find<Place>(item.Id) != null;
         }
 
     }

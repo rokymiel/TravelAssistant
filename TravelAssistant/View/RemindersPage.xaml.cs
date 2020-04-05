@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Plugin.LocalNotification;
+using TravelAssistant.Managers;
 using TravelAssistant.Models;
 using Xamarin.Forms;
 
@@ -9,14 +11,17 @@ namespace TravelAssistant.View
 {
     public partial class RemindersPage : ContentPage
     {
+        public RemindersIDManager remindersID;
         static ObservableCollection<Reminder> items { get; set; }
         public RemindersPage()
         {
             InitializeComponent();
             items = new ObservableCollection<Reminder>();
-            App.remindersManger.GetReminder().ForEach(x => items.Add(x));
+            var savedItems = App.remindersManger.GetReminder();
+            savedItems.ForEach(x => items.Add(x));
             if (items.Count > 0)
                 items = new ObservableCollection<Reminder>(items.OrderByDescending(x => x.Priority));
+            remindersID = new RemindersIDManager(savedItems);
             listView.ItemsSource = items;
         }
         async void CreateNewReminder(object sender, EventArgs e)
@@ -33,15 +38,27 @@ namespace TravelAssistant.View
 
         void RemoveReminder(System.Object sender, System.EventArgs e)
         {
-            var i = ((MenuItem)sender).CommandParameter as Reminder;
+            DeleteReminder(((MenuItem)sender).CommandParameter as Reminder);
 
-            items.Remove(i);
-            App.remindersManger.DeleteItem(i);
         }
-
+        void DeleteReminder(Reminder reminder)
+        {
+            NotificationCenter.Current.Cancel(reminder.NotificationId);
+            if (reminder.HasNotification)
+                remindersID.DeleteId(reminder.NotificationId);
+            items.Remove(reminder);
+            App.remindersManger.DeleteItem(reminder);
+        }
         void OnReminderSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
 
+        }
+        public static readonly BindableProperty EventNameProperty =
+  BindableProperty.Create("Id", typeof(string), typeof(Reminder), null);
+        void CheckBox_CheckedChanged(System.Object sender, Xamarin.Forms.CheckedChangedEventArgs e)
+        {
+            Console.WriteLine((sender as CheckBox).BindingContext);
+            DeleteReminder((sender as CheckBox).BindingContext as Reminder);
         }
     }
 }

@@ -12,6 +12,7 @@ using Android.Content;
 using FFImageLoading.Forms.Platform;
 using Plugin.CurrentActivity;
 using Android;
+using Plugin.LocalNotification;
 
 namespace TravelAssistant.Droid
 {
@@ -39,9 +40,17 @@ namespace TravelAssistant.Droid
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             CachedImageRenderer.Init(enableFastRenderer: true);
             CachedImageRenderer.InitImageViewHandler();
+            NotificationCenter.CreateNotificationChannel();
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             Instance = this;
             LoadApplication(new App());
+            NotificationCenter.NotifyNotificationTapped(Intent);
+        }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            NotificationCenter.NotifyNotificationTapped(intent);
+            base.OnNewIntent(intent);
         }
         protected override void OnStart()
         {

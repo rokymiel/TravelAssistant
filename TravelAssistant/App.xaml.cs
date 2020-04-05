@@ -1,4 +1,5 @@
 ﻿using System;
+using Plugin.LocalNotification;
 using TravelAssistant.Managers;
 using TravelAssistant.Models;
 using Xamarin.Forms;
@@ -29,9 +30,13 @@ namespace TravelAssistant
             moneyOperationManager = new SQLManger<MoneyOperation>(dbMoneyOperationsPath);
             documentManager = new SQLManger<Document>(dbDocumentsPath);
             placesManager = new SQLManger<Place>(dbPlacesPath);
+            NotificationCenter.Current.NotificationTapped += OnLocalNotificationTapped; 
             MainPage = new MainPage();
         }
-
+        private void OnLocalNotificationTapped(NotificationTappedEventArgs e)
+        {
+            // your code goes here
+        }
         protected override void OnStart()
         {
             // Handle when your app starts

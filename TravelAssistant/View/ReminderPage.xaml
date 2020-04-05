@@ -35,8 +35,8 @@
                             <Switch x:Name="styleSwitch" IsToggled="False" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <DatePicker x:Name="DateReminder" IsVisible="False"
-                        MinimumDate="{Binding MinDate}"
-                        Date="{Binding SelectedDate}">
+                        
+                        >
                             <DatePicker.Triggers>
                                 <DataTrigger TargetType="DatePicker"
                                  Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
@@ -49,7 +49,7 @@
                             </DatePicker.Triggers>
                         </DatePicker>
                         <TimePicker x:Name="TimeReminder" IsVisible="False"
-                        Time="{Binding SelectedTime}">
+                        >
                             <TimePicker.Triggers>
                                 <DataTrigger TargetType="TimePicker"
                                  Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
