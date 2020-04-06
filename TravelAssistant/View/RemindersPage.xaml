@@ -17,15 +17,15 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10" Orientation="Horizontal" >
-                            <CheckBox BindingContext="{Binding .}" IsChecked="False" CheckedChanged="CheckBox_CheckedChanged" />
+                            <CheckBox BindingContext="{Binding .}"  IsChecked="False"  VerticalOptions="StartAndExpand" CheckedChanged="CheckBox_CheckedChanged" />
                             <StackLayout >
                                 <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
                                 <Label Text="{Binding Description}" LineBreakMode="NoWrap" TextColor="Black" FontSize="14"></Label>
                                 <Label Text="{Binding StringDate}" TextColor="{Binding DateColor}" />
                             </StackLayout>
-                            <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
                                 
-                                <Label Text="{Binding Priority}" HorizontalOptions="EndAndExpand"/>
+                                <Image Source="{Binding PriorityIcon}" HeightRequest="25" WidthRequest="25"  HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
                         <ViewCell.ContextActions>

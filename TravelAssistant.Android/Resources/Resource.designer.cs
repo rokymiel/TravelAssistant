@@ -11653,37 +11653,49 @@ namespace TravelAssistant.Droid
 			public const int notify_panel_notification_icon_bg = 2131165342;
 			
 			// aapt resource value: 0x7F07009F
-			public const int recomendation = 2131165343;
+			public const int priorityIcon1 = 2131165343;
 			
 			// aapt resource value: 0x7F0700A0
-			public const int recomendation2x = 2131165344;
+			public const int priorityIcon2 = 2131165344;
 			
 			// aapt resource value: 0x7F0700A1
-			public const int recomendation3x = 2131165345;
+			public const int priorityIcon3 = 2131165345;
 			
 			// aapt resource value: 0x7F0700A2
-			public const int searchphoto = 2131165346;
+			public const int priorityIcon4 = 2131165346;
 			
 			// aapt resource value: 0x7F0700A3
-			public const int tasks = 2131165347;
+			public const int recomendation = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
-			public const int today = 2131165348;
+			public const int recomendation2x = 2131165348;
 			
 			// aapt resource value: 0x7F0700A5
-			public const int todayphoto = 2131165349;
+			public const int recomendation3x = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int tooltip_frame_dark = 2131165350;
+			public const int searchphoto = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int tooltip_frame_light = 2131165351;
+			public const int tasks = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int updateIcon = 2131165352;
+			public const int today = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int weatherIcon = 2131165353;
+			public const int todayphoto = 2131165353;
+			
+			// aapt resource value: 0x7F0700AA
+			public const int tooltip_frame_dark = 2131165354;
+			
+			// aapt resource value: 0x7F0700AB
+			public const int tooltip_frame_light = 2131165355;
+			
+			// aapt resource value: 0x7F0700AC
+			public const int updateIcon = 2131165356;
+			
+			// aapt resource value: 0x7F0700AD
+			public const int weatherIcon = 2131165357;
 			
 			static Drawable()
 			{

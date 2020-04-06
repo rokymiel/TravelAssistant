@@ -8,6 +8,7 @@ namespace TravelAssistant.Models
         public DateTime Date { get; set; }
         public string Position { get; set; }
         public int Priority { get; set; }
+        public string PriorityIcon { get => Priority > 0 ? $"priorityIcon{Priority}.png" : null; }
         public bool HasNotification { get; set; } = false;
         public int NotificationId { get; set; }
         public bool NotNotified { get => Date > DateTime.Now; }

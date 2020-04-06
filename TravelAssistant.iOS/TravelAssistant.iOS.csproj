@@ -158,6 +158,14 @@
     <ImageAsset Include="Assets.xcassets\updateIcon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\updateIcon.imageset\icons8-повторяющееся-уведомление-30.png" />
     <ImageAsset Include="Assets.xcassets\updateIcon.imageset\icons8-повторяющееся-уведомление-60-2.png" />
+    <ImageAsset Include="Assets.xcassets\priorityIcon1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\priorityIcon1.imageset\pr1.png" />
+    <ImageAsset Include="Assets.xcassets\priorityIcon2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\priorityIcon2.imageset\pr2.png" />
+    <ImageAsset Include="Assets.xcassets\priorityIcon3.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\priorityIcon3.imageset\pr3.png" />
+    <ImageAsset Include="Assets.xcassets\priorityIcon4.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\priorityIcon4.imageset\pr4.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -254,5 +262,9 @@
     <Folder Include="Assets.xcassets\finIcon.imageset\" />
     <Folder Include="Assets.xcassets\weatherIcon.imageset\" />
     <Folder Include="Assets.xcassets\updateIcon.imageset\" />
+    <Folder Include="Assets.xcassets\priorityIcon1.imageset\" />
+    <Folder Include="Assets.xcassets\priorityIcon2.imageset\" />
+    <Folder Include="Assets.xcassets\priorityIcon3.imageset\" />
+    <Folder Include="Assets.xcassets\priorityIcon4.imageset\" />
   </ItemGroup>
 </Project>
