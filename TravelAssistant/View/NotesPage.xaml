@@ -22,9 +22,9 @@
                     <ViewCell >
                         <StackLayout Padding="20" Orientation="Horizontal" >
                             <StackLayout>
-                            <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
-                            <Label Text="{Binding Text}" LineBreakMode="NoWrap" TextColor="Black" FontSize="14"></Label>
-                                </StackLayout>
+                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
+                                <Label Text="{Binding Text}" LineBreakMode="NoWrap" TextColor="Black" FontSize="14"></Label>
+                            </StackLayout>
                             <StackLayout  HorizontalOptions="EndAndExpand">
                                 <Label Text="{Binding FormatedDate}"/>
                             </StackLayout>

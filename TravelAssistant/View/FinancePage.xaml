@@ -5,7 +5,7 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              Title="Финансы">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="ⓘ" />
+        <ToolbarItem Text="ⓘ" Clicked="Info_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
 
@@ -56,11 +56,15 @@
                             <yummy:PancakeView BackgroundColor="White" HasShadow="True"
                                    CornerRadius="20"
                                    HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10,15,10,15" >
-                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal"   VerticalOptions="FillAndExpand">
-
-                                    <Label Text="{Binding GetOperationType}" VerticalOptions="Center" TextColor="Black" FontSize="Subtitle" Padding="20,20,0,20"/>
-                                    <Label Text="{Binding MoneyString}" TextColor="{Binding IsAddType}" VerticalOptions="Center" HorizontalOptions="EndAndExpand" FontSize="Subtitle" Padding="10,0,20,0"/>
-                                </StackLayout>
+                                <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0"   VerticalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="*" />
+                                        <ColumnDefinition BindingContext="{x:Reference Name=moneyOperation}" Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Label Text="{Binding GetOperationType}" Grid.Column="0" LineBreakMode="TailTruncation" VerticalOptions="Center" TextColor="Black" FontSize="Subtitle" Padding="20,20,0,20"/>
+                                    <Label x:Name="moneyOperation" Text="{Binding MoneyString}" Grid.Column="1" TextColor="{Binding IsAddType}" VerticalOptions="Center" HorizontalOptions="EndAndExpand" FontSize="Subtitle" Padding="10,0,20,0"/>
+                                </Grid>
 
                             </yummy:PancakeView>
                         </StackLayout>

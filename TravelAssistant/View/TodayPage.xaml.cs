@@ -47,6 +47,12 @@ namespace TravelAssistant.View
                 currentMoneyLabel.Text = money.CurrentMoney.ToString();
                 if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
             }
+            else
+            {
+                allMoneyLabel.Text = "0";
+                currentMoneyLabel.Text = "0";
+                moneyBar.Progress = 0;
+            }
             if (isFirstGetLocation)
             {
                 indicator.IsRunning = true;

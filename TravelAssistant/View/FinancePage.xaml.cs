@@ -6,6 +6,7 @@ using Xamarin.Forms.PancakeView;
 using TravelAssistant.Models;
 using System.ComponentModel;
 using System.Linq;
+using Rg.Plugins.Popup.Extensions;
 
 namespace TravelAssistant.View
 {
@@ -66,6 +67,11 @@ namespace TravelAssistant.View
             // operations.
 
         }
+        public async void CloseFinancePage()
+        {
+            await Navigation.PopAsync();
+        }
+
         async void OnOperationAdd(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new AddOperationPage(this));
@@ -79,6 +85,12 @@ namespace TravelAssistant.View
 
         void Delete_Clicked(System.Object sender, System.EventArgs e)
         {
+        }
+
+        async void Info_Clicked(System.Object sender, System.EventArgs e)
+        {
+            //await Navigation.PushModalAsync(new NavigationPage(new FinanceInfoPage(money)));
+            await Navigation.PushPopupAsync(new FinanceInfoPage(money, this));
         }
     }
 

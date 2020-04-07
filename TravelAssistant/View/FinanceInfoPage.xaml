@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                 xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 x:Class="TravelAssistant.View.FinanceInfoPage"
+                 
+                 >
+
+    <yummy:PancakeView BackgroundColor="White" Margin="0,90,0,0" VerticalOptions="FillAndExpand" CornerRadius="20" >
+        <StackLayout >
+            <yummy:PancakeView CornerRadius="20,20,0,0"   VerticalOptions="Start" BackgroundColor="#da1c5a">
+                <StackLayout Orientation="Horizontal" >
+                    <yummy:PancakeView HorizontalOptions="CenterAndExpand" Margin="10" HeightRequest="50" WidthRequest="50" BackgroundColor="White" CornerRadius="15">
+
+                        <Image Source="finIcon.png"   />
+
+                    </yummy:PancakeView>
+                </StackLayout>
+            </yummy:PancakeView>
+            <yummy:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="20" Padding="20" Margin="10">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+
+                        <Label Text="Бюджет:" FontAttributes="Bold" FontSize="Subtitle"/>
+                        <Label x:Name="allMoneyLabel"  VerticalTextAlignment="Center" FontSize="Subtitle"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Осталось:" FontAttributes="Bold" FontSize="Subtitle"/>
+                        <Label x:Name="currentMoneyLabel"  VerticalTextAlignment="Center" FontSize="Subtitle"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Потрачено:" FontAttributes="Bold" FontSize="Subtitle"/>
+                        <Label x:Name="spentMoneyLabel"  VerticalTextAlignment="Center" FontSize="Subtitle"/>
+                    </StackLayout>
+                </StackLayout>
+            </yummy:PancakeView>
+            <Button Clicked="deleteHistory_Clicked" TextColor="Red" Margin="10" FontSize="Subtitle" Text="Очистить историю" VerticalOptions="EndAndExpand" />
+        </StackLayout>
+
+    </yummy:PancakeView>
+</pages:PopupPage> 

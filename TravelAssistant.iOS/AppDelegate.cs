@@ -25,7 +25,7 @@ namespace TravelAssistant.iOS
         {
 
             Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
-
+            Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
             Xamarin.FormsMaps.Init();
 
