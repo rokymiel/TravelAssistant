@@ -31,7 +31,7 @@
                             <yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="StartAndExpand" BackgroundColor="#da1c5a">
                                 <StackLayout Margin="20,10,20,10" Orientation="Horizontal">
                                     <Image Source="finIcon.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
-                                    <Label Text="Финансы" VerticalOptions="Center"  TextColor="White" FontSize="Body"/>
+                                    <Label Text="Финансы" FontAttributes="Bold" VerticalOptions="Center"  TextColor="White" FontSize="Body"/>
                                 </StackLayout>
                             </yummy:PancakeView>
                             <StackLayout Margin="20,10,20,0"  Orientation="Horizontal"   >
@@ -55,7 +55,7 @@
                             <yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="StartAndExpand" BackgroundColor="#da1c5a">
                                 <StackLayout Margin="20,10,20,10" Orientation="Horizontal">
                                     <Image  Source="weatherIcon" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
-                                    <Label Text="Погода" VerticalOptions="Center"  TextColor="White" FontSize="Body"/>
+                                    <Label Text="Погода" FontAttributes="Bold" VerticalOptions="Center"  TextColor="White" FontSize="Body"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center" Orientation="Horizontal">
                                         <Label x:Name="dateOfRequest"  VerticalOptions="Center"   TextColor="White" FontSize="Body"/>
                                         <ImageButton Source="updateIcon.png" BackgroundColor="Transparent" Clicked="WeatherUpdate_Clicked"  VerticalOptions="Center" HeightRequest="20" WidthRequest="20" />

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FFImageLoading.Forms;
 using Plugin.Media;
+using TravelAssistant.Managers;
 using TravelAssistant.Models;
 using TravelAssistant.Services;
 using Xamarin.Forms;
@@ -47,11 +48,21 @@ namespace TravelAssistant.View
         static ObservableCollection<Document> documents;
         async void OnNotesClicked(System.Object sender, System.EventArgs e)
         {
+            // ANIMATION SCALE.
+            //var s = (sender as PancakeView);
+            //await s.ScaleTo(0.9, 100);
+            //await s.ScaleTo(1, 100);
+            await AnimationManager.StartScalePancakeView(sender);
             //StartAnimation(notesCardView);
             await Navigation.PushAsync(new NotesPage());
         }
         async void OnRemindersClicked(System.Object sender, System.EventArgs e)
         {
+            // ANIMATION SCALE.
+            //var s = (sender as PancakeView);
+            //await s.ScaleTo(0.9, 100);
+            //await s.ScaleTo(1, 100);
+            await AnimationManager.StartScalePancakeView(sender);
             //StartAnimation(remindersCardView);
             await Navigation.PushAsync(new RemindersPage());
         }

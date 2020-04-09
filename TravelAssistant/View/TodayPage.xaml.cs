@@ -13,6 +13,8 @@ using System.Globalization;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms.PancakeView;
+using TravelAssistant.Managers;
 
 namespace TravelAssistant.View
 {
@@ -323,12 +325,25 @@ namespace TravelAssistant.View
 
         async void FinanceWidget_Tapped(System.Object sender, System.EventArgs e)
         {
+            //var s = (sender as PancakeView);
+            //await s.ScaleTo(0.9, 100);
+            //await s.ScaleTo(1, 100);
+            await AnimationManager.StartScalePancakeView(sender);  
             await Navigation.PushAsync(new FinancePage());
+        }
+        async void ScaleAnimation(object sender)
+        {
+            var s = (sender as PancakeView);
+            await s.ScaleTo(0.9, 100);
+            //await Task.Delay(50);
+            await s.ScaleTo(1, 100);
         }
 
         async void RecomedationSaved_Clicked(System.Object sender, System.EventArgs e)
         {
-            StartAnimation();
+            await recomedationSavedButton.FadeTo(0.4, 100);
+            await Task.Delay(50);
+            await recomedationSavedButton.FadeTo(1, 100);
             await Navigation.PushModalAsync(new NavigationPage(new RecomedationSavedPage()));
         }
         private async void StartAnimation()
