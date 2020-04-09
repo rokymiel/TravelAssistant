@@ -14,10 +14,11 @@
                             VerticalScrollBarVisibility="Never"
                             SelectionMode="Single"
                             ItemsSource="{Binding operations}"
+                        
                             >
             <CollectionView.Header>
                 <StackLayout>
-                    <yummy:PancakeView  CornerRadius="20" Margin="10" HasShadow="True" BackgroundColor="White" >
+                    <yummy:PancakeView  CornerRadius="20" Margin="10" Elevation="10" BackgroundColor="White" >
                         <StackLayout  Padding="20">
 
                             <Label x:Name="currentMoneyLabel" HorizontalOptions="CenterAndExpand" Text="0" TextColor="Black" FontSize="40" FontAttributes="Bold" />
@@ -31,7 +32,7 @@
                         </StackLayout>
 
                     </yummy:PancakeView>
-                    <StackLayout Padding="10,0,10,0" Orientation="Horizontal" VerticalOptions="Center">
+                    <StackLayout  Padding="10,0,10,0" Orientation="Horizontal" VerticalOptions="Center">
                         <Label   Text="Операции" TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
                         <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" Clicked="OnOperationAdd"/>
                     </StackLayout>
@@ -53,9 +54,9 @@
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <StackLayout BackgroundColor="Transparent"  >
-                            <yummy:PancakeView BackgroundColor="White" HasShadow="True"
+                            <yummy:PancakeView BackgroundColor="White" 
                                    CornerRadius="20"
-                                   HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10,15,10,15" >
+                                   HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10" Elevation="4">
                                 <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0"   VerticalOptions="FillAndExpand">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition  Width="*" />

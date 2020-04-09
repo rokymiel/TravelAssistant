@@ -26,6 +26,7 @@ namespace TravelAssistant.View
                     moneyOperation.Money = value;
                     moneyOperation.Id = Guid.NewGuid().ToString();
                     moneyOperation.Type = MoneyOperation.OperationType.Add;
+                    moneyOperation.Date = DateTime.Now;
                     Main.AddOperation(moneyOperation);
                     
                 }
@@ -42,6 +43,7 @@ namespace TravelAssistant.View
                         moneyOperation.Description = minusDesrEntry.Text;
                         moneyOperation.Id = Guid.NewGuid().ToString();
                         moneyOperation.Type = MoneyOperation.OperationType.Minus;
+                        moneyOperation.Date = DateTime.Now;
                         Main.AddOperation(moneyOperation);
                     }
                 }
