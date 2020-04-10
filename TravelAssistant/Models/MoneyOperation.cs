@@ -11,6 +11,7 @@ namespace TravelAssistant.Models
         public string IsAddType { get => Type == OperationType.Add ? "Green" : "Black"; }
         public string GetOperationType { get => Type == OperationType.Add ? "Пополнение" : Type == OperationType.Minus ? Description : null; }
         public int Money { get; set; }
+        public string DateString {get => $"{Date.ToString("d MMMM yyyy, H:mm")}";}
         public string MoneyString
         {
             get

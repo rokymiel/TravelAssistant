@@ -12,7 +12,7 @@
         <CollectionView x:Name="finEvents"
                             HorizontalScrollBarVisibility="Never"
                             VerticalScrollBarVisibility="Never"
-                            SelectionMode="Single"
+                            SelectionMode="None"
                             ItemsSource="{Binding operations}"
                         
                             >
@@ -40,36 +40,25 @@
             </CollectionView.Header>
             <CollectionView.ItemTemplate >
                 <DataTemplate >
-                    <SwipeView>
-                        <SwipeView.RightItems>
-                            <SwipeItems>
-                                <SwipeItemView  
-                                   Invoked="Delete_Clicked"
-                                   CommandParameter="{Binding .}">
-                                    <yummy:PancakeView CornerRadius="20" Margin="10"  BackgroundColor="Red">
-                                        <Label VerticalOptions="Center" Margin="10" HorizontalOptions="Center" Text="Delete" FontSize="Title" TextColor="White"/>
-                                    </yummy:PancakeView>
-                                </SwipeItemView>
 
-                            </SwipeItems>
-                        </SwipeView.RightItems>
-                        <StackLayout BackgroundColor="Transparent"  >
-                            <yummy:PancakeView BackgroundColor="White" 
+                    <StackLayout BackgroundColor="Transparent"  >
+                        <yummy:PancakeView BackgroundColor="White" 
                                    CornerRadius="20"
                                    HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10" Elevation="4">
-                                <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0"   VerticalOptions="FillAndExpand">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition  Width="*" />
-                                        <ColumnDefinition BindingContext="{x:Reference Name=moneyOperation}" Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <Label Text="{Binding GetOperationType}" Grid.Column="0" LineBreakMode="TailTruncation" VerticalOptions="Center" TextColor="Black" FontSize="Subtitle" Padding="20,20,0,20"/>
-                                    <Label x:Name="moneyOperation" Text="{Binding MoneyString}" Grid.Column="1" TextColor="{Binding IsAddType}" VerticalOptions="Center" HorizontalOptions="EndAndExpand" FontSize="Subtitle" Padding="10,0,20,0"/>
-                                </Grid>
+                            <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0"   VerticalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="*" />
+                                    <ColumnDefinition BindingContext="{x:Reference Name=moneyOperation}" Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
-                            </yummy:PancakeView>
-                        </StackLayout>
-                    </SwipeView>
+                                <Label Text="{Binding GetOperationType}" Grid.Column="0" LineBreakMode="TailTruncation" VerticalOptions="Center" TextColor="Black" FontSize="Subtitle" Padding="20,20,0,20"/>
+                                <Label x:Name="moneyOperation" Text="{Binding MoneyString}" Grid.Column="1" TextColor="{Binding IsAddType}" VerticalOptions="Center" HorizontalOptions="EndAndExpand" FontSize="Subtitle" Padding="10,0,20,0"/>
+                            </Grid>
+                            <yummy:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="Operation_Tapped"/>
+                            </yummy:PancakeView.GestureRecognizers>
+                        </yummy:PancakeView>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 

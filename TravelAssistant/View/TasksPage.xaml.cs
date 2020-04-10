@@ -77,8 +77,6 @@ namespace TravelAssistant.View
         }
         async void Image_Tapped(System.Object sender, System.EventArgs e)
         {
-            Console.WriteLine();
-            Console.WriteLine((e as TappedEventArgs));
             var item = (Document)(sender as CachedImage).BindingContext;
 
             if (item == null)

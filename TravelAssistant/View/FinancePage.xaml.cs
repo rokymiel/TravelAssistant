@@ -7,6 +7,7 @@ using TravelAssistant.Models;
 using System.ComponentModel;
 using System.Linq;
 using Rg.Plugins.Popup.Extensions;
+using TravelAssistant.Managers;
 
 namespace TravelAssistant.View
 {
@@ -91,6 +92,31 @@ namespace TravelAssistant.View
         {
             //await Navigation.PushModalAsync(new NavigationPage(new FinanceInfoPage(money)));
             await Navigation.PushPopupAsync(new FinanceInfoPage(money, this));
+        }
+
+        async void finEvents_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        {
+            var i = e.CurrentSelection.FirstOrDefault() as MoneyOperation;
+            if (i != null)
+            {
+                await Navigation.PushPopupAsync(new OperationDetailsPage(i));
+            }
+            (sender as CollectionView).SelectedItem = null;
+        }
+
+        async void Operation_Tapped(System.Object sender, System.EventArgs e)
+        {
+            var item = (MoneyOperation)(sender as PancakeView).BindingContext;
+            if (item != null)
+            {
+                (sender as PancakeView).IsEnabled = false;
+                await AnimationManager.StartScalePancakeView(sender as PancakeView);
+
+                await Navigation.PushPopupAsync(new OperationDetailsPage(item));
+                (sender as PancakeView).IsEnabled = true;
+            }
+            
+            
         }
     }
 
