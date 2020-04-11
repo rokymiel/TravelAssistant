@@ -6,17 +6,15 @@
              x:Class="TravelAssistant.View.ImagePage"
              x:Name="imagePage">
     <ContentPage.Content>
-        <StackLayout x:Name="imageBack"
-            HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand">
-            <ffimageloading:CachedImage
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-			    x:Name="image" Aspect="AspectFill">
-                <ffimageloading:CachedImage.GestureRecognizers>
-                    <SwipeGestureRecognizer Direction="Down" Swiped="SwipeGestureRecognizer_Swiped"/>
-                </ffimageloading:CachedImage.GestureRecognizers>
-            </ffimageloading:CachedImage>
-        </StackLayout>
+
+        <Image
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+			    x:Name="image">
+            <Image.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Down" Swiped="SwipeGestureRecognizer_Swiped"/>
+            </Image.GestureRecognizers>
+        </Image>
+
     </ContentPage.Content>
 </ContentPage>
