@@ -20,15 +20,19 @@
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <ViewCell >
-                        <StackLayout Padding="20" Orientation="Horizontal" >
-                            <StackLayout>
-                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
-                                <Label Text="{Binding Text}" LineBreakMode="NoWrap" TextColor="Black" FontSize="14"></Label>
+                        <Grid Padding="20"  >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="*" />
+                                <ColumnDefinition Width="Auto" BindingContext="{x:Reference Name= dateLayOut}" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0">
+                                <Label Text="{Binding Name}" LineBreakMode="TailTruncation" TextColor="Black" FontSize="20"></Label>
+                                <Label Text="{Binding Text}" LineBreakMode="TailTruncation" TextColor="Black" FontSize="14"></Label>
                             </StackLayout>
-                            <StackLayout  HorizontalOptions="EndAndExpand">
+                            <StackLayout x:Name="dateLayOut" Grid.Column="1" HorizontalOptions="EndAndExpand">
                                 <Label Text="{Binding FormatedDate}"/>
                             </StackLayout>
-                        </StackLayout>
+                        </Grid>
                         <ViewCell.ContextActions>
                             <MenuItem Text="Delete"
                                       CommandParameter="{Binding .}"
