@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             Title="Новая поездка"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelAssistant.View.CreateNewTripPage">
+    <ContentPage.Content>
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="10">
+                <yummy:PancakeView Margin="10" BackgroundColor="White" HasShadow="True" CornerRadius="20">
+                    <StackLayout Margin="20" Orientation="Vertical">
+                        <Label Text="Название(не обязательно)" FontSize="Subtitle"/>
+                        <Entry Placeholder="Введите название поездки"/>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <yummy:PancakeView Margin="10" BackgroundColor="White" HasShadow="True" CornerRadius="20">
+                    <StackLayout Margin="20" Orientation="Vertical">
+                        <Label Text="Страна" FontSize="Subtitle"/>
+                        <Entry Placeholder="Введите название поездки"/>
+                        <Label Text="Город" FontSize="Subtitle"/>
+                        <Entry Placeholder="Введите название поездки"/>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <yummy:PancakeView Margin="10" BackgroundColor="White" HasShadow="True" CornerRadius="20">
+                    <StackLayout Margin="20" Orientation="Vertical">
+                        <Label Text="Начало поездки" FontSize="Subtitle"/>
+                        <DatePicker/>
+                        <Label Text="Конец поездки" FontSize="Subtitle"/>
+                        <DatePicker/>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <Button Margin="10" FontSize="Subtitle" Clicked="Button_Clicked" Padding="15" CornerRadius="20" TextColor="White" Text="Сохранить"  BackgroundColor="#da1c5a"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

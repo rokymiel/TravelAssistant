@@ -166,6 +166,9 @@
     <ImageAsset Include="Assets.xcassets\n10.imageset\n10.png" />
     <ImageAsset Include="Assets.xcassets\n11.imageset\n11.png" />
     <ImageAsset Include="Assets.xcassets\n13.imageset\n13.png" />
+    <ImageAsset Include="Assets.xcassets\plusIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\plusIcon.imageset\plusIcon.png" />
+    <ImageAsset Include="Assets.xcassets\plusIcon.imageset\plusIcon-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -269,5 +272,6 @@
     <Folder Include="Assets.xcassets\priorityIcon2.imageset\" />
     <Folder Include="Assets.xcassets\priorityIcon3.imageset\" />
     <Folder Include="Assets.xcassets\priorityIcon4.imageset\" />
+    <Folder Include="Assets.xcassets\plusIcon.imageset\" />
   </ItemGroup>
 </Project>

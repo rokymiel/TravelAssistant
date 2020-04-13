@@ -17,5 +17,10 @@ namespace TravelAssistant.View
         {
             await Navigation.PushAsync(new FinancePage());
         }
+
+        void OnTrip_Tapped(System.Object sender, System.EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new AllTripsPage());
+        }
     }
 }

@@ -30,8 +30,9 @@ namespace TravelAssistant
             moneyOperationManager = new SQLManger<MoneyOperation>(dbMoneyOperationsPath);
             documentManager = new SQLManger<Document>(dbDocumentsPath);
             placesManager = new SQLManger<Place>(dbPlacesPath);
-            NotificationCenter.Current.NotificationTapped += OnLocalNotificationTapped; 
-            MainPage = new MainPage();
+            NotificationCenter.Current.NotificationTapped += OnLocalNotificationTapped;
+            //MainPage = new MainPage();
+            MainPage = new NavigationPage(new AllTripsPage());
         }
         private void OnLocalNotificationTapped(NotificationTappedEventArgs e)
         {

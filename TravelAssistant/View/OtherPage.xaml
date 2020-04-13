@@ -5,10 +5,10 @@
              >
     <TableView Intent="Menu" >
         <TableRoot  >
-            <TableSection  >
-                <ViewCell >
+            <TableSection>
+                <ViewCell Tapped="OnTrip_Tapped" >
                     <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="Профиль" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text="Поездка" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
                         <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
                 </ViewCell>
