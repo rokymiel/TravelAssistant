@@ -2,7 +2,7 @@
 using SQLite;
 namespace TravelAssistant.Models
 {
-    public class Place:Item
+    public class Place:TripData
     {
         public Place(Venue venue)
         {
@@ -10,7 +10,8 @@ namespace TravelAssistant.Models
             CrossStreet = venue.location.crossStreet;
             Lat = venue.location.lat;
             Lng = venue.location.lng;
-            Id = venue.id;
+            PlaceId = venue.id;
+            Id = PlaceId + TripId;
             Name = venue.name;
         }
         public Place()
@@ -22,6 +23,7 @@ namespace TravelAssistant.Models
         public double Lat { get;  set; }
         public double Lng { get; set; }
         public string Name { get; set; }
+        public string PlaceId { get; set; }
         [PrimaryKey]
         public override string Id { get;  set; }
 

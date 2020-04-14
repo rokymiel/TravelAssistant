@@ -17,7 +17,8 @@ namespace TravelAssistant.View
         {
             InitializeComponent();
             items = new ObservableCollection<Reminder>();
-            var savedItems = App.remindersManger.GetReminder();
+            var savedItems = App.remindersManger.GetTripItems<Reminder>(MainPage.CurrentTrip.Id);
+            //var savedItems = App.remindersManger.GetReminder();
             savedItems.ForEach(x => items.Add(x));
             if (items.Count > 0)
                 items = new ObservableCollection<Reminder>(items.OrderByDescending(x => x.Priority));
@@ -32,6 +33,7 @@ namespace TravelAssistant.View
         {
             items?.Add(reminder);
             App.remindersManger.AddItem(reminder);
+            Console.WriteLine(App.remindersManger.GetTripItems<Reminder>(MainPage.CurrentTrip.Id).Count);
             items = new ObservableCollection<Reminder>(items.OrderByDescending(x => x.Priority));
             listView.ItemsSource = items;
         }

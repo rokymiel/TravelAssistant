@@ -14,7 +14,8 @@ namespace TravelAssistant.View
         {
             InitializeComponent();
             items = new ObservableCollection<Note>();
-            App.notesManger.GetNotes().ForEach(x=>items.Add(x));
+            App.notesManger.GetTripItems<Note>(MainPage.CurrentTrip.Id).ForEach(x => items.Add(x));
+            //App.notesManger.GetNotes().ForEach(x=>items.Add(x));
             items = new ObservableCollection<Note>(items.OrderByDescending(x => x.Date));
             listView.ItemsSource = items;
 

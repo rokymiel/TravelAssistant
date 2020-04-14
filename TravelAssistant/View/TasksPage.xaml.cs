@@ -22,17 +22,18 @@ namespace TravelAssistant.View
             BindingContext = VM;
             VM.GetImage += OnImageGetted;
             documents = new ObservableCollection<Document>();
-            
-            var s=App.documentManager.GetDocuments();
+
+            //var s=App.documentManager.GetDocuments();
+            var s = App.documentManager.GetTripItems<Document>(MainPage.CurrentTrip.Id);
             //s.ForEach(x=> x.Image=ImageSource.FromFile(x.Path));
-            s.ForEach(x=>documents.Add(x));
+            s.ForEach(x => documents.Add(x));
             col.ItemsSource = documents;
-            
+
         }
         protected override void OnAppearing()
         {
-            int notesCount = App.notesManger.GetNotes().Count;
-            int remindersCount = App.remindersManger.GetReminder().Count;
+            int notesCount = App.notesManger.GetTripItems<Note>(MainPage.CurrentTrip.Id).Count;
+            int remindersCount = App.remindersManger.GetTripItems<Reminder>(MainPage.CurrentTrip.Id).Count;
             notesCount = notesCount <= 0 ? 0 : notesCount;
             remindersCount = remindersCount <= 0 ? 0 : remindersCount;
             notesCountLabel.Text = $"Всего: {notesCount}";
@@ -88,7 +89,9 @@ namespace TravelAssistant.View
         async void OnDocumentSelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
         {
             Console.WriteLine("22222222222");
-            var item = e.CurrentSelection.FirstOrDefault() as Document;                          if (item == null)
+            var item = e.CurrentSelection.FirstOrDefault() as Document;
+
+            if (item == null)
             {
 
 
@@ -104,13 +107,14 @@ namespace TravelAssistant.View
         {
             //(sender as Button).IsEnabled = false;
 
-            
+
             Document document = new Document();
-            document.Id= Guid.NewGuid().ToString();
+            document.Id = Guid.NewGuid().ToString();
             //document.Image = e.Image;
             document.ByteImage = e.ByteImage;
             //document.Image = ;
             document.Path = e.Path;
+            document.TripId = MainPage.CurrentTrip.Id;
             documents.Add(document);
             App.documentManager.AddItem(document);
             //App.documentManager.AddItem(document);
@@ -133,12 +137,12 @@ namespace TravelAssistant.View
             VM.GetImageAndRun();
             //document.Image = VM.ImageSource;
             documents.Add(document);
-            
+
 
             (sender as Button).IsEnabled = true;
         }
 
-        
+
         //SelectionChanged="OnDocumentSelectionChanged"
 
     }

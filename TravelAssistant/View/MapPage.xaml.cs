@@ -23,7 +23,8 @@ namespace TravelAssistant.View
         protected override void OnAppearing()
         {
             placesPin = new ObservableCollection<PinLocation>();
-            App.placesManager.GetPlaces().ForEach(x => placesPin.Add(new PinLocation(x.Address, x.Name, new Position(x.Lat, x.Lng))));
+            //App.placesManager.GetPlaces().ForEach(x => placesPin.Add(new PinLocation(x.Address, x.Name, new Position(x.Lat, x.Lng))));
+            App.placesManager.GetTripItems<Place>(MainPage.CurrentTrip.Id).ForEach(x => placesPin.Add(new PinLocation(x.Address, x.Name, new Position(x.Lat, x.Lng))));
             map.ItemsSource = placesPin;
             GetLocation(DoSome);
 

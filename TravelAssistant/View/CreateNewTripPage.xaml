@@ -10,23 +10,23 @@
                 <yummy:PancakeView Margin="10" BackgroundColor="White" HasShadow="True" CornerRadius="20">
                     <StackLayout Margin="20" Orientation="Vertical">
                         <Label Text="Название(не обязательно)" FontSize="Subtitle"/>
-                        <Entry Placeholder="Введите название поездки"/>
+                        <Entry x:Name="nameOfTripEntry" Placeholder="Введите название поездки"/>
                     </StackLayout>
                 </yummy:PancakeView>
                 <yummy:PancakeView Margin="10" BackgroundColor="White" HasShadow="True" CornerRadius="20">
                     <StackLayout Margin="20" Orientation="Vertical">
                         <Label Text="Страна" FontSize="Subtitle"/>
-                        <Entry Placeholder="Введите название поездки"/>
+                        <Entry x:Name="countryOfTripEntry" Placeholder="Введите название поездки"/>
                         <Label Text="Город" FontSize="Subtitle"/>
-                        <Entry Placeholder="Введите название поездки"/>
+                        <Entry x:Name="cityOfTripEntry" Placeholder="Введите название поездки"/>
                     </StackLayout>
                 </yummy:PancakeView>
                 <yummy:PancakeView Margin="10" BackgroundColor="White" HasShadow="True" CornerRadius="20">
                     <StackLayout Margin="20" Orientation="Vertical">
                         <Label Text="Начало поездки" FontSize="Subtitle"/>
-                        <DatePicker/>
+                        <DatePicker x:Name="beginingOfTripDatePicker"/>
                         <Label Text="Конец поездки" FontSize="Subtitle"/>
-                        <DatePicker/>
+                        <DatePicker x:Name="endingOfTripDatePicker"/>
                     </StackLayout>
                 </yummy:PancakeView>
                 <Button Margin="10" FontSize="Subtitle" Clicked="Button_Clicked" Padding="15" CornerRadius="20" TextColor="White" Text="Сохранить"  BackgroundColor="#da1c5a"/>

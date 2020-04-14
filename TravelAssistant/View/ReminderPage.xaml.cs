@@ -28,6 +28,7 @@ namespace TravelAssistant.View
                 reminder.Name = Name.Text;
                 reminder.Description = Description.Text;
                 reminder.Priority = priority;
+                reminder.TripId = MainPage.CurrentTrip.Id;
                 if (styleSwitch.IsToggled)
                 {
 

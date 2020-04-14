@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace TravelAssistant.Models
 {
-    public class Document : Item
+    public class Document : TripData
     {
         public string Path { get; set; }
         public byte[] ByteImage { get; set; }

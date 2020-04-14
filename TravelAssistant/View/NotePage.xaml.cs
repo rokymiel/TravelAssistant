@@ -55,7 +55,8 @@ namespace TravelAssistant.View
                 note.Name = "Без названия";
             }
             note.Date = DateTime.Now;
-            
+            note.TripId = MainPage.CurrentTrip.Id;
+            Console.WriteLine(note.TripId);
             NotesPage.Update(note);
             MessagingCenter.Send(this,"AddItem",note);
             

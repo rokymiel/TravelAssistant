@@ -11,7 +11,8 @@
                             HorizontalScrollBarVisibility="Never"
                             VerticalScrollBarVisibility="Never"
                             SelectionMode="Single"
-                            
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
                             SelectionChanged="OnPlaceSelected"
                             ItemsSource="{Binding places}" ItemsLayout="VerticalList"
                     >

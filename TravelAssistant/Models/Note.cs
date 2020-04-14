@@ -3,7 +3,7 @@ using SQLite;
 namespace TravelAssistant.Models
 {
     
-    public class Note:Item
+    public class Note:TripData
     {
         public string Name { get; set; }
         public string Text { get; set; }

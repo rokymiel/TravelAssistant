@@ -15,24 +15,37 @@ namespace TravelAssistant
         string dbMoneyOperationsPath => FileAccessManager.GetLocalFilePath("moneyOperations.db3");
         string dbDocumentsPath => FileAccessManager.GetLocalFilePath("notes.db3");
         string dbPlacesPath => FileAccessManager.GetLocalFilePath("placess.db3");
-        public static SQLManger<Note> notesManger;
-        public static SQLManger<Reminder> remindersManger;
-        public static SQLManger<Money> moneyManager;
-        public static SQLManger<MoneyOperation> moneyOperationManager;
-        public static SQLManger<Document> documentManager;
-        public static SQLManger<Place> placesManager;
+        string dbTripsPath => FileAccessManager.GetLocalFilePath("trips.db3");
+
+        public static SQLManager<Note> notesManger;
+        public static SQLManager<Reminder> remindersManger;
+        public static SQLManager<Money> moneyManager;
+        public static SQLManager<MoneyOperation> moneyOperationManager;
+        public static SQLManager<Document> documentManager;
+        public static SQLManager<Place> placesManager;
+        public static SQLManager<Trip> tripsManager;
+
         public App()
         {
             InitializeComponent();
-            notesManger = new SQLManger<Note>(dbNotesPath);
-            remindersManger = new SQLManger<Reminder>(dbRemindersPath);
-            moneyManager = new SQLManger<Money>(dbMoneyPath);
-            moneyOperationManager = new SQLManger<MoneyOperation>(dbMoneyOperationsPath);
-            documentManager = new SQLManger<Document>(dbDocumentsPath);
-            placesManager = new SQLManger<Place>(dbPlacesPath);
+            notesManger = new SQLManager<Note>(dbNotesPath);
+            remindersManger = new SQLManager<Reminder>(dbRemindersPath);
+            moneyManager = new SQLManager<Money>(dbMoneyPath);
+            moneyOperationManager = new SQLManager<MoneyOperation>(dbMoneyOperationsPath);
+            documentManager = new SQLManager<Document>(dbDocumentsPath);
+            placesManager = new SQLManager<Place>(dbPlacesPath);
+            tripsManager = new SQLManager<Trip>(dbTripsPath);
             NotificationCenter.Current.NotificationTapped += OnLocalNotificationTapped;
             //MainPage = new MainPage();
-            MainPage = new NavigationPage(new AllTripsPage());
+            if (Properties.ContainsKey("mainPage"))
+            {
+                MainPage = new MainPage(tripsManager.GetTripById(Properties["mainPage"].ToString()));
+            }
+            else
+            {
+                MainPage = new NavigationPage(new AllTripsPage());
+            }
+
         }
         private void OnLocalNotificationTapped(NotificationTappedEventArgs e)
         {

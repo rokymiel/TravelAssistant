@@ -1,7 +1,7 @@
 ﻿using System;
 namespace TravelAssistant.Models
 {
-    public class Reminder : Item
+    public class Reminder : TripData
     {
         public string Name { get; set; }
         public string Description { get; set; }

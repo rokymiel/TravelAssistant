@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace TravelAssistant.Models
 {
-    public class MoneyOperation : Item
+    public class MoneyOperation : TripData
     {
         public string Description { get; set; }
         public OperationType Type { get; set; }

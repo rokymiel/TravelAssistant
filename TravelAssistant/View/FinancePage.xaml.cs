@@ -21,13 +21,17 @@ namespace TravelAssistant.View
         {
             InitializeComponent();
             operations = new ObservableCollection<MoneyOperation>();
-            var list = App.moneyOperationManager.GetMoneyOperations();
+            var list = App.moneyOperationManager.GetTripItems<MoneyOperation>(MainPage.CurrentTrip.Id);
             list.Reverse();
             list.ForEach(x => operations.Add(x));
-            money = App.moneyManager.GetMoney();
+            var m = App.moneyManager.GetTripItems<Money>(MainPage.CurrentTrip.Id);
+            if (m != null && m.Count > 0)
+                money = m[0];
+            else
+                money = null;
             if (money == null)
             {
-                money = new Money() { Id = Guid.NewGuid().ToString() };
+                money = new Money() { Id = Guid.NewGuid().ToString(), TripId=MainPage.CurrentTrip.Id };
                 App.moneyManager.AddItem(money);
             }
             if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
@@ -115,8 +119,8 @@ namespace TravelAssistant.View
                 await Navigation.PushPopupAsync(new OperationDetailsPage(item));
                 (sender as PancakeView).IsEnabled = true;
             }
-            
-            
+
+
         }
     }
 

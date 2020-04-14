@@ -42,7 +42,11 @@ namespace TravelAssistant.View
         protected override void OnAppearing()
         {
             date.Text = GetCurrentDate();
-            money = App.moneyManager.GetMoney();
+            var m = App.moneyManager.GetTripItems<Money>(MainPage.CurrentTrip.Id);
+            if (m != null && m.Count > 0)
+                money = m[0];
+            else
+                money = null;
             if (money != null)
             {
                 allMoneyLabel.Text = money.AllMoney.ToString();
@@ -195,7 +199,7 @@ namespace TravelAssistant.View
             {
                 foreach (var items in groups.items)
                 {
-                    Place newPlace = new Place(items.venue);
+                    Place newPlace = new Place(items.venue) { TripId=MainPage.CurrentTrip.Id};
                     //newPlace.Id= Guid.NewGuid().ToString(); ;
                     places.Add(newPlace);
                 }
@@ -328,7 +332,7 @@ namespace TravelAssistant.View
             //var s = (sender as PancakeView);
             //await s.ScaleTo(0.9, 100);
             //await s.ScaleTo(1, 100);
-            await AnimationManager.StartScalePancakeView(sender);  
+            await AnimationManager.StartScalePancakeView(sender);
             await Navigation.PushAsync(new FinancePage());
         }
         async void ScaleAnimation(object sender)

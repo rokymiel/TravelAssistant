@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using SQLite;
 using TravelAssistant.Models;
 
 namespace TravelAssistant.Managers
 {
-    public class SQLManger<T> where T : Item
+    public class SQLManager<T> where T : Item, new()
     {
         public string StatusMessage { get; set; }
         SQLiteConnection connection;
 
-        public SQLManger(string dbPath)
+        public SQLManager(string dbPath)
         {
             connection = new SQLiteConnection(dbPath);
 
@@ -41,6 +42,37 @@ namespace TravelAssistant.Managers
             }
 
             return new List<Reminder>();
+        }
+        public List<T> GetItems()
+        {
+            try
+            {
+                return connection.Table<T>().ToList();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+
+            return new List<T>();
+        }
+        public Trip GetTripById(string tripId)
+        {
+            return connection.Get<Trip>(tripId);
+        }
+        public List<R> GetTripItems<R>(string tripId) where R:TripData, new()
+        {
+            try
+            {
+                //return connection.Query<T>($"select * from notes where TripId='{tripId}'");
+                return connection.Table<R>().Where(x=>x.TripId==tripId).ToList();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+
+            return new List<R>();
         }
         public List<MoneyOperation> GetMoneyOperations()
         {
