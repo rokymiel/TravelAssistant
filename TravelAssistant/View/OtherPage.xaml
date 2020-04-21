@@ -8,7 +8,7 @@
             <TableSection>
                 <ViewCell Tapped="OnTrip_Tapped" >
                     <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="Поездка" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text="Текущая поездка" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
                         <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
                 </ViewCell>
@@ -20,14 +20,15 @@
                 </ViewCell>
                 <ViewCell>
                     <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="Аудиогид" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text="О приложении" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
                         <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
                 </ViewCell>
-                <ViewCell>
+            </TableSection>
+            <TableSection>
+                <ViewCell Tapped="Exit_Tapped">
                     <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="Настройки" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
-                        <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        <Label Text="Выйти из поездки" TextColor="Red" FontSize="Medium" VerticalOptions="Center"/>
                     </StackLayout>
                 </ViewCell>
             </TableSection>

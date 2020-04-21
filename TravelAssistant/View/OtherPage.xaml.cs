@@ -17,9 +17,14 @@ namespace TravelAssistant.View
             await Navigation.PushAsync(new FinancePage());
         }
 
-       void OnTrip_Tapped(System.Object sender, System.EventArgs e)
+        void OnTrip_Tapped(System.Object sender, System.EventArgs e)
         {
-            if(App.Current.Properties.ContainsKey("mainPage"))
+
+        }
+
+        void Exit_Tapped(System.Object sender, System.EventArgs e)
+        {
+            if (App.Current.Properties.ContainsKey("mainPage"))
                 App.Current.Properties.Remove("mainPage");
             App.Current.MainPage = new NavigationPage(new AllTripsPage());
         }
