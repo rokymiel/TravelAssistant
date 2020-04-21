@@ -22,10 +22,7 @@ namespace TravelAssistant.View
             BindingContext = VM;
             VM.GetImage += OnImageGetted;
             documents = new ObservableCollection<Document>();
-
-            //var s=App.documentManager.GetDocuments();
             var s = App.documentManager.GetTripItems<Document>(MainPage.CurrentTrip.Id);
-            //s.ForEach(x=> x.Image=ImageSource.FromFile(x.Path));
             s.ForEach(x => documents.Add(x));
             col.ItemsSource = documents;
 
@@ -39,32 +36,16 @@ namespace TravelAssistant.View
             notesCountLabel.Text = $"Всего: {notesCount}";
             remindersCountLabel.Text = $"Всего: {remindersCount}";
         }
-        private async void StartAnimation(PancakeView pancake)
-        {
-            await pancake.FadeTo(0.4, 200);
-            await Task.Delay(100);
-            await pancake.FadeTo(1, 200);
-        }
         private static PhotoModel VM = new PhotoModel();
         static ObservableCollection<Document> documents;
         async void OnNotesClicked(System.Object sender, System.EventArgs e)
         {
-            // ANIMATION SCALE.
-            //var s = (sender as PancakeView);
-            //await s.ScaleTo(0.9, 100);
-            //await s.ScaleTo(1, 100);
             await AnimationManager.StartScalePancakeView(sender);
-            //StartAnimation(notesCardView);
             await Navigation.PushAsync(new NotesPage());
         }
         async void OnRemindersClicked(System.Object sender, System.EventArgs e)
         {
-            // ANIMATION SCALE.
-            //var s = (sender as PancakeView);
-            //await s.ScaleTo(0.9, 100);
-            //await s.ScaleTo(1, 100);
             await AnimationManager.StartScalePancakeView(sender);
-            //StartAnimation(remindersCardView);
             await Navigation.PushAsync(new RemindersPage());
         }
         async void DeleteImage_Invoked(System.Object sender, System.EventArgs e)
@@ -120,6 +101,7 @@ namespace TravelAssistant.View
             //App.documentManager.AddItem(document);
             //(sender as Button).IsEnabled = true;
         }
+        // Удалить!
         async void OnPickPhotoButtonClicked(object sender, EventArgs e)
         {
             (sender as Button).IsEnabled = false;

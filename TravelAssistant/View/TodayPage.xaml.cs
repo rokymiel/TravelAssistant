@@ -25,14 +25,9 @@ namespace TravelAssistant.View
         private bool isFirstGetLocation = true;
         public TodayPage()
         {
-
             InitializeComponent();
             places = new ObservableCollection<Place>();
             RecomendationCards.ItemsSource = places;
-
-
-            //GetLocation();
-
         }
         private string GetCurrentDate()
         {
@@ -115,7 +110,6 @@ namespace TravelAssistant.View
 
                 if (App.Current.Properties.ContainsKey("weatherJSON") && App.Current.Properties.ContainsKey("weatherDate"))
                 {
-                    //DateTime oldWeather = App.Current.Properties["weather"] as WeatherInfo;
                     var dor = (DateTime)App.Current.Properties["weatherDate"];
                     var res = DateTime.Now - dor;
                     if (res.Ticks < 2 * TimeSpan.TicksPerMinute)
@@ -143,7 +137,6 @@ namespace TravelAssistant.View
                         response = streamReader.ReadToEnd();
                     }
                     WeatherResponse weather = JsonConvert.DeserializeObject<WeatherResponse>(response);
-                    Console.WriteLine(DateTime.Now - time);
                     weatherInfo = new WeatherInfo(weather) { DateOfRequest = DateTime.Now };
                     App.Current.Properties["weatherJSON"] = response;
                     App.Current.Properties["weatherDate"] = DateTime.Now;
@@ -171,7 +164,6 @@ namespace TravelAssistant.View
                 try
                 {
                     PlacesInfo placesInfo = GetPlacesRecomendation(recUrl + safix);
-                    //Console.WriteLine(placesInfo.ToString());
                     if (placesInfo.meta.code == 200)
                     {
                         indicator.IsRunning = false;
@@ -199,8 +191,7 @@ namespace TravelAssistant.View
             {
                 foreach (var items in groups.items)
                 {
-                    Place newPlace = new Place(items.venue) { TripId=MainPage.CurrentTrip.Id};
-                    //newPlace.Id= Guid.NewGuid().ToString(); ;
+                    Place newPlace = new Place(items.venue) { TripId = MainPage.CurrentTrip.Id };
                     places.Add(newPlace);
                 }
             }
@@ -281,18 +272,17 @@ namespace TravelAssistant.View
                 {
                     pLocation = await CrossGeolocator.Current.GetPositionAsync();
                     DoReq();
-                    //GeolocationField = "Lat: " + results.Latitude + " Long: " + results.Longitude;
                 }
                 else if (status != PermissionStatus.Unknown)
                 {
-                    //await DisplayAlert("Location Denied", "Can not continue, try again.", "OK");
+                    await DisplayAlert("Location Denied", "Can not continue, try again.", "OK");
                     MessagingCenter.Send(this, "LocationDenied");
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                //GeolocationField = "Error: " + ex;
+
             }
         }
         private PlacesInfo GetPlacesRecomendation(string url)
@@ -310,10 +300,6 @@ namespace TravelAssistant.View
             return placesInfo;
         }
 
-        void Button_Clicked(System.Object sender, System.EventArgs e)
-        {
-
-        }
         async void OnPlaceSelected(Object sender, SelectionChangedEventArgs e)
         {
             var item = e.CurrentSelection.FirstOrDefault() as Place;
@@ -329,32 +315,15 @@ namespace TravelAssistant.View
 
         async void FinanceWidget_Tapped(System.Object sender, System.EventArgs e)
         {
-            //var s = (sender as PancakeView);
-            //await s.ScaleTo(0.9, 100);
-            //await s.ScaleTo(1, 100);
             await AnimationManager.StartScalePancakeView(sender);
             await Navigation.PushAsync(new FinancePage());
         }
-        async void ScaleAnimation(object sender)
-        {
-            var s = (sender as PancakeView);
-            await s.ScaleTo(0.9, 100);
-            //await Task.Delay(50);
-            await s.ScaleTo(1, 100);
-        }
-
         async void RecomedationSaved_Clicked(System.Object sender, System.EventArgs e)
         {
             await recomedationSavedButton.FadeTo(0.4, 100);
             await Task.Delay(50);
             await recomedationSavedButton.FadeTo(1, 100);
             await Navigation.PushModalAsync(new NavigationPage(new RecomedationSavedPage()));
-        }
-        private async void StartAnimation()
-        {
-            await recomedationSavedButton.FadeTo(0.4, 200);
-            await Task.Delay(100);
-            await recomedationSavedButton.FadeTo(1, 200);
         }
 
 

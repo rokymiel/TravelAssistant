@@ -13,7 +13,6 @@ namespace TravelAssistant.View
         {
             InitializeComponent();
             places = new ObservableCollection<Place>();
-            //App.placesManager.GetPlaces().ForEach(x=>places.Add(x));
             App.placesManager.GetTripItems<Place>(MainPage.CurrentTrip.Id).ForEach(x => places.Add(x));
             RecomendationSavedCards.ItemsSource = places;
             if (places.Count == 0)

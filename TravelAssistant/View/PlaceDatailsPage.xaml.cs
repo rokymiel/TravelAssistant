@@ -28,8 +28,6 @@ namespace TravelAssistant.View
             {
                 App.placesManager.AddItem(Place);
             }
-            //Console.WriteLine(Place.Name);
-            //App.placesManager.GetPlaces().ForEach(x => Console.WriteLine(x.Name));
         }
     }
 }

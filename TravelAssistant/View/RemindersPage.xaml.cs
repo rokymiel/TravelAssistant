@@ -18,7 +18,6 @@ namespace TravelAssistant.View
             InitializeComponent();
             items = new ObservableCollection<Reminder>();
             var savedItems = App.remindersManger.GetTripItems<Reminder>(MainPage.CurrentTrip.Id);
-            //var savedItems = App.remindersManger.GetReminder();
             savedItems.ForEach(x => items.Add(x));
             if (items.Count > 0)
                 items = new ObservableCollection<Reminder>(items.OrderByDescending(x => x.Priority));
@@ -53,10 +52,9 @@ namespace TravelAssistant.View
         }
         void OnReminderSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
-
+            listView.SelectedItem = null;
         }
-        public static readonly BindableProperty EventNameProperty =
-  BindableProperty.Create("Id", typeof(string), typeof(Reminder), null);
+        public static readonly BindableProperty EventNameProperty = BindableProperty.Create("Id", typeof(string), typeof(Reminder), null);
         void CheckBox_CheckedChanged(System.Object sender, Xamarin.Forms.CheckedChangedEventArgs e)
         {
             Console.WriteLine((sender as CheckBox).BindingContext);

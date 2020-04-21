@@ -10,7 +10,6 @@ namespace TravelAssistant.View
         public ImagePage(ImageSource source)
         {
             InitializeComponent();
-            if (source == null) Console.WriteLine("NUUUUUULLLLL");
             Console.WriteLine((source as ImageSource));
             image.Source = source;
         }

@@ -15,7 +15,6 @@ namespace TravelAssistant.View
             InitializeComponent();
             items = new ObservableCollection<Note>();
             App.notesManger.GetTripItems<Note>(MainPage.CurrentTrip.Id).ForEach(x => items.Add(x));
-            //App.notesManger.GetNotes().ForEach(x=>items.Add(x));
             items = new ObservableCollection<Note>(items.OrderByDescending(x => x.Date));
             listView.ItemsSource = items;
 
@@ -27,7 +26,7 @@ namespace TravelAssistant.View
         }
         async void OnSelectedNote(object sender, SelectedItemChangedEventArgs args)         {
             
-            var item = args.SelectedItem as Note;             if (item == null)                 return;                          await Navigation.PushAsync(new NotePage(item));              // Manually deselect item.             listView.SelectedItem = null;         }
+            var item = args.SelectedItem as Note;             if (item == null)                 return;                          await Navigation.PushAsync(new NotePage(item));              listView.SelectedItem = null;         }
 
 
         public static void Update(Note item)
@@ -46,7 +45,7 @@ namespace TravelAssistant.View
                     items?.Add(item);
                     App.notesManger.AddItem(item);
                 }
-                // Убрать сортировку при неизменении заметок.
+                // TODO: Убрать сортировку при неизменении заметок.
                 // Убрать Выделение после выбора.
                 items = new ObservableCollection<Note>(items.OrderByDescending(x => x.Date));
                 
@@ -76,15 +75,8 @@ namespace TravelAssistant.View
         {
             if (items != null && items.Count > 0)
             {
-                //listView.ItemsSource = items;
                 listView.IsVisible = true;
-                //noNotesLable.IsVisible = false;
 
-            }
-            else
-            {
-                //listView.IsVisible = false;
-                //noNotesLable.IsVisible = true;
             }
             listView.ItemsSource = items;
         }

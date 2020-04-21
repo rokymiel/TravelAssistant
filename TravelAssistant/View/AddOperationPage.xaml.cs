@@ -18,7 +18,8 @@ namespace TravelAssistant.View
         {
 
             await Navigation.PopAsync();
-            if (addCheckBox.IsChecked) {
+            if (addCheckBox.IsChecked)
+            {
                 int value;
                 if (int.TryParse(addEntry.Text, out value))
                 {
@@ -29,16 +30,17 @@ namespace TravelAssistant.View
                     moneyOperation.Date = DateTime.Now;
                     moneyOperation.TripId = MainPage.CurrentTrip.Id;
                     Main.AddOperation(moneyOperation);
-                    
+
                 }
-                
+
             }
-            if (minusCheckBox.IsChecked&&Main.money.CurrentMoney>0&& !string.IsNullOrEmpty(minusDesrEntry.Text))
+            if (minusCheckBox.IsChecked && Main.money.CurrentMoney > 0 && !string.IsNullOrEmpty(minusDesrEntry.Text))
             {
                 int value;
                 if (int.TryParse(minusEntry.Text, out value))
                 {
-                    if (value<=Main.money.CurrentMoney) {
+                    if (value <= Main.money.CurrentMoney)
+                    {
                         MoneyOperation moneyOperation = new MoneyOperation();
                         moneyOperation.Money = value;
                         moneyOperation.Description = minusDesrEntry.Text;
@@ -55,7 +57,7 @@ namespace TravelAssistant.View
         void addEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             int value;
-            if (string.IsNullOrEmpty(e.NewTextValue)||int.TryParse(e.NewTextValue, out value))
+            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value))
             {
                 wrongAddFormat.IsVisible = false;
             }
@@ -69,7 +71,7 @@ namespace TravelAssistant.View
         void minusEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             int value;
-            if (string.IsNullOrEmpty(e.NewTextValue)||int.TryParse(e.NewTextValue, out value))
+            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value))
             {
                 wrongMinusFormat.IsVisible = false;
             }

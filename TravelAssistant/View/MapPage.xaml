@@ -21,8 +21,6 @@
                     <maps:Pin Position="{Binding Position}"
                               Address="{Binding Address}"
                               Label="{Binding Description}"
-
-                              InfoWindowClicked="Pin_InfoWindowClicked"
                               MarkerClicked="Pin_MarkerClicked"
                               
                               />

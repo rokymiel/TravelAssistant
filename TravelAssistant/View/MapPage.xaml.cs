@@ -15,7 +15,6 @@ namespace TravelAssistant.View
         {
             InitializeComponent();
             placesPin = new ObservableCollection<PinLocation>();
-            //map.ItemsSource = placesPin;
 
         }
 
@@ -23,7 +22,6 @@ namespace TravelAssistant.View
         protected override void OnAppearing()
         {
             placesPin = new ObservableCollection<PinLocation>();
-            //App.placesManager.GetPlaces().ForEach(x => placesPin.Add(new PinLocation(x.Address, x.Name, new Position(x.Lat, x.Lng))));
             App.placesManager.GetTripItems<Place>(MainPage.CurrentTrip.Id).ForEach(x => placesPin.Add(new PinLocation(x.Address, x.Name, new Position(x.Lat, x.Lng))));
             map.ItemsSource = placesPin;
             GetLocation(DoSome);
@@ -35,18 +33,17 @@ namespace TravelAssistant.View
             MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
             map.MoveToRegion(mapSpan);
         }
-        Xamarin.Essentials.Location location;
+        Location location;
         private async void GetLocation(Action action)
         {
             try
             {
 
-                var request = new Xamarin.Essentials.GeolocationRequest(Xamarin.Essentials.GeolocationAccuracy.Medium);
-                location = await Xamarin.Essentials.Geolocation.GetLocationAsync(request);
+                var request = new GeolocationRequest(Xamarin.Essentials.GeolocationAccuracy.Medium);
+                location = await Geolocation.GetLocationAsync(request);
 
                 if (location != null)
                 {
-                    //Console.WriteLine($"Latitude: {location.Latitude:f5}, Longitude: {location.Longitude:f5}, Altitude: {location.Altitude}");
                     action();
                 }
             }
@@ -90,11 +87,6 @@ namespace TravelAssistant.View
             #endregion
         }
 
-        void Pin_InfoWindowClicked(System.Object sender, Xamarin.Forms.Maps.PinClickedEventArgs e)
-        {
-
-            //Console.WriteLine((sender as Pin).Label);
-        }
 
         void map_MapClicked(System.Object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {

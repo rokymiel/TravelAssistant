@@ -16,7 +16,6 @@ namespace TravelAssistant.View
     {
         public Money money;
         ObservableCollection<MoneyOperation> operations { get; set; }
-        //static BindingList<MoneyOperation> bOperations = new BindingList<MoneyOperation>();
         public FinancePage()
         {
             InitializeComponent();
@@ -42,7 +41,6 @@ namespace TravelAssistant.View
         }
         public void AddOperation(MoneyOperation moneyOperation)
         {
-            //operations.Add(moneyOperation);
             operations.Insert(0, moneyOperation);
             App.moneyOperationManager.AddItem(moneyOperation);
             Console.WriteLine(operations.Count);
@@ -65,12 +63,6 @@ namespace TravelAssistant.View
                 if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
             }
 
-
-            //operations = new ObservableCollection<MoneyOperation>(operations.Reverse());
-            //finEvents.ItemsSource = operations;
-            //finEvents.ItemsSource = operations;
-            // operations.
-
         }
         public async void CloseFinancePage()
         {
@@ -80,12 +72,6 @@ namespace TravelAssistant.View
         async void OnOperationAdd(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new AddOperationPage(this));
-            //MoneyOperation moneyOperation2 = new MoneyOperation();
-            //moneyOperation2.Money = 1231;
-            //moneyOperation2.Id = Guid.NewGuid().ToString();
-            //moneyOperation2.Type = MoneyOperation.OperationType.Add;
-            //operations.Add(moneyOperation2);
-            //operations.Add(moneyOperation2);
         }
 
         void Delete_Clicked(System.Object sender, System.EventArgs e)
@@ -94,7 +80,6 @@ namespace TravelAssistant.View
 
         async void Info_Clicked(System.Object sender, System.EventArgs e)
         {
-            //await Navigation.PushModalAsync(new NavigationPage(new FinanceInfoPage(money)));
             await Navigation.PushPopupAsync(new FinanceInfoPage(money, this));
         }
 

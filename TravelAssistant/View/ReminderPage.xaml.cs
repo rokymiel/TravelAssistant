@@ -42,7 +42,8 @@ namespace TravelAssistant.View
                             NotificationId = reminder.NotificationId,
                             Title = reminder.Name,
                             Description = GetNotificationDescription(reminder.Description),
-                            NotifyTime = reminder.Date// Used for Scheduling local notification, if not specified notification will show immediately.
+                            // Used for Scheduling local notification, if not specified notification will show immediately.
+                            NotifyTime = reminder.Date
                         };
                         NotificationCenter.Current.Show(notification);
                     }

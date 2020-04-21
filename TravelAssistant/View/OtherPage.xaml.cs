@@ -10,7 +10,6 @@ namespace TravelAssistant.View
         public OtherPage()
         {
             InitializeComponent();
-            //Console.WriteLine(MainPage.CurrentTrip.Notes[0].Name);
         }
 
         async void OnFinanceTabbed(System.Object sender, System.EventArgs e)
@@ -23,7 +22,6 @@ namespace TravelAssistant.View
             if(App.Current.Properties.ContainsKey("mainPage"))
                 App.Current.Properties.Remove("mainPage");
             App.Current.MainPage = new NavigationPage(new AllTripsPage());
-            //await Navigation.PopModalAsync();
         }
     }
 }
