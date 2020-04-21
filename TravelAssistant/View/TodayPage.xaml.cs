@@ -71,7 +71,7 @@ namespace TravelAssistant.View
         }
         const string weatherUrlPrefix = "https://ru.api.openweathermap.org/data/2.5/weather?";//lat=35&lon=139
         const string weatherUrlSafix = "&units=metric&lang=ru&appid=339905ee10b8292e3cf6d11569aacf96";
-        public WeatherInfo weatherInfo;
+        WeatherInfo weatherInfo;
         private void WeatherUpdate()
         {
 

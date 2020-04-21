@@ -9,7 +9,7 @@ namespace TravelAssistant.View
 {
     public partial class NotesPage : ContentPage
     {
-        static ObservableCollection<Note> items { get; set; }
+        static ObservableCollection<Note> items;
         public NotesPage()
         {
             InitializeComponent();

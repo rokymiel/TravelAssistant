@@ -12,7 +12,7 @@ namespace TravelAssistant.View
     public partial class RemindersPage : ContentPage
     {
         public RemindersIDManager remindersID;
-        static ObservableCollection<Reminder> items { get; set; }
+        static ObservableCollection<Reminder> items;
         public RemindersPage()
         {
             InitializeComponent();
