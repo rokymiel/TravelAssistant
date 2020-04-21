@@ -31,7 +31,7 @@
                 <yummy:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="20">
                     <StackLayout Padding="10">
                         <StackLayout Orientation="Horizontal">
-                            <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Напомнить по дате и времени." TextColor="Black"/>
+                            <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Напомнить по дате и времени" TextColor="Black"/>
                             <Switch x:Name="styleSwitch" IsToggled="False" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <DatePicker x:Name="DateReminder" IsVisible="False"

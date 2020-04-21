@@ -10,7 +10,7 @@
             
        >
     
-        <NavigationPage Title="Сегодя"
+        <NavigationPage Title="Сегодня"
              IconImageSource="today"
                         >
             <x:Arguments>
@@ -31,7 +31,7 @@
                 <views:MapPage/>
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Другое"
+        <NavigationPage Title="Ещё"
              IconImageSource="menu"
                         >
             <x:Arguments>
