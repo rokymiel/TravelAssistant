@@ -12,8 +12,17 @@ namespace TravelAssistant.Models
         }
         public ImageEventArgs(string path) { Path = path; }
         public ImageEventArgs() { }
+        /// <summary>
+        /// Выбранное изображение.
+        /// </summary>
         public ImageSource Image { get; set; }
+        /// <summary>
+        /// Путь изображения.
+        /// </summary>
         public string Path { get; set; }
+        /// <summary>
+        /// Изображение в битах.
+        /// </summary>
         public byte[] ByteImage { get; set; }
     }
 }

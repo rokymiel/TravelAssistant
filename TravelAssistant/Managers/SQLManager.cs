@@ -43,6 +43,10 @@ namespace TravelAssistant.Managers
 
             return new List<Reminder>();
         }
+        /// <summary>
+        /// Дает все элементы  из таблицы.
+        /// </summary>
+        /// <returns>Список элементов.</returns>
         public List<T> GetItems()
         {
             try
@@ -56,10 +60,21 @@ namespace TravelAssistant.Managers
 
             return new List<T>();
         }
+        /// <summary>
+        /// Дает поездку по Id.
+        /// </summary>
+        /// <param name="tripId">Id поездки.</param>
+        /// <returns>Поездку.</returns>
         public Trip GetTripById(string tripId)
         {
             return connection.Get<Trip>(tripId);
         }
+        /// <summary>
+        /// Получает список элементов типа R, которые содержат одинаковый TripId.
+        /// </summary>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="tripId"></param>
+        /// <returns></returns>
         public List<R> GetTripItems<R>(string tripId) where R:TripData, new()
         {
             try
@@ -125,19 +140,34 @@ namespace TravelAssistant.Managers
 
             return new List<Place>();
         }
+        /// <summary>
+        /// Обновить элемент в таблице.
+        /// </summary>
+        /// <param name="item">Элемент для обновления.</param>
         public void Update(Item item)
         {
             connection.Update(item);
         }
+        /// <summary>
+        /// Добавить новый элемент в таблицу.
+        /// </summary>
+        /// <param name="item">Новый элемент.</param>
         public void AddItem(T item)
         {
             int result = 0;
             result = connection.Insert(item);
         }
+        /// <summary>
+        /// Удалить переданный элемент.
+        /// </summary>
+        /// <param name="item">Элемент для удаления.</param>
         public void DeleteItem(Item item)
         {
             connection.Delete(item);
         }
+        /// <summary>
+        /// Удалить все содержимое таблицы.
+        /// </summary>
         public void DeleteAll()
         {
             connection.DeleteAll<T>();

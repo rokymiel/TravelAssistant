@@ -18,11 +18,29 @@ namespace TravelAssistant.Models
         {
 
         }
+        /// <summary>
+        /// Адресс.
+        /// </summary>
         public string Address { get; set; }
+        /// <summary>
+        /// Пересекающая улица.
+        /// </summary>
         public string CrossStreet { get; set; }
+        /// <summary>
+        /// Координата ширины.
+        /// </summary>
         public double Lat { get;  set; }
+        /// <summary>
+        /// Координата долготы.
+        /// </summary>
         public double Lng { get; set; }
+        /// <summary>
+        /// Название.
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Id места.
+        /// </summary>
         public string PlaceId { get; set; }
         [PrimaryKey]
         public override string Id { get;  set; }

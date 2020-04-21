@@ -16,6 +16,9 @@ using PropertyChanged;
 
 namespace TravelAssistant.Models
 {
+    /// <summary>
+    /// Работает с изображениями. Получение изображения из библиотеки на телефоне.
+    /// </summary>
     [AddINotifyPropertyChangedInterface]
     public class PhotoModel
     {
