@@ -17,9 +17,9 @@ namespace TravelAssistant.View
             await Navigation.PushAsync(new FinancePage());
         }
 
-        void OnTrip_Tapped(System.Object sender, System.EventArgs e)
+        async void OnTrip_Tapped(System.Object sender, System.EventArgs e)
         {
-
+            await Navigation.PushAsync(new TripDetailsPage());
         }
 
         void Exit_Tapped(System.Object sender, System.EventArgs e)

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="TravelAssistant.View.TripDetailsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10" x:Name="tripLayout">
+                <Label Text="Текущая поездка" FontAttributes="Bold" FontSize="Title" TextColor="Black"/>
+                <Label Text="Местоположение" Margin="0,20,0,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"/>
+                <yummy:PancakeView BackgroundColor="White" Margin="0,10,0,10" HasShadow="True" CornerRadius="20">
+                    <StackLayout Margin="20">
+                        <Label Text="Страна" FontSize="Subtitle" LineBreakMode="NoWrap"/>
+                        <Label Text="{Binding Country}"/>
+
+                        <Label Text="Город" FontSize="Subtitle"/>
+                        <Label Text="{Binding City}"/>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <Label Text="Даты поездки" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"/>
+                <yummy:PancakeView BackgroundColor="White" Margin="0,10,0,10" HasShadow="True" CornerRadius="20">
+                    <StackLayout Margin="20">
+                        
+                        <Label x:Name="beginingLabel" TextColor="Black" FontSize="Subtitle"/>
+                        <Label x:Name="endingLabel" TextColor="Black" FontSize="Subtitle"/>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <yummy:PancakeView BackgroundColor="White" Margin="0,50,0,0" Elevation="5" CornerRadius="20">
+                    <StackLayout Margin="10">
+                        <Label Text="Выйти" FontSize="Subtitle" HorizontalOptions="CenterAndExpand"  TextColor="Red"/>
+                    </StackLayout>
+                    <yummy:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ExitTrip_Tapped"/>
+                        </yummy:PancakeView.GestureRecognizers>
+                </yummy:PancakeView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
