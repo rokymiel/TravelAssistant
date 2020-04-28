@@ -169,6 +169,9 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_76pt%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_83.5%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\logo.png" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\logo-2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -273,5 +276,6 @@
     <Folder Include="Assets.xcassets\priorityIcon3.imageset\" />
     <Folder Include="Assets.xcassets\priorityIcon4.imageset\" />
     <Folder Include="Assets.xcassets\plusIcon.imageset\" />
+    <Folder Include="Assets.xcassets\logo.imageset\" />
   </ItemGroup>
 </Project>

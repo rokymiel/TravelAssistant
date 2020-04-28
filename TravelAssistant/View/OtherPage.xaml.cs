@@ -28,5 +28,10 @@ namespace TravelAssistant.View
                 App.Current.Properties.Remove("mainPage");
             App.Current.MainPage = new NavigationPage(new AllTripsPage());
         }
+
+        async void AboutApp_Tapped(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new AboutAppPage());
+        }
     }
 }
