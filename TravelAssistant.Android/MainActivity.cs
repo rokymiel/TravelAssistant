@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Android.Content;
 using FFImageLoading.Forms.Platform;
-using Plugin.CurrentActivity;
+
 using Android;
 using Plugin.LocalNotification;
 
@@ -38,7 +38,7 @@ namespace TravelAssistant.Droid
             global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            //CrossCurrentActivity.Current.Init(this, savedInstanceState);
             CachedImageRenderer.Init(enableFastRenderer: true);
             CachedImageRenderer.InitImageViewHandler();
             NotificationCenter.CreateNotificationChannel();

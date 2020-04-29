@@ -110,8 +110,9 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
-        <StackLayout HorizontalOptions="Center" >
-            <ActivityIndicator x:Name="indicator" HorizontalOptions="Center" IsRunning="True"/>
-        </StackLayout>
+        <ActivityIndicator x:Name="indicator"
+        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.45}"
+        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.45}"
+                           IsRunning="True"/>
     </RelativeLayout>
 </ContentPage>

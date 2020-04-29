@@ -57,9 +57,9 @@ namespace TravelAssistant.View
             if (isFirstGetLocation)
             {
                 indicator.IsRunning = true;
-                Action action = DoWeather;
-                action += DoReq;
-                GetLocation(action);
+                Func<Task> func = DoWeather;
+                func += DoReq;
+                GetLocation(func);
                 //indicator.IsRunning = false;
                 isFirstGetLocation = false;
             }
@@ -103,7 +103,7 @@ namespace TravelAssistant.View
         //      1. Использовать другое Api
         //      !2. Кешировать
         //      3. при долдгом запросе просто выводить сообщение об ошибке
-        private void DoWeather()
+        async private Task DoWeather()
         {
             if (location != null)
             {
@@ -130,7 +130,8 @@ namespace TravelAssistant.View
                 {
                     DateTime time = DateTime.Now;
                     WebRequest request = WebRequest.Create(weatherUrlPrefix + $"lat={GetDouble(location.Latitude)}&lon={GetDouble(location.Longitude)}" + weatherUrlSafix);
-                    WebResponse responseW = request.GetResponse();
+                    WebResponse responseW = await request.GetResponseAsync();
+                    
                     string response;
                     using (StreamReader streamReader = new StreamReader(responseW.GetResponseStream()))
                     {
@@ -141,21 +142,21 @@ namespace TravelAssistant.View
                     App.Current.Properties["weatherJSON"] = response;
                     App.Current.Properties["weatherDate"] = DateTime.Now;
 
-
+                    Console.WriteLine(weatherInfo);
                     WeatherUpdate();
                 }
                 catch (WebException ex)
                 {
-                    DisplayAlert("Ошибка", "Проблемы с интернетом", "OK");
+                    await DisplayAlert("Ошибка", "Проблемы с интернетом", "OK");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    DisplayAlert("Ошибка", "Произошла непредвиденная ошибка", "OK");
+                    await DisplayAlert("Ошибка", "Произошла непредвиденная ошибка", "OK");
                 }
             }
         }
-        private void DoReq()
+        async private Task DoReq()
         {
             if (location != null)
             {
@@ -163,7 +164,7 @@ namespace TravelAssistant.View
 
                 try
                 {
-                    PlacesInfo placesInfo = GetPlacesRecomendation(recUrl + safix);
+                    PlacesInfo placesInfo = await GetPlacesRecomendation(recUrl + safix);
                     if (placesInfo.meta.code == 200)
                     {
                         indicator.IsRunning = false;
@@ -171,16 +172,20 @@ namespace TravelAssistant.View
                     }
                     else
                     {
-                        DisplayAlert("Ошибка", $"Код: {placesInfo.meta.code}", "OK");
+                        await DisplayAlert("Ошибка", $"Код: {placesInfo.meta.code}", "OK");
                     }
                 }
                 catch (WebException ex)
                 {
-                    DisplayAlert("Ошибка", "Проблемы с интернетом", "OK");
+                    await DisplayAlert("Ошибка", "Проблемы с интернетом", "OK");
                 }
                 catch (Exception)
                 {
-                    DisplayAlert("Ошибка", "Произошла непредвиденная ошибка", "OK");
+                    await DisplayAlert("Ошибка", "Произошла непредвиденная ошибка", "OK");
+                }
+                finally
+                {
+                    indicator.IsRunning = false;
                 }
 
             }
@@ -209,20 +214,20 @@ namespace TravelAssistant.View
 
         Position pLocation;
         Xamarin.Essentials.Location location;
-        private async void GetLocation(Action action)
+        private async void GetLocation(Func<Task> action)
         {
             try
             {
-
                 var request = new Xamarin.Essentials.GeolocationRequest(Xamarin.Essentials.GeolocationAccuracy.Medium);
 
                 location = await Xamarin.Essentials.Geolocation.GetLocationAsync(request);
-
                 if (location != null)
                 {
-                    //Console.WriteLine($"Latitude: {location.Latitude:f5}, Longitude: {location.Longitude:f5}, Altitude: {location.Altitude}");
-                    //DoReq();
-                    action();
+                    await action();
+                }
+                else
+                {
+                    indicator.IsRunning = false;
                 }
             }
             catch (Xamarin.Essentials.FeatureNotSupportedException fnsEx)
@@ -285,12 +290,11 @@ namespace TravelAssistant.View
 
             }
         }
-        private PlacesInfo GetPlacesRecomendation(string url)
+        async private Task<PlacesInfo> GetPlacesRecomendation(string url)
         {
 
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-
-            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            HttpWebResponse httpWebResponse = (HttpWebResponse)await httpWebRequest.GetResponseAsync();
             string response;
             using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
             {
