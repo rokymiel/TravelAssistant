@@ -3,7 +3,7 @@
     <Application.Resources>
         <AppThemeColor x:Key="PancakeBackgroundColor"
                        Light="White"
-                       Dark="DimGray"/>
+                       Dark="#333333"/>
         <AppThemeColor x:Key="LabelColor"
                        Light="Black"
                        Dark="White"/>
