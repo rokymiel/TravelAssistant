@@ -31,7 +31,7 @@
 
         <yummy:PancakeView x:Name="infoView"
             CornerRadius="20,20,0,0" VerticalOptions="EndAndExpand"
-                           BackgroundColor="White"
+                           BackgroundColor="{DynamicResource BackgroundColor}"
                            HasShadow="True"
                            HeightRequest="150"
                            IsVisible="False"

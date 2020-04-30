@@ -16,9 +16,9 @@
                    ></Editor>
                 <Editor x:Name="Description" Placeholder="Введите заметку" AutoSize="TextChanges"
                    ></Editor>
-                <yummy:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="20">
+                <yummy:PancakeView BackgroundColor="{DynamicResource DetailsColor}" CornerRadius="20">
                     <StackLayout Orientation="Horizontal" Padding="10">
-                        <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Приоритет:" TextColor="Black"/>
+                        <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Приоритет:" TextColor="{DynamicResource LabelColor}"/>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                             <Button x:Name="nonPriority" Text="-нет-" FontSize="Micro"  CornerRadius="15" HeightRequest="30" WidthRequest="50" Clicked="nonPriority_Clicked"   BackgroundColor="White"/>
                             <Button x:Name="priority1" CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="White" Clicked="Priority1_Clicked"/>
@@ -28,10 +28,10 @@
                         </StackLayout>
                     </StackLayout>
                 </yummy:PancakeView>
-                <yummy:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="20">
+                <yummy:PancakeView BackgroundColor="{DynamicResource DetailsColor}" CornerRadius="20">
                     <StackLayout Padding="10">
                         <StackLayout Orientation="Horizontal">
-                            <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Напомнить по дате и времени" TextColor="Black"/>
+                            <Label Margin="10,0,0,0" VerticalOptions="Center" FontSize="Medium" Text="Напомнить по дате и времени" TextColor="{DynamicResource LabelColor}"/>
                             <Switch x:Name="styleSwitch" IsToggled="False" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <DatePicker x:Name="DateReminder" IsVisible="False"

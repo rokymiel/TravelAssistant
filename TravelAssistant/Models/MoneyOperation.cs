@@ -23,7 +23,7 @@ namespace TravelAssistant.Models
         /// <summary>
         /// Цвет текста операции.
         /// </summary>
-        public string IsAddType { get => Type == OperationType.Add ? "Green" : "Black"; }
+        public string IsAddType { get => Type == OperationType.Add ? App.Current.RequestedTheme == Xamarin.Forms.OSAppTheme.Dark?"LightGreen" :"Green" :App.Current.RequestedTheme==Xamarin.Forms.OSAppTheme.Dark?"White":"Black"; }
         /// <summary>
         /// Название операции.
         /// </summary>

@@ -26,8 +26,8 @@
                                 <ColumnDefinition Width="Auto" BindingContext="{x:Reference Name= dateLayOut}" />
                             </Grid.ColumnDefinitions>
                             <StackLayout Grid.Column="0">
-                                <Label Text="{Binding Name}" LineBreakMode="TailTruncation" TextColor="Black" FontSize="20"></Label>
-                                <Label Text="{Binding Text}" LineBreakMode="TailTruncation" TextColor="Black" FontSize="14"></Label>
+                                <Label Text="{Binding Name}" LineBreakMode="TailTruncation" TextColor="{DynamicResource LabelColor}" FontSize="20"></Label>
+                                <Label Text="{Binding Text}" LineBreakMode="TailTruncation" TextColor="{DynamicResource LabelColor}" FontSize="14"></Label>
                             </StackLayout>
                             <StackLayout x:Name="dateLayOut" Grid.Column="1" HorizontalOptions="EndAndExpand">
                                 <Label Text="{Binding FormatedDate}"/>

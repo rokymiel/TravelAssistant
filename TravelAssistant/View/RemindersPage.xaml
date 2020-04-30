@@ -19,8 +19,8 @@
                         <StackLayout Padding="10" Orientation="Horizontal" >
                             <CheckBox BindingContext="{Binding .}"  IsChecked="False"  VerticalOptions="StartAndExpand" CheckedChanged="CheckBox_CheckedChanged" />
                             <StackLayout >
-                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="Black" FontSize="20"></Label>
-                                <Label Text="{Binding Description}" LineBreakMode="NoWrap" TextColor="Black" FontSize="14"></Label>
+                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="{DynamicResource LabelColor}" FontSize="20"></Label>
+                                <Label Text="{Binding Description}" LineBreakMode="NoWrap" TextColor="{DynamicResource LabelColor}" FontSize="14"></Label>
                                 <Label Text="{Binding StringDate}" TextColor="{Binding DateColor}" />
                             </StackLayout>
                             <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">

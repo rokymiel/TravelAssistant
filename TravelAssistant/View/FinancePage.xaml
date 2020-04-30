@@ -18,14 +18,14 @@
                             >
             <CollectionView.Header>
                 <StackLayout>
-                    <yummy:PancakeView  CornerRadius="20" Margin="10" Elevation="10" BackgroundColor="White" >
+                    <yummy:PancakeView  CornerRadius="20" Margin="10" Elevation="10" BackgroundColor="{DynamicResource PancakeBackgroundColor}" >
                         <StackLayout  Padding="20">
 
-                            <Label x:Name="currentMoneyLabel" HorizontalOptions="CenterAndExpand" Text="0" TextColor="Black" FontSize="40" FontAttributes="Bold" />
+                            <Label x:Name="currentMoneyLabel" HorizontalOptions="CenterAndExpand" Text="0" TextColor="{DynamicResource LabelColor}" FontSize="40" FontAttributes="Bold" />
 
                             <StackLayout Orientation="Horizontal"   >
-                                <Label Text="Всего: " TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" />
-                                <Label x:Name="allMoneyLabel" Text="0" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" />
+                                <Label Text="Всего: " TextColor="{DynamicResource LabelColor}" FontSize="Subtitle" FontAttributes="Bold" />
+                                <Label x:Name="allMoneyLabel" Text="0" TextColor="{DynamicResource LabelColor}" FontSize="Subtitle" FontAttributes="Bold" />
                             </StackLayout>
 
                             <ProgressBar x:Name="moneyBar" ScaleY="4" Progress="0" ProgressColor="Orange"/>
@@ -33,7 +33,7 @@
 
                     </yummy:PancakeView>
                     <StackLayout  Padding="10,0,10,0" Orientation="Horizontal" VerticalOptions="Center">
-                        <Label   Text="Операции" TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                        <Label   Text="Операции" TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
                         <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" Clicked="OnOperationAdd"/>
                     </StackLayout>
                 </StackLayout>
@@ -42,7 +42,7 @@
                 <DataTemplate >
 
                     <StackLayout BackgroundColor="Transparent"  >
-                        <yummy:PancakeView BackgroundColor="White" 
+                        <yummy:PancakeView BackgroundColor="{DynamicResource PancakeBackgroundColor}" 
                                    CornerRadius="20"
                                    HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand" Margin="10" Elevation="4">
                             <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0"   VerticalOptions="FillAndExpand">
@@ -51,7 +51,7 @@
                                     <ColumnDefinition BindingContext="{x:Reference Name=moneyOperation}" Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding GetOperationType}" Grid.Column="0" LineBreakMode="TailTruncation" VerticalOptions="Center" TextColor="Black" FontSize="Subtitle" Padding="20,20,0,20"/>
+                                <Label Text="{Binding GetOperationType}" Grid.Column="0" LineBreakMode="TailTruncation" VerticalOptions="Center" TextColor="{DynamicResource LabelColor}" FontSize="Subtitle" Padding="20,20,0,20"/>
                                 <Label x:Name="moneyOperation" Text="{Binding MoneyString}" Grid.Column="1" TextColor="{Binding IsAddType}" VerticalOptions="Center" HorizontalOptions="EndAndExpand" FontSize="Subtitle" Padding="10,0,20,0"/>
                             </Grid>
                             <yummy:PancakeView.GestureRecognizers>

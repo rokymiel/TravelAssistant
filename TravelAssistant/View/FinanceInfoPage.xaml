@@ -10,18 +10,18 @@
                  
                  >
 
-    <yummy:PancakeView BackgroundColor="White" Margin="0,90,0,0" VerticalOptions="FillAndExpand" CornerRadius="20" >
+    <yummy:PancakeView BackgroundColor="{DynamicResource BackgroundColor}" Margin="0,90,0,0" VerticalOptions="FillAndExpand" CornerRadius="20,20,0,0" >
         <StackLayout >
             <yummy:PancakeView CornerRadius="20,20,0,0"   VerticalOptions="Start" BackgroundColor="#da1c5a">
                 <StackLayout Orientation="Horizontal" >
-                    <yummy:PancakeView HorizontalOptions="CenterAndExpand" Margin="10" HeightRequest="50" WidthRequest="50" BackgroundColor="White" CornerRadius="15">
+                    <yummy:PancakeView HorizontalOptions="CenterAndExpand" Margin="10" HeightRequest="50" WidthRequest="50" BackgroundColor="{DynamicResource PancakeBackgroundColor}" CornerRadius="15">
 
                         <Image Source="finIcon.png"   />
 
                     </yummy:PancakeView>
                 </StackLayout>
             </yummy:PancakeView>
-            <yummy:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="20" Padding="20" Margin="10">
+            <yummy:PancakeView BackgroundColor="{DynamicResource DetailsColor}" CornerRadius="20" Padding="20" Margin="10">
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
 
@@ -38,7 +38,7 @@
                     </StackLayout>
                 </StackLayout>
             </yummy:PancakeView>
-            <Button Clicked="deleteHistory_Clicked" TextColor="Red" Margin="10" FontSize="Subtitle" Text="Очистить историю" VerticalOptions="EndAndExpand" />
+            <Button Clicked="deleteHistory_Clicked" TextColor="Red" Margin="20" FontSize="Subtitle" Text="Очистить историю" VerticalOptions="EndAndExpand" />
         </StackLayout>
 
     </yummy:PancakeView>

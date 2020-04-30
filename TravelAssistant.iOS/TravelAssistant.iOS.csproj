@@ -172,6 +172,9 @@
     <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\logo.imageset\logo.png" />
     <ImageAsset Include="Assets.xcassets\logo.imageset\logo-2.png" />
+    <ImageAsset Include="Assets.xcassets\recomendation.imageset\Bookmark.png" />
+    <ImageAsset Include="Assets.xcassets\recomendation.imageset\Bookmark%402x.png" />
+    <ImageAsset Include="Assets.xcassets\recomendation.imageset\Bookmark%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

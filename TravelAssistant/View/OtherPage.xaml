@@ -8,19 +8,19 @@
             <TableSection>
                 <ViewCell Tapped="OnTrip_Tapped" >
                     <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="Текущая поездка" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text="Текущая поездка" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
                         <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
                 </ViewCell>
                 <ViewCell Tapped="OnFinanceTabbed" >
                     <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="Финансы" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text="Финансы" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
                         <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
                 </ViewCell>
                 <ViewCell Tapped="AboutApp_Tapped">
                     <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="О приложении" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        <Label Text="О приложении" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
                         <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
                 </ViewCell>

@@ -12,7 +12,7 @@
                                Margin="10"
                                CornerRadius="20"
                                HasShadow="True"
-                               BackgroundColor="White" x:Name="notesCardView" >
+                               BackgroundColor="{DynamicResource PancakeBackgroundColor}" x:Name="notesCardView" >
                 <StackLayout  >
                     <yummy:PancakeView VerticalOptions="StartAndExpand" HeightRequest="75"
                                
@@ -32,7 +32,7 @@
                                Margin="10"
                                CornerRadius="20"
                                HasShadow="True"
-                               BackgroundColor="White" x:Name="remindersCardView" >
+                               BackgroundColor="{DynamicResource PancakeBackgroundColor}" x:Name="remindersCardView" >
                 <StackLayout  >
                     <yummy:PancakeView VerticalOptions="StartAndExpand" HeightRequest="75"
                                
@@ -49,7 +49,7 @@
                 </yummy:PancakeView.GestureRecognizers>
             </yummy:PancakeView>
             <StackLayout Padding="10" Orientation="Horizontal">
-                <Label   Text="Документы"  TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                <Label   Text="Документы"  TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
                 <Button Text="+" FontSize="Title" HorizontalOptions="EndAndExpand" Command="{Binding GetImageAndRunCommand}"  />
             </StackLayout>
             <CollectionView x:Name="col"

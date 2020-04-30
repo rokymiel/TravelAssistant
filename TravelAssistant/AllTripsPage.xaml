@@ -6,9 +6,9 @@
         <CollectionView x:Name="allTripsView" >
             <CollectionView.Header>
                 <StackLayout>
-                    <Label   Text="Мои поездки" Margin="10" TextColor="Black" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                    <Label   Text="Мои поездки" Margin="10" TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
 
-                    <yummy:PancakeView Margin="10" BackgroundColor="White" HasShadow="True" CornerRadius="20">
+                    <yummy:PancakeView Margin="10" BackgroundColor="{DynamicResource PancakeBackgroundColor}" HasShadow="True" CornerRadius="20">
                         <StackLayout Margin="20" Orientation="Horizontal">
                             <Image  Source="plusIcon"
                                     HeightRequest="50"
@@ -28,7 +28,7 @@
                 <DataTemplate>
                     <StackLayout >
 
-                        <yummy:PancakeView Margin="10" BackgroundColor="White" CornerRadius="20" HasShadow="True">
+                        <yummy:PancakeView Margin="10" BackgroundColor="{DynamicResource PancakeBackgroundColor}" CornerRadius="20" HasShadow="True">
                             <StackLayout Padding="20">
                                 <Label Text="{Binding Country}" FontSize="Title" />
                                 <Label Text="{Binding City}" FontSize="Subtitle" />

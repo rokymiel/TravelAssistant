@@ -26,7 +26,7 @@
                             </maps:Map>
                         </StackLayout>
                     </yummy:PancakeView>
-                    <Button Text="Сохранить" CornerRadius="20" BackgroundColor="WhiteSmoke" Clicked="Button_Clicked" Margin="10,0,10,10" FontSize="Subtitle" />
+                    <Button Text="Сохранить" CornerRadius="20" BackgroundColor="{DynamicResource DetailsColor}" Clicked="Button_Clicked" Margin="10,0,10,10" FontSize="Subtitle" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>
