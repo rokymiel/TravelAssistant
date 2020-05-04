@@ -116,13 +116,13 @@ namespace TravelAssistant.Models
                 ResultIsVisible = false;
                 IndicatorIsRunning = true;
                 ResultFontSize = 16;
-                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync<StoragePermission>();
                 if (storageStatus != PermissionStatus.Granted)
                 {
                     var semaphore = new SemaphoreSlim(1, 1);
                     semaphore.Wait();
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
-                    storageStatus = results[Permission.Storage];
+                    storageStatus = await CrossPermissions.Current.RequestPermissionAsync<StoragePermission>();
+                    
                     semaphore.Release();
                 }
                 ImageEventArgs args= new ImageEventArgs();

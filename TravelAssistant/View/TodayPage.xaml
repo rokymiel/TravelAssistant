@@ -11,6 +11,10 @@
                             HorizontalScrollBarVisibility="Never"
                             VerticalScrollBarVisibility="Never"
                             SelectionMode="Single"
+                            RelativeLayout.WidthConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Width,Factor=1}"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Height,Factor=1}"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand"
                             SelectionChanged="OnPlaceSelected"

@@ -4,13 +4,14 @@ namespace TravelAssistant.Models
 {
     public class Place:TripData
     {
-        public Place(Venue venue)
+        public Place(Venue venue,string tripId)
         {
             Address = venue.location.address;
             CrossStreet = venue.location.crossStreet;
             Lat = venue.location.lat;
             Lng = venue.location.lng;
             PlaceId = venue.id;
+            TripId = tripId;
             Id = PlaceId + TripId;
             Name = venue.name;
         }
@@ -42,8 +43,6 @@ namespace TravelAssistant.Models
         /// Id места.
         /// </summary>
         public string PlaceId { get; set; }
-        [PrimaryKey]
-        public override string Id { get;  set; }
 
     }
 }

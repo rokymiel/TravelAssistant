@@ -196,7 +196,7 @@ namespace TravelAssistant.View
             {
                 foreach (var items in groups.items)
                 {
-                    Place newPlace = new Place(items.venue) { TripId = MainPage.CurrentTrip.Id };
+                    Place newPlace = new Place(items.venue, MainPage.CurrentTrip.Id);
                     places.Add(newPlace);
                 }
             }
