@@ -9,13 +9,14 @@ namespace TravelAssistant.View
     public partial class ReminderPage : ContentPage
     {
         private Reminder reminder;
+        private int priority;
+        private RemindersPage Page { get; set; }
         public ReminderPage(RemindersPage page)
         {
             Page = page;
             InitializeComponent();
             reminder = new Reminder();
         }
-        private RemindersPage Page { get; set; }
         async void OnDoneClicked(object sender, EventArgs e)
         {
             bool check = !string.IsNullOrEmpty(Name.Text);
@@ -101,7 +102,7 @@ namespace TravelAssistant.View
             priority4.BackgroundColor = Color.Orange;
             priority = 4;
         }
-        private int priority;
+        
         void nonPriority_Clicked(System.Object sender, System.EventArgs e)
         {
             priority = 0;

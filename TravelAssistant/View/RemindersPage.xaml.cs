@@ -54,7 +54,6 @@ namespace TravelAssistant.View
         {
             listView.SelectedItem = null;
         }
-        public static readonly BindableProperty EventNameProperty = BindableProperty.Create("Id", typeof(string), typeof(Reminder), null);
         void CheckBox_CheckedChanged(System.Object sender, Xamarin.Forms.CheckedChangedEventArgs e)
         {
             Console.WriteLine((sender as CheckBox).BindingContext);

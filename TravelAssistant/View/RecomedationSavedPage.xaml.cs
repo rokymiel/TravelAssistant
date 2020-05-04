@@ -8,6 +8,9 @@ namespace TravelAssistant.View
 {
     public partial class RecomedationSavedPage : ContentPage
     {
+        /// <summary>
+        /// Список мест.
+        /// </summary>
         ObservableCollection<Place> places;
         public RecomedationSavedPage()
         {

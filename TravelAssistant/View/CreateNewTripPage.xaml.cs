@@ -34,12 +34,9 @@ namespace TravelAssistant.View
             Trip newTrip = new Trip(countryOfTripEntry.Text, cityOfTripEntry.Text,
                 beginingOfTripDatePicker.Date, endingOfTripDatePicker.Date)
             { Id = Guid.NewGuid().ToString() };
-            //newTrip.Notes.Add(new Note() {Id=Guid.NewGuid().ToString(),Name=$"note from trip {newTrip.Id}" });
             App.tripsManager.AddItem(newTrip);
             App.Current.Properties["mainPage"] = newTrip.Id;
             App.Current.MainPage = new MainPage(newTrip);
-            //await Navigation.PushModalAsync(new MainPage(newTrip));
-            ////await Navigation.PopToRootAsync();
         }
     }
 }

@@ -9,6 +9,9 @@ namespace TravelAssistant.View
 {
     public partial class NotesPage : ContentPage
     {
+        /// <summary>
+        /// Список заметок.
+        /// </summary>
         static ObservableCollection<Note> items;
         public NotesPage()
         {

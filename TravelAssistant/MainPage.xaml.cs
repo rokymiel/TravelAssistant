@@ -19,11 +19,6 @@ namespace TravelAssistant
             
             InitializeComponent();
         }
-
-        //protected override void OnAppearing()
-        //{
-        //    Current.FlyoutBehavior= FlyoutBehavior.Disabled;
-        //}
     }
 
 }

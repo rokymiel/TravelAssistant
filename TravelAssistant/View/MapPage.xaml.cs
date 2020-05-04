@@ -11,14 +11,17 @@ namespace TravelAssistant.View
 {
     public partial class MapPage : ContentPage
     {
+        /// <summary>
+        /// Список сохраненных мест.
+        /// </summary>
+        ObservableCollection<PinLocation> placesPin;
+        Location location;
         public MapPage()
         {
             InitializeComponent();
             placesPin = new ObservableCollection<PinLocation>();
 
         }
-
-        ObservableCollection<PinLocation> placesPin;
         protected override void OnAppearing()
         {
             placesPin = new ObservableCollection<PinLocation>();
@@ -33,7 +36,7 @@ namespace TravelAssistant.View
             MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
             map.MoveToRegion(mapSpan);
         }
-        Location location;
+        
         private async void GetLocation(Action action)
         {
             try
@@ -86,7 +89,6 @@ namespace TravelAssistant.View
 
             #endregion
         }
-
 
         void map_MapClicked(System.Object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {

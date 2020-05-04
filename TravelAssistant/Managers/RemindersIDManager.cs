@@ -4,9 +4,17 @@ using TravelAssistant.Models;
 
 namespace TravelAssistant.Managers
 {
-    // TODO Возможно изменить реализацию выдачи уникальных id для уведомлений!!
     public class RemindersIDManager
     {
+        /// <summary>
+        /// Свободный Id.
+        /// </summary>
+        private int freeId;
+        /// <summary>
+        /// Список использованных Id.
+        /// </summary>
+        private List<int> UsedId = new List<int>();
+        
         public RemindersIDManager(List<Reminder> reminders)
         {
             if (reminders != null && reminders.Count > 0)
@@ -27,7 +35,9 @@ namespace TravelAssistant.Managers
 
             freeId = GetNewFreeId();
         }
-        private int freeId;
+        /// <summary>
+        /// Свободный Id.
+        /// </summary>
         public int FreeId
         {
             get
@@ -38,7 +48,10 @@ namespace TravelAssistant.Managers
                 return oldFree;
             }
         }
-        // TODO сделать более эфеткивно!!
+        /// <summary>
+        /// Обновление свободного Id.
+        /// </summary>
+        /// <returns></returns>
         private int GetNewFreeId()
         {
             for (int i = int.MinValue; i <= int.MaxValue; i++)
@@ -50,6 +63,10 @@ namespace TravelAssistant.Managers
             }
             return 0;
         }
+        /// <summary>
+        /// Удаление используемого Id.
+        /// </summary>
+        /// <param name="id"></param>
         public void DeleteId(int id)
         {
             // Доп. проверка.
@@ -59,6 +76,6 @@ namespace TravelAssistant.Managers
                 UsedId.Remove(id);
             }
         }
-        private List<int> UsedId = new List<int>();
+        
     }
 }

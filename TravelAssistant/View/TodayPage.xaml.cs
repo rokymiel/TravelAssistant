@@ -20,20 +20,59 @@ namespace TravelAssistant.View
 {
     public partial class TodayPage : ContentPage
     {
-        string recUrl = "https://api.foursquare.com/v2/venues/explore?client_id=GMDFIDPK1TFXA45NFQVXDI15K2HEV5OHOHDRTAY2HG1XMUSQ&client_secret=NLRNJD0BN32HSXPIRQRMXDU5FYGYV4CVQ1LRWUV15UGOORDR&v=20190425";
+        /// <summary>
+        /// Базовая ссылка для рекомендаций.
+        /// </summary>
+        const string recUrl = "https://api.foursquare.com/v2/venues/explore?client_id=GMDFIDPK1TFXA45NFQVXDI15K2HEV5OHOHDRTAY2HG1XMUSQ&client_secret=NLRNJD0BN32HSXPIRQRMXDU5FYGYV4CVQ1LRWUV15UGOORDR&v=20190425";
+        /// <summary>
+        /// Префикс запроса погоды.
+        /// </summary>
+        const string weatherUrlPrefix = "https://ru.api.openweathermap.org/data/2.5/weather?";
+        /// <summary>
+        /// Постфикс запроса погоды.
+        /// </summary>
+        const string weatherUrlSafix = "&units=metric&lang=ru&appid=339905ee10b8292e3cf6d11569aacf96";
+        /// <summary>
+        /// Бюджет.
+        /// </summary>
         public Money money;
+        /// <summary>
+        /// Погода уже обновлена.
+        /// </summary>
+        private bool weatherUpdate = false;
+        /// <summary>
+        /// Первый запрос местоположения.
+        /// </summary>
         private bool isFirstGetLocation = true;
+        /// <summary>
+        /// Список мест.
+        /// </summary>
+        ObservableCollection<Place> places;
+        /// <summary>
+        /// Местоположение пользователя.
+        /// </summary>
+        Xamarin.Essentials.Location location;
+        /// <summary>
+        /// Информация о погоде.
+        /// </summary>
+        WeatherInfo weatherInfo;
+
         public TodayPage()
         {
             InitializeComponent();
             places = new ObservableCollection<Place>();
             RecomendationCards.ItemsSource = places;
         }
+        /// <summary>
+        /// Получение текущей даты.
+        /// </summary>
+        /// <returns>Текущая дата.</returns>
         private string GetCurrentDate()
         {
             var date = DateTime.Now;
             return date.Day + " " + date.ToString("dddd");
         }
+
         protected override void OnAppearing()
         {
             date.Text = GetCurrentDate();
@@ -60,13 +99,12 @@ namespace TravelAssistant.View
                 Func<Task> func = DoWeather;
                 func += DoReq;
                 GetLocation(func);
-                //indicator.IsRunning = false;
                 isFirstGetLocation = false;
             }
         }
-        const string weatherUrlPrefix = "https://ru.api.openweathermap.org/data/2.5/weather?";//lat=35&lon=139
-        const string weatherUrlSafix = "&units=metric&lang=ru&appid=339905ee10b8292e3cf6d11569aacf96";
-        WeatherInfo weatherInfo;
+        /// <summary>
+        /// Отрисовка информации о погоде.
+        /// </summary>
         private void WeatherUpdate()
         {
 
@@ -83,26 +121,35 @@ namespace TravelAssistant.View
             weatherCityLabel.Text = weatherInfo.City;
             feelsLabel.Text = $"Ощушается как {GetStringTemperarure((int)weatherInfo.FeelsLikeTemperature)}";
         }
+        /// <summary>
+        /// Получение температуры из числа.
+        /// </summary>
         public string GetStringTemperarure(int temp)
         {
             return temp > 0 ? "+" + temp + "°" : temp + "°";
         }
+        /// <summary>
+        /// Подъем первого символа.
+        /// </summary>
         public string UpFirstChar(string s)
         {
             var safix = s.Substring(1);
 
             return char.ToUpper(s[0]) + safix;
         }
+        /// <summary>
+        /// Обновление погоды.
+        /// </summary>
         void WeatherUpdate_Clicked(System.Object sender, System.EventArgs e)
         {
             weatherUpdate = true;
             GetLocation(DoWeather);
         }
-        bool weatherUpdate = false;
-        // TODO Исправить косяк с задержкой при запросе:
-        //      1. Использовать другое Api
-        //      !2. Кешировать
-        //      3. при долдгом запросе просто выводить сообщение об ошибке
+
+        /// <summary>
+        /// Работа с погодой.
+        /// </summary>
+        /// <returns></returns>
         async private Task DoWeather()
         {
             if (location != null)
@@ -116,7 +163,6 @@ namespace TravelAssistant.View
                     {
                         if (weatherUpdate)
                         {
-                            Console.WriteLine("DONE");
                             weatherUpdate = false;
                             return;
                         }
@@ -131,7 +177,7 @@ namespace TravelAssistant.View
                     DateTime time = DateTime.Now;
                     WebRequest request = WebRequest.Create(weatherUrlPrefix + $"lat={GetDouble(location.Latitude)}&lon={GetDouble(location.Longitude)}" + weatherUrlSafix);
                     WebResponse responseW = await request.GetResponseAsync();
-                    
+
                     string response;
                     using (StreamReader streamReader = new StreamReader(responseW.GetResponseStream()))
                     {
@@ -156,6 +202,9 @@ namespace TravelAssistant.View
                 }
             }
         }
+        /// <summary>
+        /// Получение рекомендации.
+        /// </summary>
         async private Task DoReq()
         {
             if (location != null)
@@ -190,6 +239,10 @@ namespace TravelAssistant.View
 
             }
         }
+        /// <summary>
+        /// Получение списка мест.
+        /// </summary>
+        /// <param name="placesInfo"></param>
         private void MakePlacesList(PlacesInfo placesInfo)
         {
             foreach (var groups in placesInfo.response.groups)
@@ -201,7 +254,9 @@ namespace TravelAssistant.View
                 }
             }
         }
-        ObservableCollection<Place> places;
+        /// <summary>
+        /// Получение числа с точкой в нужном формате.
+        /// </summary>
         private string GetDouble(double d)
         {
             string req = d.ToString();
@@ -212,8 +267,9 @@ namespace TravelAssistant.View
             return req;
         }
 
-        Position pLocation;
-        Xamarin.Essentials.Location location;
+        /// <summary>
+        /// Получение местоположение и выполнение какого-то действия.
+        /// </summary>
         private async void GetLocation(Func<Task> action)
         {
             try
@@ -250,46 +306,14 @@ namespace TravelAssistant.View
                 // Unable to get location
 
                 await DisplayAlert("Ошибка", "Не удается определить местоположение " + ex.Message, "OK");
-                Console.WriteLine("AAAA" + ex.Message);
+
 
             }
         }
 
-        private async void GetGeolocation()
-        {
-            try
-            {
-                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-                if (status != PermissionStatus.Granted)
-                {
-                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
-                    {
-                        MessagingCenter.Send(this, "LocationAlert");
-                    }
-
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
-                    //Best practice to always check that the key exists
-                    if (results.ContainsKey(Permission.Location))
-                        status = results[Permission.Location];
-                }
-
-                if (status == PermissionStatus.Granted)
-                {
-                    pLocation = await CrossGeolocator.Current.GetPositionAsync();
-                    DoReq();
-                }
-                else if (status != PermissionStatus.Unknown)
-                {
-                    await DisplayAlert("Location Denied", "Can not continue, try again.", "OK");
-                    MessagingCenter.Send(this, "LocationDenied");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-
-            }
-        }
+        /// <summary>
+        /// Запрос на получение списка рекомендаций.
+        /// </summary>
         async private Task<PlacesInfo> GetPlacesRecomendation(string url)
         {
 
@@ -303,7 +327,9 @@ namespace TravelAssistant.View
             PlacesInfo placesInfo = JsonConvert.DeserializeObject<PlacesInfo>(response);
             return placesInfo;
         }
-
+        /// <summary>
+        /// Открытие выбранного места.
+        /// </summary>
         async void OnPlaceSelected(Object sender, SelectionChangedEventArgs e)
         {
             var item = e.CurrentSelection.FirstOrDefault() as Place;
@@ -316,12 +342,17 @@ namespace TravelAssistant.View
             await Navigation.PushAsync(new PlaceDatailsPage(item));
             RecomendationCards.SelectedItem = null;
         }
-
+        /// <summary>
+        /// Открытие финансов.
+        /// </summary>
         async void FinanceWidget_Tapped(System.Object sender, System.EventArgs e)
         {
             await AnimationManager.StartScalePancakeView(sender);
             await Navigation.PushAsync(new FinancePage());
         }
+        /// <summary>
+        /// Открытие сохраненных мест.
+        /// </summary>
         async void RecomedationSaved_Clicked(System.Object sender, System.EventArgs e)
         {
             await recomedationSavedButton.FadeTo(0.4, 100);

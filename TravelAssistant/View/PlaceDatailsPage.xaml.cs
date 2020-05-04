@@ -8,6 +8,11 @@ namespace TravelAssistant.View
 {
     public partial class PlaceDatailsPage : ContentPage
     {
+        /// <summary>
+        /// Выбранное  место.
+        /// </summary>
+        Place Place { get; set; }
+
         public PlaceDatailsPage(Place place)
         {
             InitializeComponent();
@@ -19,8 +24,6 @@ namespace TravelAssistant.View
             placePin.Label = place.Name;
             placePin.Position = position;
         }
-        Place Place { get; set; }
-
         void Button_Clicked(System.Object sender, System.EventArgs e)
         {
             

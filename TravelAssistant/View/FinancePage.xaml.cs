@@ -14,7 +14,13 @@ namespace TravelAssistant.View
 
     public partial class FinancePage : ContentPage
     {
+        /// <summary>
+        /// Бюджет.
+        /// </summary>
         public Money money;
+        /// <summary>
+        /// Список финансовых операций.
+        /// </summary>
         ObservableCollection<MoneyOperation> operations { get; set; }
         public FinancePage()
         {

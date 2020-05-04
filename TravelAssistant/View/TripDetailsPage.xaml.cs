@@ -14,7 +14,9 @@ namespace TravelAssistant.View
             beginingLabel.Text = MainPage.CurrentTrip.BeginingDate.ToString("Начало: d MMMM yyyy");
             endingLabel.Text = MainPage.CurrentTrip.EndingDate.ToString("Конец: d MMMM yyyy");
         }
-
+        /// <summary>
+        /// Выход из текущей поездки.
+        /// </summary>
         async void ExitTrip_Tapped(System.Object sender, System.EventArgs e)
         {
             await AnimationManager.StartScalePancakeView(sender);

@@ -17,32 +17,7 @@ namespace TravelAssistant.Managers
 
             connection.CreateTable<T>();
         }
-        public List<Note> GetNotes()
-        {
-            try
-            {
-                return connection.Table<Note>().ToList();
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
-            }
-
-            return new List<Note>();
-        }
-        public List<Reminder> GetReminder()
-        {
-            try
-            {
-                return connection.Table<Reminder>().ToList();
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
-            }
-
-            return new List<Reminder>();
-        }
+        
         /// <summary>
         /// Дает все элементы  из таблицы.
         /// </summary>
@@ -89,57 +64,8 @@ namespace TravelAssistant.Managers
 
             return new List<R>();
         }
-        public List<MoneyOperation> GetMoneyOperations()
-        {
-            try
-            {
-                return connection.Table<MoneyOperation>().ToList();
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
-            }
-
-            return new List<MoneyOperation>();
-        }
-        public Money GetMoney()
-        {
-            try
-            {
-                return connection.Table<Money>().ToList()[0];
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
-            }
-            return null;
-        }
-        public List<Document> GetDocuments()
-        {
-            try
-            {
-                return connection.Table<Document>().ToList();
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
-            }
-
-            return new List<Document>();
-        }
-        public List<Place> GetPlaces()
-        {
-            try
-            {
-                return connection.Table<Place>().ToList();
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
-            }
-
-            return new List<Place>();
-        }
+        
+        
         /// <summary>
         /// Обновить элемент в таблице.
         /// </summary>
@@ -172,6 +98,9 @@ namespace TravelAssistant.Managers
         {
             connection.DeleteAll<T>();
         }
+        /// <summary>
+        /// Проверяет содержится ли место.
+        /// </summary>
         public bool ContainsPlace(Place item)
         {
             return connection.Find<Place>(item.Id) != null;

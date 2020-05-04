@@ -7,6 +7,9 @@ namespace TravelAssistant.View
 {
     public partial class OperationDetailsPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        /// <summary>
+        /// Выбранная операция.
+        /// </summary>
         MoneyOperation Money { get; set; }
         public OperationDetailsPage(MoneyOperation money)
         {

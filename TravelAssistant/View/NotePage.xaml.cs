@@ -8,6 +8,9 @@ namespace TravelAssistant.View
 {
     public partial class NotePage : ContentPage
     {
+        /// <summary>
+        /// Выбранная/новая заметка.
+        /// </summary>
         private Note note;
         public NotePage()
         {

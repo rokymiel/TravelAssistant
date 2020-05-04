@@ -8,6 +8,9 @@ namespace TravelAssistant.View
 {
     public partial class AddOperationPage : ContentPage
     {
+        /// <summary>
+        /// Ссылка на родительскую финансовую страницу.
+        /// </summary>
         FinancePage Main;
         public AddOperationPage(FinancePage main)
         {

@@ -36,7 +36,7 @@ namespace TravelAssistant
             placesManager = new SQLManager<Place>(dbPlacesPath);
             tripsManager = new SQLManager<Trip>(dbTripsPath);
             NotificationCenter.Current.NotificationTapped += OnLocalNotificationTapped;
-            //MainPage = new MainPage();
+            
             if (Properties.ContainsKey("mainPage"))
             {
                 MainPage = new MainPage(tripsManager.GetTripById(Properties["mainPage"].ToString()));

@@ -11,6 +11,9 @@ namespace TravelAssistant
 {
     public partial class AllTripsPage : ContentPage
     {
+        /// <summary>
+        /// Список поездок.
+        /// </summary>
         public ObservableCollection<Trip> trips;
         public AllTripsPage()
         {
@@ -32,8 +35,6 @@ namespace TravelAssistant
             {
                 (sender as PancakeView).IsEnabled = false;
                 await AnimationManager.StartScalePancakeView(sender as PancakeView);
-
-                //await Navigation.PushPopupAsync(new OperationDetailsPage(item));
                 (sender as PancakeView).IsEnabled = true;
                 App.Current.Properties["mainPage"] = item.Id;
                 App.Current.MainPage = new MainPage(item);
