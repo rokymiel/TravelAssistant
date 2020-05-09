@@ -8,26 +8,29 @@
         <ScrollView>
             <StackLayout x:Name="detailsLayout">
                 <Label Text="{Binding Name}" Margin="30,10,30,0" FontSize="Title"/>
-                <StackLayout>
-                    <Label Text="{Binding Address}" Margin="20,20,20,0" FontSize="Subtitle"/>
-                </StackLayout>
-                <StackLayout VerticalOptions="EndAndExpand">
-                    <yummy:PancakeView Margin="10" HeightRequest="200" CornerRadius="20"  >
-                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <maps:Map x:Name="placeMap"  >
+                <Label Margin="10,30,10,10"  Text="Адрес"  TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
 
-                                <maps:Map.Pins>
-                                    <maps:Pin x:Name="placePin"
+                <yummy:PancakeView Margin="10" HasShadow="True" BackgroundColor="{DynamicResource PancakeBackgroundColor}" CornerRadius="20">
+                    <StackLayout >
+                        <Label Margin="10" Text="{Binding Address}" FontSize="Subtitle"/>
+                        <yummy:PancakeView  HeightRequest="150" Elevation="10" CornerRadius="20"  >
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <maps:Map x:Name="placeMap"  >
+
+                                    <maps:Map.Pins>
+                                        <maps:Pin x:Name="placePin"
                                               Label="Default"
                                             Type="Place">
 
-                                    </maps:Pin>
-                                </maps:Map.Pins>
-                            </maps:Map>
-                        </StackLayout>
-                    </yummy:PancakeView>
-                    <Button Text="Сохранить" CornerRadius="20" BackgroundColor="{DynamicResource DetailsColor}" Clicked="Button_Clicked" Margin="10,0,10,10" FontSize="Subtitle" />
-                </StackLayout>
+                                        </maps:Pin>
+                                    </maps:Map.Pins>
+                                </maps:Map>
+                            </StackLayout>
+                        </yummy:PancakeView>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <Button Text="Сохранить" VerticalOptions="EndAndExpand" CornerRadius="20" BackgroundColor="{DynamicResource DetailsColor}" Clicked="Button_Clicked" Margin="10,0,10,10" FontSize="Subtitle" />
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
