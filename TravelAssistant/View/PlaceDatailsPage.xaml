@@ -7,7 +7,9 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout x:Name="detailsLayout">
-                <Label Text="{Binding Name}" Margin="30,10,30,0" FontSize="Title"/>
+                <yummy:PancakeView CornerRadius="0,0,20,20" HasShadow="True" BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                    <Label Text="{Binding Name}" Margin="30,10,30,10" FontSize="Title"/>
+                </yummy:PancakeView>
                 <Label Margin="10,30,10,10"  Text="Адрес"  TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
 
                 <yummy:PancakeView Margin="10" HasShadow="True" BackgroundColor="{DynamicResource PancakeBackgroundColor}" CornerRadius="20">
