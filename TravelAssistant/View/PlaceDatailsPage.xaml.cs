@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TravelAssistant.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace TravelAssistant.View
 {
@@ -23,6 +25,7 @@ namespace TravelAssistant.View
             placeMap.MoveToRegion(mapSpan);
             placePin.Label = place.Name;
             placePin.Position = position;
+            CategoriesCollection.ItemsSource = new List<Categories>(Place.Categories);
         }
         void Button_Clicked(System.Object sender, System.EventArgs e)
         {

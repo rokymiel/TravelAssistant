@@ -31,7 +31,21 @@
                         </yummy:PancakeView>
                     </StackLayout>
                 </yummy:PancakeView>
-                <Button Text="Сохранить" VerticalOptions="EndAndExpand" CornerRadius="20" BackgroundColor="{DynamicResource DetailsColor}" Clicked="Button_Clicked" Margin="10,0,10,10" FontSize="Subtitle" />
+                <CollectionView x:Name="CategoriesCollection" HeightRequest="100" SelectionMode="None"
+                    ItemsLayout="HorizontalList" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <yummy:PancakeView  CornerRadius="10" Margin="5" BackgroundColor="{DynamicResource PancakeBackgroundColor}" Elevation="3">
+                                    <StackLayout>
+                                        <Label Margin="10,5,10,5"  FontSize="Subtitle" Text="{Binding name}"/>
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Text="Сохранить" VerticalOptions="EndAndExpand"  CornerRadius="20" BackgroundColor="{DynamicResource DetailsColor}" Clicked="Button_Clicked" Margin="10,0,10,10" FontSize="Subtitle" />
 
             </StackLayout>
         </ScrollView>
