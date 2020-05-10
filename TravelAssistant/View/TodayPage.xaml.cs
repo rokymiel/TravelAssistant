@@ -209,7 +209,7 @@ namespace TravelAssistant.View
         {
             if (location != null)
             {
-                string safix = $"&ll={GetDouble(location.Latitude)},{GetDouble(location.Longitude)}&categoryId=4d4b7104d754a06370d81259&limit=10&radius=2000";
+                string safix = $"&ll={GetDouble(location.Latitude)},{GetDouble(location.Longitude)}&categoryId=4deefb944765f83613cdba6e,4bf58dd8d48988d181941735,5642206c498e4bfca532186c&limit=15&radius=20000&locale=ru";
 
                 try
                 {

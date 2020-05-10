@@ -85,6 +85,6 @@ namespace TravelAssistant.Models
     public class Categories
     {
         public string id;
-        public string name;
+        public string name { get; set; }
     }
 }

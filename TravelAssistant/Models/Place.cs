@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Linq;
 using SQLite;
 namespace TravelAssistant.Models
 {
-    public class Place:TripData
+    public class Place : TripData
     {
-        public Place(Venue venue,string tripId)
+        public Place(Venue venue, string tripId)
         {
             Address = venue.location.address;
             CrossStreet = venue.location.crossStreet;
@@ -14,6 +15,8 @@ namespace TravelAssistant.Models
             TripId = tripId;
             Id = PlaceId + TripId;
             Name = venue.name;
+            Categories=venue.categories;
+            CategoriesString = string.Join(";",Categories.Select(x => x.name));
         }
         public Place()
         {
@@ -30,7 +33,7 @@ namespace TravelAssistant.Models
         /// <summary>
         /// Координата ширины.
         /// </summary>
-        public double Lat { get;  set; }
+        public double Lat { get; set; }
         /// <summary>
         /// Координата долготы.
         /// </summary>
@@ -43,6 +46,9 @@ namespace TravelAssistant.Models
         /// Id места.
         /// </summary>
         public string PlaceId { get; set; }
+        public string CategoriesString { get; set; }
+        [Ignore]
+        public Categories[] Categories { get; set; }
 
     }
 }
