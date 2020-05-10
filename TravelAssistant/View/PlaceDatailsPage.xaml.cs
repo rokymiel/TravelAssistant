@@ -9,6 +9,8 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using FFImageLoading;
+using FFImageLoading.Transformations;
 
 namespace TravelAssistant.View
 {
