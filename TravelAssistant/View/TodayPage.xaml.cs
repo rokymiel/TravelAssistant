@@ -340,6 +340,7 @@ namespace TravelAssistant.View
                 return;
             }
             await Navigation.PushAsync(new PlaceDatailsPage(item));
+            //await Navigation.PushAsync(new PlaceInfoPage(item));
             RecomendationCards.SelectedItem = null;
         }
         /// <summary>
