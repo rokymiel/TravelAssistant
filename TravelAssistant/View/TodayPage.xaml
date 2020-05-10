@@ -98,16 +98,14 @@
             </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout HeightRequest="150" WidthRequest="150">
+                    <StackLayout>
 
-                        <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                                   CornerRadius="20" BackgroundColor="{DynamicResource PancakeBackgroundColor}"
-                                    HeightRequest="150" WidthRequest="150"   Margin="10" >
-                            <StackLayout>
+                        <yummy:PancakeView CornerRadius="20" Margin="10" HasShadow="True" BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                            <StackLayout Margin="20">
                                 <Label x:Name="placeNameLabel" TextColor="{DynamicResource LabelColor}" FontSize="Subtitle" Text="{Binding Name}" />
                                 <Label x:Name="placeAdress" TextColor="{DynamicResource LabelColor}" Text="{Binding Address}"/>
                             </StackLayout>
-                        </Frame>
+                        </yummy:PancakeView>
                     </StackLayout>
                 </DataTemplate>
 
