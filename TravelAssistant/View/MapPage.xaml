@@ -40,10 +40,12 @@
                   RelativeLayout.HeightConstraint="{ConstraintExpression
                         Type=RelativeToParent,Property=Height,Factor=1}"
                            >
-            <StackLayout Padding="20">
-                <Label x:Name="infoName" FontSize="Title" FontAttributes="Bold"/>
-                <Label x:Name="infoAddress" FontSize="Subtitle"/>
-            </StackLayout>
+            <ScrollView>
+                <StackLayout Padding="20">
+                    <Label x:Name="infoName" FontSize="Title" FontAttributes="Bold"/>
+                    <Label x:Name="infoAddress" FontSize="Subtitle"/>
+                </StackLayout>
+            </ScrollView>
         </yummy:PancakeView>
     </RelativeLayout>
 </ContentPage>
