@@ -24,7 +24,7 @@ namespace TravelAssistant.View
             if (addCheckBox.IsChecked)
             {
                 int value;
-                if (int.TryParse(addEntry.Text, out value))
+                if (int.TryParse(addEntry.Text, out value)&&value>0)
                 {
                     MoneyOperation moneyOperation = new MoneyOperation();
                     moneyOperation.Money = value;
@@ -40,7 +40,7 @@ namespace TravelAssistant.View
             if (minusCheckBox.IsChecked && Main.Money.CurrentMoney > 0 && !string.IsNullOrEmpty(minusDesrEntry.Text))
             {
                 int value;
-                if (int.TryParse(minusEntry.Text, out value))
+                if (int.TryParse(minusEntry.Text, out value)&&value>0)
                 {
                     if (value <= Main.Money.CurrentMoney)
                     {
@@ -60,7 +60,7 @@ namespace TravelAssistant.View
         void addEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             int value;
-            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value))
+            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value)&&value>0)
             {
                 wrongAddFormat.IsVisible = false;
             }
@@ -74,7 +74,7 @@ namespace TravelAssistant.View
         void minusEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             int value;
-            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value))
+            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value)&&value>0)
             {
                 wrongMinusFormat.IsVisible = false;
             }
