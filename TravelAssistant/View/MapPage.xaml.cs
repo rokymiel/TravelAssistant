@@ -90,7 +90,7 @@ namespace TravelAssistant.View
             #endregion
         }
 
-        void map_MapClicked(System.Object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
+        void MapClicked(System.Object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
             infoView.IsVisible = false;
         }

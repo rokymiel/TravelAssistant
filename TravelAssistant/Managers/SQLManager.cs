@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using SQLite;
 using TravelAssistant.Models;
+using Xamarin.Forms.Internals;
 
 namespace TravelAssistant.Managers
 {
     public class SQLManager<T> where T : Item, new()
     {
-        public string StatusMessage { get; set; }
         SQLiteConnection connection;
 
         public SQLManager(string dbPath)
@@ -30,7 +30,7 @@ namespace TravelAssistant.Managers
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
             return new List<T>();
@@ -59,7 +59,7 @@ namespace TravelAssistant.Managers
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
             return new List<R>();

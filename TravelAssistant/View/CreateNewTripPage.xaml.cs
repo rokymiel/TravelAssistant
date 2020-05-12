@@ -28,7 +28,7 @@ namespace TravelAssistant.View
             }
             if (beginingOfTripDatePicker.Date > endingOfTripDatePicker.Date)
             {
-                await DisplayAlert("Ошибка", "Неверно указана дата начала и оканчания поездки", "OK");
+                await DisplayAlert("Ошибка", "Неверно указана дата начала и окончания поездки", "OK");
                 return;
             }
             Trip newTrip = new Trip(countryOfTripEntry.Text, cityOfTripEntry.Text,

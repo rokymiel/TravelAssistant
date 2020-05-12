@@ -17,11 +17,11 @@ namespace TravelAssistant.View
         /// <summary>
         /// Бюджет.
         /// </summary>
-        public Money money;
+        public Money Money { get; set; }
         /// <summary>
         /// Список финансовых операций.
         /// </summary>
-        ObservableCollection<MoneyOperation> operations { get; set; }
+        ObservableCollection<MoneyOperation> operations;
         public FinancePage()
         {
             InitializeComponent();
@@ -31,18 +31,18 @@ namespace TravelAssistant.View
             list.ForEach(x => operations.Add(x));
             var m = App.moneyManager.GetTripItems<Money>(MainPage.CurrentTrip.Id);
             if (m != null && m.Count > 0)
-                money = m[0];
+                Money = m[0];
             else
-                money = null;
-            if (money == null)
+                Money = null;
+            if (Money == null)
             {
-                money = new Money() { Id = Guid.NewGuid().ToString(), TripId=MainPage.CurrentTrip.Id };
-                App.moneyManager.AddItem(money);
+                Money = new Money() { Id = Guid.NewGuid().ToString(), TripId = MainPage.CurrentTrip.Id };
+                App.moneyManager.AddItem(Money);
             }
-            if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
-            currentMoneyLabel.Text = string.Format($"{money.CurrentMoney:N}");
+            if (Money.AllMoney != 0) moneyBar.Progress = ((double)Money.CurrentMoney / Money.AllMoney);
+            currentMoneyLabel.Text = string.Format($"{Money.CurrentMoney:N}");
 
-            allMoneyLabel.Text = string.Format($"{money.AllMoney:N}");
+            allMoneyLabel.Text = string.Format($"{Money.AllMoney:N}");
             finEvents.ItemsSource = operations;
         }
         public void AddOperation(MoneyOperation moneyOperation)
@@ -52,21 +52,21 @@ namespace TravelAssistant.View
             Console.WriteLine(operations.Count);
             if (moneyOperation.Type == MoneyOperation.OperationType.Add)
             {
-                money.CurrentMoney += moneyOperation.Money;
+                Money.CurrentMoney += moneyOperation.Money;
 
-                money.AllMoney += moneyOperation.Money;
-                App.moneyManager.Update(money);
-                allMoneyLabel.Text = string.Format($"{money.AllMoney:N}");
-                currentMoneyLabel.Text = string.Format($"{money.CurrentMoney:N}");
-                if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
+                Money.AllMoney += moneyOperation.Money;
+                App.moneyManager.Update(Money);
+                allMoneyLabel.Text = string.Format($"{Money.AllMoney:N}");
+                currentMoneyLabel.Text = string.Format($"{Money.CurrentMoney:N}");
+                if (Money.AllMoney != 0) moneyBar.Progress = ((double)Money.CurrentMoney / Money.AllMoney);
 
             }
             else
             {
-                money.CurrentMoney -= moneyOperation.Money;
-                App.moneyManager.Update(money);
-                currentMoneyLabel.Text = string.Format($"{money.CurrentMoney:N}");
-                if (money.AllMoney != 0) moneyBar.Progress = ((double)money.CurrentMoney / money.AllMoney);
+                Money.CurrentMoney -= moneyOperation.Money;
+                App.moneyManager.Update(Money);
+                currentMoneyLabel.Text = string.Format($"{Money.CurrentMoney:N}");
+                if (Money.AllMoney != 0) moneyBar.Progress = ((double)Money.CurrentMoney / Money.AllMoney);
             }
 
         }
@@ -86,19 +86,8 @@ namespace TravelAssistant.View
 
         async void Info_Clicked(System.Object sender, System.EventArgs e)
         {
-            await Navigation.PushPopupAsync(new FinanceInfoPage(money, this));
+            await Navigation.PushPopupAsync(new FinanceInfoPage(Money, this));
         }
-
-        async void finEvents_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
-        {
-            var i = e.CurrentSelection.FirstOrDefault() as MoneyOperation;
-            if (i != null)
-            {
-                await Navigation.PushPopupAsync(new OperationDetailsPage(i));
-            }
-            (sender as CollectionView).SelectedItem = null;
-        }
-
         async void Operation_Tapped(System.Object sender, System.EventArgs e)
         {
             var item = (MoneyOperation)(sender as PancakeView).BindingContext;

@@ -71,7 +71,6 @@ namespace TravelAssistant.View
                 descriptionLabel.IsVisible = true;
                 descriptionView.IsVisible = true;
                 description.Text = PlaceDatails.response.venue.description;
-
             }
             if (!string.IsNullOrEmpty(PlaceDatails.response.venue.url))
             {

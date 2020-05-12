@@ -9,13 +9,13 @@ namespace TravelAssistant
 {
     public partial class App : Application
     {
-        string dbNotesPath => FileAccessManager.GetLocalFilePath("notes.db3");
-        string dbRemindersPath => FileAccessManager.GetLocalFilePath("reminders.db3");
-        string dbMoneyPath => FileAccessManager.GetLocalFilePath("money.db3");
-        string dbMoneyOperationsPath => FileAccessManager.GetLocalFilePath("moneyOperations.db3");
-        string dbDocumentsPath => FileAccessManager.GetLocalFilePath("notes.db3");
-        string dbPlacesPath => FileAccessManager.GetLocalFilePath("placess.db3");
-        string dbTripsPath => FileAccessManager.GetLocalFilePath("trips.db3");
+        string dbNotesPath = FileAccessManager.GetLocalFilePath("notes.db3");
+        string dbRemindersPath = FileAccessManager.GetLocalFilePath("reminders.db3");
+        string dbMoneyPath = FileAccessManager.GetLocalFilePath("money.db3");
+        string dbMoneyOperationsPath = FileAccessManager.GetLocalFilePath("moneyOperations.db3");
+        string dbDocumentsPath = FileAccessManager.GetLocalFilePath("documents.db3");
+        string dbPlacesPath = FileAccessManager.GetLocalFilePath("placess.db3");
+        string dbTripsPath = FileAccessManager.GetLocalFilePath("trips.db3");
 
         public static SQLManager<Note> notesManger;
         public static SQLManager<Reminder> remindersManger;

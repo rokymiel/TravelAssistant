@@ -14,7 +14,7 @@
                         Type=RelativeToParent,Property=Width,Factor=1}"
                   RelativeLayout.HeightConstraint="{ConstraintExpression
                         Type=RelativeToParent,Property=Height,Factor=1}"
-                  MapClicked="map_MapClicked"
+                  MapClicked="MapClicked"
                   >
             <maps:Map.ItemTemplate >
                 <DataTemplate>

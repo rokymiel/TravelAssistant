@@ -11,7 +11,7 @@ namespace TravelAssistant.View
         /// <summary>
         /// Ссылка на родительскую финансовую страницу.
         /// </summary>
-        FinancePage Main;
+        FinancePage Main { get; set; }
         public AddOperationPage(FinancePage main)
         {
             Main = main;
@@ -37,12 +37,12 @@ namespace TravelAssistant.View
                 }
 
             }
-            if (minusCheckBox.IsChecked && Main.money.CurrentMoney > 0 && !string.IsNullOrEmpty(minusDesrEntry.Text))
+            if (minusCheckBox.IsChecked && Main.Money.CurrentMoney > 0 && !string.IsNullOrEmpty(minusDesrEntry.Text))
             {
                 int value;
                 if (int.TryParse(minusEntry.Text, out value))
                 {
-                    if (value <= Main.money.CurrentMoney)
+                    if (value <= Main.Money.CurrentMoney)
                     {
                         MoneyOperation moneyOperation = new MoneyOperation();
                         moneyOperation.Money = value;

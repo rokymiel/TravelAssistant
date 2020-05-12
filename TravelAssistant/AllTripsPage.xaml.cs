@@ -14,7 +14,7 @@ namespace TravelAssistant
         /// <summary>
         /// Список поездок.
         /// </summary>
-        public ObservableCollection<Trip> trips;
+        ObservableCollection<Trip> trips;
         public AllTripsPage()
         {
             trips = new ObservableCollection<Trip>();
