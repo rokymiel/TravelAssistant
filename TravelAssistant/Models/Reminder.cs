@@ -16,10 +16,6 @@ namespace TravelAssistant.Models
         /// </summary>
         public DateTime Date { get; set; }
         /// <summary>
-        /// Местоположение напоминания.
-        /// </summary>
-        public string Position { get; set; }
-        /// <summary>
         /// Приоритет.
         /// </summary>
         public int Priority { get; set; }

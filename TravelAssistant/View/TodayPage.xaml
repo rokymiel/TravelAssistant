@@ -70,23 +70,30 @@
                                 </StackLayout>
                             </yummy:PancakeView>
                             <StackLayout Margin="20,0,20,20">
-                                <StackLayout Orientation="Horizontal">
-                                    <StackLayout >
+                                <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="2"   VerticalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="50" />
+                                        <ColumnDefinition BindingContext="{x:Reference Name=temperatureLayout}" Width="Auto" />
+                                        <ColumnDefinition  Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0" HeightRequest="50" WidthRequest="50" >
                                         <Image VerticalOptions="CenterAndExpand"  x:Name="weatherIcon" HeightRequest="50" WidthRequest="50"  />
                                     </StackLayout>
-                                    <StackLayout VerticalOptions="Center" >
+                                    <StackLayout VerticalOptions="Center" Grid.Column="1" x:Name="temperatureLayout" >
                                         <Label x:Name="currentTempLabel" HorizontalOptions="Center" TextColor="{DynamicResource LabelColor}" Text="-" FontSize="Subtitle" FontAttributes="Bold"/>
                                         <StackLayout Orientation="Horizontal">
                                             <Label x:Name="minTemLabel" FontSize="Micro" TextColor="{DynamicResource LabelColor}" Text="-"/>
                                             <Label x:Name="maxTemLabel" FontSize="Micro"  TextColor="{DynamicResource LabelColor}" Text="-"/>
                                         </StackLayout>
                                     </StackLayout>
-                                    <StackLayout  >
+                                    <StackLayout Grid.Column="2"  >
                                         <Label x:Name="weatherCityLabel" TextColor="{DynamicResource LabelColor}" Text="-" FontSize="Subtitle"/>
                                         <Label x:Name="weatherDescrLabel" TextColor="{DynamicResource LabelColor}" Text="-"/>
                                         <Label x:Name="feelsLabel" TextColor="{DynamicResource LabelColor}" Text="Ощушается как -"/>
                                     </StackLayout>
-                                </StackLayout>
+                                </Grid>
+
+
                             </StackLayout>
                         </StackLayout>
                     </yummy:PancakeView>
