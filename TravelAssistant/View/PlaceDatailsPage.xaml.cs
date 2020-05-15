@@ -53,9 +53,20 @@ namespace TravelAssistant.View
                 {
                     try
                     {
-                        Uri uri = new Uri(PlaceDatails.response.venue.bestPhoto.prefix + "original" + PlaceDatails.response.venue.bestPhoto.suffix);
-                        placeImage.Source = ImageSource.FromUri(uri);
-                        placeImage.IsVisible = true;
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            Uri uri = new Uri(PlaceDatails.response.venue.bestPhoto.prefix + "original" + PlaceDatails.response.venue.bestPhoto.suffix);
+                            placeImage.Source = ImageSource.FromUri(uri);
+                            placeImage.IsVisible = true;
+                        }
+                        else if (Device.RuntimePlatform == Device.Android)
+                        {
+                            var byteArray = new WebClient().DownloadData(PlaceDatails.response.venue.bestPhoto.prefix + "original" + PlaceDatails.response.venue.bestPhoto.suffix);
+                            placeImage.Source = ImageSource.FromStream(() => new MemoryStream(byteArray));
+                            placeImage.IsVisible = true;
+                        }
+
+                        
                     }
                     catch (Exception)
                     {
