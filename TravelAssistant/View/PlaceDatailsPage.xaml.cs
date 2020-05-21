@@ -45,7 +45,7 @@ namespace TravelAssistant.View
                 App.placesManager.AddItem(Place);
             }
         }
-        void SetImage()
+        async void SetImage()
         {
             if (PlaceDatails.response.venue.bestPhoto != null)
             {
@@ -53,15 +53,16 @@ namespace TravelAssistant.View
                 {
                     try
                     {
+                        Uri uri = new Uri(PlaceDatails.response.venue.bestPhoto.prefix + "original" + PlaceDatails.response.venue.bestPhoto.suffix);
                         if (Device.RuntimePlatform == Device.iOS)
                         {
-                            Uri uri = new Uri(PlaceDatails.response.venue.bestPhoto.prefix + "original" + PlaceDatails.response.venue.bestPhoto.suffix);
+                            
                             placeImage.Source = ImageSource.FromUri(uri);
                             placeImage.IsVisible = true;
                         }
                         else if (Device.RuntimePlatform == Device.Android)
                         {
-                            var byteArray = new WebClient().DownloadData(PlaceDatails.response.venue.bestPhoto.prefix + "original" + PlaceDatails.response.venue.bestPhoto.suffix);
+                            var byteArray = await new WebClient().DownloadDataTaskAsync(uri);
                             placeImage.Source = ImageSource.FromStream(() => new MemoryStream(byteArray));
                             placeImage.IsVisible = true;
                         }
