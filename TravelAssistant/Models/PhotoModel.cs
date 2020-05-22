@@ -43,14 +43,10 @@ namespace TravelAssistant.Models
         {
             try
             {
-                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync<StoragePermission>();
+                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync<PhotosPermission>();
                 if (storageStatus != PermissionStatus.Granted)
                 {
-                    var semaphore = new SemaphoreSlim(1, 1);
-                    semaphore.Wait();
-                    storageStatus = await CrossPermissions.Current.RequestPermissionAsync<StoragePermission>();
-
-                    semaphore.Release();
+                    storageStatus = await CrossPermissions.Current.RequestPermissionAsync<PhotosPermission>();
                 }
                 ImageEventArgs args = new ImageEventArgs();
                 if (storageStatus == PermissionStatus.Granted)
@@ -75,8 +71,8 @@ namespace TravelAssistant.Models
                     args.Image = ImageSource;
                     args.ByteImage = imageArray;
                     file.Dispose();
+                    GetImage?.Invoke(this, args);
                 }
-                GetImage?.Invoke(this, args);
             }
             catch (Exception ex)
             {

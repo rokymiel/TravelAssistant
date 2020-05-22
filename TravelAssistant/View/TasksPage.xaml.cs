@@ -18,7 +18,7 @@ namespace TravelAssistant.View
         /// <summary>
         /// Объект для работы с изображениями.
         /// </summary>
-        private static PhotoModel VM = new PhotoModel();
+        private PhotoModel VM = new PhotoModel();
         /// <summary>
         /// Список документов.
         /// </summary>
