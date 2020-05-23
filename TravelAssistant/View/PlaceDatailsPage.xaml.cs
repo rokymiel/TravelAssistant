@@ -32,8 +32,6 @@ namespace TravelAssistant.View
             placePin.Label = place.Name;
             placePin.Position = position;
             CategoriesCollection.ItemsSource = new List<Categories>(Place.Categories);
-            //PlaceDatails = GetPlaceDatails();
-            //SetDetails();
             GetPlaceDatailsAsync($"https://api.foursquare.com/v2/venues/{Place.PlaceId}?client_id=GMDFIDPK1TFXA45NFQVXDI15K2HEV5OHOHDRTAY2HG1XMUSQ&client_secret=NLRNJD0BN32HSXPIRQRMXDU5FYGYV4CVQ1LRWUV15UGOORDR&v=20190425&locale=ru");
 
         }
@@ -119,35 +117,6 @@ namespace TravelAssistant.View
             SetImage();
 
         }
-        PlaceDatails GetPlaceDatails()
-        {
-            return new PlaceDatails()
-            {
-                response = new PlaceResponse()
-                {
-                    venue = new VenueDetails()
-                    {
-                        id = "asa",
-                        name = "ExapleName",
-                        contact = new Contact()
-                        {
-                            formattedPhone = "+7977754265",
-                            twitter = "chsjdhyr",
-                            instagram = "hgdsghfbhs"
-                        },
-                        url = "http://mem.ru",
-                        description = "Это длинное описание данного места, что здесь писать я не знаю но напишу потому что это важно для меня прям очень",
-                        rating = 8.6,
-                        bestPhoto = new BestPhoto()
-                        {
-                            prefix = "https://fastly.4sqi.net/img/general/",
-                            suffix = "/16771017_d3UR1Quu8NOzjt6IIR5-JVf4B_GtY2xbrtYhu8Rgg54.jpg"
-                        }
-
-                    }
-                }
-            };
-        }
         async void GetPlaceDatailsAsync(string url)
         {
             try
@@ -165,7 +134,7 @@ namespace TravelAssistant.View
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Ошибка", url + "  " + ex.Message, "Ок");
+                await DisplayAlert("Ошибка", "Возникла ошибка при получении детальной информации о месте", "Ок");
             }
         }
 
