@@ -74,7 +74,6 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\today.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\today.imageset\today.png" />
     <ImageAsset Include="Assets.xcassets\map.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\map.imageset\map.png" />
     <ImageAsset Include="Assets.xcassets\tasks.imageset\Contents.json" />
@@ -116,7 +115,6 @@
     <ImageAsset Include="Assets.xcassets\n50.imageset\50n%402x.png" />
     <ImageAsset Include="Assets.xcassets\n50.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\finIcon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\finIcon.imageset\icons8-цветные-96-2.png" />
     <ImageAsset Include="Assets.xcassets\weatherIcon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\weatherIcon.imageset\icons8-частичная-облачность-96.png" />
     <ImageAsset Include="Assets.xcassets\weatherIcon.imageset\icons8-частичная-облачность-96-1.png" />
@@ -174,6 +172,8 @@
     <ImageAsset Include="Assets.xcassets\recomendation.imageset\Bookmark.png" />
     <ImageAsset Include="Assets.xcassets\recomendation.imageset\Bookmark%402x.png" />
     <ImageAsset Include="Assets.xcassets\recomendation.imageset\Bookmark%403x.png" />
+    <ImageAsset Include="Assets.xcassets\finIcon.imageset\finIcon.png" />
+    <ImageAsset Include="Assets.xcassets\today.imageset\today.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
