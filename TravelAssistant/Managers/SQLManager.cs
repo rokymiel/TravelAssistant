@@ -92,11 +92,12 @@ namespace TravelAssistant.Managers
             connection.Delete(item);
         }
         /// <summary>
-        /// Удалить все содержимое таблицы.
+        /// Удалить все содержимое таблицы, которое связанно с поездкой.
         /// </summary>
-        public void DeleteAll()
+        public void DeleteAll(string tripId)
         {
-            connection.DeleteAll<T>();
+            var s=connection.GetMapping<T>().TableName;
+            connection.CreateCommand($"Delete from {s} where TripId='{tripId}'").ExecuteNonQuery();
         }
         /// <summary>
         /// Проверяет содержится ли место.

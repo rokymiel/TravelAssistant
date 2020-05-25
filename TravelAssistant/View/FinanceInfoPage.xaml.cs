@@ -25,8 +25,8 @@ namespace TravelAssistant.View
         }
         async void deleteHistory_Clicked(object sender, EventArgs e)
         {
-            App.moneyManager.DeleteAll();
-            App.moneyOperationManager.DeleteAll();
+            App.moneyManager.DeleteAll(MainPage.CurrentTrip.Id);
+            App.moneyOperationManager.DeleteAll(MainPage.CurrentTrip.Id);
             await Navigation.PopPopupAsync();
             FinancePage.CloseFinancePage();
 
