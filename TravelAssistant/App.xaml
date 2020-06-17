@@ -13,5 +13,8 @@
         <AppThemeColor x:Key="DetailsColor"
                        Light="WhiteSmoke"
                        Dark="SlateGray"/>
+        <AppThemeColor x:Key="BackColor"
+                       Light="WhiteSmoke"
+                       Dark="Black"/>
     </Application.Resources>
 </Application>
