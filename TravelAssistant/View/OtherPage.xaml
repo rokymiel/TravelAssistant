@@ -1,38 +1,89 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="TravelAssistant.View.OtherPage"
              Title="Ещё"
              >
-    <TableView Intent="Menu" >
-        <TableRoot  >
-            <TableSection>
-                <ViewCell Tapped="OnTrip_Tapped" >
-                    <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="Текущая поездка" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
-                        <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell Tapped="OnFinanceTabbed" >
-                    <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="Финансы" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
-                        <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell Tapped="AboutApp_Tapped">
-                    <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="О приложении" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
-                        <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                </ViewCell>
-            </TableSection>
-            <TableSection>
-                <ViewCell Tapped="Exit_Tapped">
-                    <StackLayout Padding="10" Orientation="Horizontal" >
-                        <Label Text="Выйти из поездки" TextColor="Red" FontSize="Medium" VerticalOptions="Center"/>
-                    </StackLayout>
-                </ViewCell>
-            </TableSection>
-        </TableRoot>
-    </TableView>
-
+    <ScrollView BackgroundColor="{DynamicResource BackColor}">
+        <StackLayout BackgroundColor="Transparent">
+            <yummy:PancakeView Margin="10,20,10,5" 
+                               CornerRadius="20"
+                               Elevation="5"
+                               BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                <StackLayout Padding="15" Orientation="Horizontal" >
+                    <Label Text="Текущая поездка" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                    <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <yummy:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTrip_Tapped"/>
+                </yummy:PancakeView.GestureRecognizers>
+            </yummy:PancakeView>
+            <yummy:PancakeView Margin="10,5,10,5" 
+                               CornerRadius="20"
+                               Elevation="5"
+                               BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                <StackLayout Padding="15" Orientation="Horizontal" >
+                    <Label Text="Финансы" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                    <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <yummy:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnFinanceTabbed"/>
+                </yummy:PancakeView.GestureRecognizers>
+            </yummy:PancakeView>
+            <yummy:PancakeView Margin="10,5,10,5" 
+                               CornerRadius="20"
+                               Elevation="5"
+                               BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                <StackLayout Padding="15" Orientation="Horizontal" >
+                    <Label Text="О приложении" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                    <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <yummy:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AboutApp_Tapped"/>
+                </yummy:PancakeView.GestureRecognizers>
+            </yummy:PancakeView>
+            <yummy:PancakeView Margin="10,70,10,10" 
+                               CornerRadius="20"
+                               Elevation="5"
+                               BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                <StackLayout Padding="15" Orientation="Horizontal" >
+                    <Label Text="Выйти из поездки" TextColor="Red" FontSize="Medium" VerticalOptions="Center"/>
+                </StackLayout>
+                <yummy:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Exit_Tapped"/>
+                </yummy:PancakeView.GestureRecognizers>
+            </yummy:PancakeView>
+            <TableView Intent="Menu" IsVisible="False">
+                <TableRoot  >
+                    <TableSection>
+                        <ViewCell Tapped="OnTrip_Tapped" >
+                            <StackLayout Padding="10" Orientation="Horizontal" >
+                                <Label Text="Текущая поездка" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                                <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Tapped="OnFinanceTabbed" >
+                            <StackLayout Padding="10" Orientation="Horizontal" >
+                                <Label Text="Финансы" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                                <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Tapped="AboutApp_Tapped">
+                            <StackLayout Padding="10" Orientation="Horizontal" >
+                                <Label Text="О приложении" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                                <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell Tapped="Exit_Tapped">
+                            <StackLayout Padding="10" Orientation="Horizontal" >
+                                <Label Text="Выйти из поездки" TextColor="Red" FontSize="Medium" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
