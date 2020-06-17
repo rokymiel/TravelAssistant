@@ -29,6 +29,8 @@ namespace TravelAssistant.iOS
             global::Xamarin.Forms.Forms.Init();
             Xamarin.FormsMaps.Init();
 
+            Plugin.Segmented.Control.iOS.SegmentedControlRenderer.Initialize();
+
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();
             Plugin.LocalNotification.NotificationCenter.AskPermission();

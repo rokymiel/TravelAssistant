@@ -8,6 +8,8 @@ using System.ComponentModel;
 using System.Linq;
 using Rg.Plugins.Popup.Extensions;
 using TravelAssistant.Managers;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace TravelAssistant.View
 {
@@ -41,13 +43,14 @@ namespace TravelAssistant.View
             }
             if (Money.AllMoney != 0) moneyBar.Progress = ((double)Money.CurrentMoney / Money.AllMoney);
             currentMoneyLabel.Text = string.Format($"{Money.CurrentMoney:N}");
-
+            On<iOS>().SetModalPresentationStyle(UIModalPresentationStyle.FormSheet);
             allMoneyLabel.Text = string.Format($"{Money.AllMoney:N}");
-            finEvents.ItemsSource = operations;
+            finEvents.ItemsSource = new ObservableCollection<IGrouping<DateTime, MoneyOperation>>(operations.GroupBy(x => x.Date.Date));
         }
         public void AddOperation(MoneyOperation moneyOperation)
         {
             operations.Insert(0, moneyOperation);
+            finEvents.ItemsSource = new ObservableCollection<IGrouping<DateTime, MoneyOperation>>(operations.GroupBy(x => x.Date.Date));
             App.moneyOperationManager.AddItem(moneyOperation);
             Console.WriteLine(operations.Count);
             if (moneyOperation.Type == MoneyOperation.OperationType.Add)
@@ -77,7 +80,12 @@ namespace TravelAssistant.View
 
         async void OnOperationAdd(System.Object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new AddOperationPage(this));
+           // await Navigation.PushPopupAsync(new AddOperationPopupPage(this));
+            if (Device.RuntimePlatform is Device.iOS)
+                await Navigation.PushModalAsync(new AddOperationPage(this));
+            else
+                await Navigation.PushAsync(new AddOperationPage(this));
+            //await Navigation.PushAsync(new AddOperationPage(this));
         }
 
         void Delete_Clicked(System.Object sender, System.EventArgs e)
@@ -102,6 +110,37 @@ namespace TravelAssistant.View
 
 
         }
+    }
+    public class DatetimeToStringConverter : IValueConverter
+    {
+        #region IValueConverter implementation
+
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null)
+                return string.Empty;
+
+            var datetime = (DateTime)value;
+            //put your custom formatting here
+            if (datetime.Date == DateTime.Now.Date)
+            {
+                return "Сегодня";
+            }else if (datetime.AddDays(1).Date == DateTime.Now.Date)
+            {
+                return "Вчера";
+            } else if (datetime.Year==DateTime.Now.Year)
+            {
+                return datetime.ToString("d MMMM");
+            }
+            return datetime.ToString("d MMMM, yyyy");
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 
 }

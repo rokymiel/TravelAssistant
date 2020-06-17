@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Plugin.Segmented.Event;
 using TravelAssistant.Models;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace TravelAssistant.View
 {
@@ -14,17 +17,26 @@ namespace TravelAssistant.View
         FinancePage Main { get; set; }
         public AddOperationPage(FinancePage main)
         {
+            On<iOS>().SetModalPresentationStyle(UIModalPresentationStyle.FormSheet);
             Main = main;
             InitializeComponent();
+            SegmentedControl.OnSegmentSelected += operation_Selected;
+            if (Device.RuntimePlatform == Device.iOS)
+                bar.IsVisible = true;
+
+
         }
         async void OnDoneClicked(object sender, EventArgs e)
         {
 
-            await Navigation.PopAsync();
-            if (addCheckBox.IsChecked)
+            if (Device.RuntimePlatform is Device.iOS)
+                await Navigation.PopModalAsync();
+            else
+                await Navigation.PopAsync();
+            if (SegmentedControl.SelectedSegment == 0)
             {
                 int value;
-                if (int.TryParse(addEntry.Text, out value)&&value>0)
+                if (int.TryParse(addEntry.Text, out value) && value > 0)
                 {
                     MoneyOperation moneyOperation = new MoneyOperation();
                     moneyOperation.Money = value;
@@ -37,10 +49,10 @@ namespace TravelAssistant.View
                 }
 
             }
-            if (minusCheckBox.IsChecked && Main.Money.CurrentMoney > 0 && !string.IsNullOrEmpty(minusDesrEntry.Text))
+            if (SegmentedControl.SelectedSegment == 1 && Main.Money.CurrentMoney > 0 && !string.IsNullOrEmpty(minusDesrEntry.Text))
             {
                 int value;
-                if (int.TryParse(minusEntry.Text, out value)&&value>0)
+                if (int.TryParse(minusEntry.Text, out value) && value > 0)
                 {
                     if (value <= Main.Money.CurrentMoney)
                     {
@@ -60,7 +72,7 @@ namespace TravelAssistant.View
         void addEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             int value;
-            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value)&&value>0)
+            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value) && value > 0)
             {
                 wrongAddFormat.IsVisible = false;
             }
@@ -74,7 +86,7 @@ namespace TravelAssistant.View
         void minusEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             int value;
-            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value)&&value>0)
+            if (string.IsNullOrEmpty(e.NewTextValue) || int.TryParse(e.NewTextValue, out value) && value > 0)
             {
                 wrongMinusFormat.IsVisible = false;
             }
@@ -84,30 +96,10 @@ namespace TravelAssistant.View
             }
         }
 
-        void addCheckBox_CheckedChanged(System.Object sender, Xamarin.Forms.CheckedChangedEventArgs e)
+        void operation_Selected(object sender, SegmentSelectEventArgs e)
         {
-            if (e.Value)
-            {
-                minusCheckBox.IsChecked = false;
-            }
-        }
-
-        void minusCheckBox_CheckedChanged(System.Object sender, Xamarin.Forms.CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                addCheckBox.IsChecked = false;
-            }
-        }
-
-        void addLabel_Tapped(System.Object sender, System.EventArgs e)
-        {
-
-            addCheckBox.IsChecked = !addCheckBox.IsChecked;
-        }
-        void minusLabel_Tapped(System.Object sender, System.EventArgs e)
-        {
-            minusCheckBox.IsChecked = !minusCheckBox.IsChecked;
+            addLayout.IsVisible = e.NewValue == 0 ? true : false;
+            minusLayout.IsVisible = e.NewValue == 0 ? false : true;
         }
     }
 }

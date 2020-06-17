@@ -36,6 +36,8 @@ namespace TravelAssistant.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
+
+
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //CrossCurrentActivity.Current.Init(this, savedInstanceState);
