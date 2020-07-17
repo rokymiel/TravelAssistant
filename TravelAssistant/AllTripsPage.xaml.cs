@@ -17,6 +17,7 @@ namespace TravelAssistant
         ObservableCollection<Trip> trips;
         public AllTripsPage()
         {
+            //SetValue(NavigationPage.HasNavigationBarProperty, false);
             trips = new ObservableCollection<Trip>();
             InitializeComponent();
             App.tripsManager.GetItems().ForEach(x => trips.Add(x));
@@ -41,7 +42,20 @@ namespace TravelAssistant
                 return;
             }
             await AnimationManager.StartScalePancakeView(sender);
-            
+
+        }
+
+        void allTripsView_Scrolled(System.Object sender, Xamarin.Forms.ItemsViewScrolledEventArgs e)
+        {
+            //Console.WriteLine(e.VerticalOffset);
+            //if (e.VerticalOffset > nameLay.Height)
+            //{
+            //    SetValue(NavigationPage.HasNavigationBarProperty, true);
+            //}
+            //else
+            //{
+            //    SetValue(NavigationPage.HasNavigationBarProperty, false);
+            //}
         }
     }
 }

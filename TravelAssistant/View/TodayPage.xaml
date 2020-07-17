@@ -24,14 +24,14 @@
 
                 <StackLayout>
                     <StackLayout Padding="10" Orientation="Horizontal">
-                        <Label   Text="Сегодня"  TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                        <Label   Text="Сегодня" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
                         <Label x:Name="date" Text="" TextColor="DarkGray" VerticalTextAlignment="Center" FontSize="Title"  />
                     </StackLayout>
                     <yummy:PancakeView HorizontalOptions="FillAndExpand" 
                                Margin="10"
                                CornerRadius="20"
                                HasShadow="True"
-                               BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                               Style="{StaticResource CardStyle}">
                         <StackLayout  >
                             <yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="StartAndExpand" BackgroundColor="#da1c5a">
                                 <StackLayout Margin="20,10,20,10" Orientation="Horizontal">
@@ -40,9 +40,9 @@
                                 </StackLayout>
                             </yummy:PancakeView>
                             <StackLayout Margin="20,10,20,0"  Orientation="Horizontal"   >
-                                <Label x:Name="currentMoneyLabel" Text="0"  TextColor="{DynamicResource LabelColor}" FontSize="Subtitle"  />
-                                <Label Text="/" TextColor="{DynamicResource LabelColor}" FontSize="Subtitle"/>
-                                <Label x:Name="allMoneyLabel" Text="0"  TextColor="{DynamicResource LabelColor}" FontSize="Subtitle"  />
+                                <Label x:Name="currentMoneyLabel" Text="0"   FontSize="Subtitle"  />
+                                <Label Text="/"  FontSize="Subtitle"/>
+                                <Label x:Name="allMoneyLabel" Text="0"  FontSize="Subtitle"  />
                             </StackLayout>
                             <ProgressBar x:Name="moneyBar"  Margin="20,0,20,20" ScaleY="4" Progress="0" ProgressColor="Orange"/>
                         </StackLayout>
@@ -54,7 +54,7 @@
                                Margin="10"
                                CornerRadius="20"
                                HasShadow="True"
-                               BackgroundColor="{DynamicResource PancakeBackgroundColor}"
+                               Style="{StaticResource CardStyle}"
                                x:Name="weatherView">
                         <StackLayout  >
                             <yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="StartAndExpand" BackgroundColor="#da1c5a">
@@ -80,16 +80,16 @@
                                         <Image VerticalOptions="CenterAndExpand"  x:Name="weatherIcon" HeightRequest="50" WidthRequest="50"  />
                                     </StackLayout>
                                     <StackLayout VerticalOptions="Center" Grid.Column="1" x:Name="temperatureLayout" >
-                                        <Label x:Name="currentTempLabel" HorizontalOptions="Center" TextColor="{DynamicResource LabelColor}" Text="-" FontSize="Subtitle" FontAttributes="Bold"/>
+                                        <Label x:Name="currentTempLabel" HorizontalOptions="Center" Text="-" FontSize="Subtitle" FontAttributes="Bold"/>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label x:Name="minTemLabel" FontSize="Micro" TextColor="{DynamicResource LabelColor}" Text="-"/>
-                                            <Label x:Name="maxTemLabel" FontSize="Micro"  TextColor="{DynamicResource LabelColor}" Text="-"/>
+                                            <Label x:Name="minTemLabel" FontSize="Micro"  Text="-"/>
+                                            <Label x:Name="maxTemLabel" FontSize="Micro"   Text="-"/>
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout Grid.Column="2"  >
-                                        <Label x:Name="weatherCityLabel" TextColor="{DynamicResource LabelColor}" Text="-" FontSize="Subtitle"/>
-                                        <Label x:Name="weatherDescrLabel" TextColor="{DynamicResource LabelColor}" Text="-"/>
-                                        <Label x:Name="feelsLabel" TextColor="{DynamicResource LabelColor}" Text="Ощушается как -"/>
+                                        <Label x:Name="weatherCityLabel"  Text="-" FontSize="Subtitle"/>
+                                        <Label x:Name="weatherDescrLabel" Text="-"/>
+                                        <Label x:Name="feelsLabel"  Text="Ощушается как -"/>
                                     </StackLayout>
                                 </Grid>
 
@@ -98,7 +98,7 @@
                         </StackLayout>
                     </yummy:PancakeView>
                     <StackLayout Padding="10" Orientation="Horizontal">
-                        <Label   Text="Рекомендации"  TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                        <Label   Text="Рекомендации"   VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
                         <Button ImageSource="recomendation.png" x:Name="recomedationSavedButton"  BackgroundColor="Transparent" Clicked="RecomedationSaved_Clicked" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
                 </StackLayout>
@@ -107,10 +107,10 @@
                 <DataTemplate>
                     <StackLayout>
 
-                        <yummy:PancakeView CornerRadius="20" Margin="10" HasShadow="True" BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                        <yummy:PancakeView CornerRadius="20" Margin="10" HasShadow="True" Style="{StaticResource CardStyle}">
                             <StackLayout Margin="20">
-                                <Label x:Name="placeNameLabel" TextColor="{DynamicResource LabelColor}" FontSize="Subtitle" Text="{Binding Name}" />
-                                <Label x:Name="placeAdress" TextColor="{DynamicResource LabelColor}" Text="{Binding Address}"/>
+                                <Label x:Name="placeNameLabel"  FontSize="Subtitle" Text="{Binding Name}" />
+                                <Label x:Name="placeAdress"  Text="{Binding Address}"/>
                             </StackLayout>
                         </yummy:PancakeView>
                     </StackLayout>

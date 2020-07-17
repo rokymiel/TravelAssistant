@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using TravelAssistant.Custom;
 using TravelAssistant.Models;
 using Xamarin.Forms;
 
@@ -14,6 +15,9 @@ namespace TravelAssistant.View
         private Note note;
         public NotePage()
         {
+            NavigationCustomPage.PageLargeTitle(this, false);
+           
+           SetValue(NavigationCustomPage.LargeTitleProperty, false);
             InitializeComponent();
             note = new Note();
             BindingContext = this;

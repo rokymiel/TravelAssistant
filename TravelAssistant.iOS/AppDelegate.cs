@@ -23,17 +23,19 @@ namespace TravelAssistant.iOS
         
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-
+            //Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
             Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             Rg.Plugins.Popup.Popup.Init();
-            global::Xamarin.Forms.Forms.Init();
             Xamarin.FormsMaps.Init();
+            
+            
 
             Plugin.Segmented.Control.iOS.SegmentedControlRenderer.Initialize();
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();
             Plugin.LocalNotification.NotificationCenter.AskPermission();
+            global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }

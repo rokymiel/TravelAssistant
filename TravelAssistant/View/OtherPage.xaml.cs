@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TravelAssistant.Custom;
 using TravelAssistant.Managers;
 using Xamarin.Forms;
 using Xamarin.Forms.PancakeView;
@@ -35,7 +36,7 @@ namespace TravelAssistant.View
             await AnimationManager.StartScalePancakeView(sender as PancakeView);
             if (App.Current.Properties.ContainsKey("mainPage"))
                 App.Current.Properties.Remove("mainPage");
-            App.Current.MainPage = new NavigationPage(new AllTripsPage());
+            App.Current.MainPage = new NavigationCustomPage(new AllTripsPage()) { SetLargeTitleIos=true};
         }
 
         async void AboutApp_Tapped(System.Object sender, System.EventArgs e)

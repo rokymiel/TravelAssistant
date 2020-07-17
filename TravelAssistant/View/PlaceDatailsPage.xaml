@@ -8,18 +8,18 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout x:Name="detailsLayout">
-                <yummy:PancakeView CornerRadius="0,0,20,20" HasShadow="True" BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                <yummy:PancakeView CornerRadius="0,0,20,20" HasShadow="True" Style="{StaticResource CardStyle}">
                     <StackLayout>
                         <ffimageloading:CachedImage x:Name="placeImage" IsVisible="False" Aspect="AspectFill" HeightRequest="200"/>
                         <Label Text="{Binding Name}" Margin="30,10,30,10" FontSize="Title"/>
                     </StackLayout>
                 </yummy:PancakeView>
-                <Label x:Name="descriptionLabel" Margin="10,30,10,10"  Text="Описание" IsVisible="False" TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
-                <yummy:PancakeView x:Name="descriptionView" Margin="10" HasShadow="True" IsVisible="False" CornerRadius="20" BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                <Label x:Name="descriptionLabel" Margin="10,30,10,10"  Text="Описание" IsVisible="False"  VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                <yummy:PancakeView x:Name="descriptionView" Margin="10" HasShadow="True" IsVisible="False" CornerRadius="20" Style="{StaticResource CardStyle}">
                     <Label x:Name="description" Margin="20" FontSize="Small"/>
                 </yummy:PancakeView>
-                <Label x:Name="contactsLabel" Margin="10,20,10,10"  Text="Контакты" IsVisible="False" TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
-                <yummy:PancakeView x:Name="contactsView" Margin="10" HasShadow="True" IsVisible="False" CornerRadius="20" BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                <Label x:Name="contactsLabel" Margin="10,20,10,10"  Text="Контакты" IsVisible="False"  VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                <yummy:PancakeView x:Name="contactsView" Margin="10" HasShadow="True" IsVisible="False" CornerRadius="20" Style="{StaticResource CardStyle}">
                     <StackLayout Margin="10" Padding="10">
                         <Label IsVisible="False" x:Name="urlLabel" Text="Сайт" FontAttributes="Bold"/>
                         <Label IsVisible="False" x:Name="urlText"/>
@@ -31,8 +31,8 @@
                         <Label IsVisible="False" x:Name="instText"/>
                     </StackLayout>
                 </yummy:PancakeView>
-                <Label Margin="10,20,10,10"  Text="Адрес"  TextColor="{DynamicResource LabelColor}" VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
-                <yummy:PancakeView Margin="10" HasShadow="True" BackgroundColor="{DynamicResource PancakeBackgroundColor}" CornerRadius="20">
+                <Label Margin="10,20,10,10"  Text="Адрес"   VerticalTextAlignment="Center" FontSize="Title" FontAttributes="Bold"/>
+                <yummy:PancakeView Margin="10" HasShadow="True" Style="{StaticResource CardStyle}" CornerRadius="20">
                     <StackLayout >
                         <Label Margin="10" Text="{Binding Address}" FontSize="Subtitle"/>
                         <yummy:PancakeView  HeightRequest="150" Elevation="10" CornerRadius="20"  >
@@ -56,7 +56,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
-                                <yummy:PancakeView  CornerRadius="10" Margin="5" BackgroundColor="{DynamicResource PancakeBackgroundColor}" Elevation="3">
+                                <yummy:PancakeView  CornerRadius="10" Margin="5" Style="{StaticResource CardStyle}" Elevation="3">
                                     <StackLayout>
                                         <Label Margin="10,5,10,5"  FontSize="Subtitle" Text="{Binding name}"/>
                                     </StackLayout>

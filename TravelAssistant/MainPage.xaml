@@ -4,39 +4,39 @@
        xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
        android:TabbedPage.ToolbarPlacement="Bottom"
        android:TabbedPage.IsSwipePagingEnabled="False"
-       xmlns:views="clr-namespace:TravelAssistant.View"
+       xmlns:views="clr-namespace:TravelAssistant.View" xmlns:custom="clr-namespace:TravelAssistant.Custom"
        x:Class="TravelAssistant.MainPage"
           
             
        >
-    
-        <NavigationPage Title="Сегодня"
+    <TabbedPage.Children>
+        <custom:NavigationCustomPage Title="Сегодня"
              IconImageSource="today"
                         >
             <x:Arguments>
                 <views:TodayPage/>
             </x:Arguments>
-        </NavigationPage>
-        <NavigationPage Title="Записи"
+        </custom:NavigationCustomPage>
+        <custom:NavigationCustomPage Title="Записи"
              IconImageSource="tasks"
-                        >
+             SetLargeTitleIos="True">
             <x:Arguments>
                 <views:TasksPage/>
             </x:Arguments>
-        </NavigationPage>
-       <NavigationPage Title="Карта"
+        </custom:NavigationCustomPage>
+        <custom:NavigationCustomPage Title="Карта"
              IconImageSource="map"
                        >
             <x:Arguments>
                 <views:MapPage/>
             </x:Arguments>
-        </NavigationPage>
-        <NavigationPage Title="Ещё"
+        </custom:NavigationCustomPage>
+        <custom:NavigationCustomPage Title="Ещё"
              IconImageSource="menu"
-                        >
+                        SetLargeTitleIos="True">
             <x:Arguments>
                 <views:OtherPage/>
             </x:Arguments>
-        </NavigationPage>
-
+        </custom:NavigationCustomPage>
+    </TabbedPage.Children>
 </TabbedPage>

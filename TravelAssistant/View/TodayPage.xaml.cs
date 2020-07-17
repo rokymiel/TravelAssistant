@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms.PancakeView;
 using TravelAssistant.Managers;
+using TravelAssistant.Custom;
 
 namespace TravelAssistant.View
 {
@@ -357,9 +358,9 @@ namespace TravelAssistant.View
         async void RecomedationSaved_Clicked(System.Object sender, System.EventArgs e)
         {
             await recomedationSavedButton.FadeTo(0.4, 100);
-            await Task.Delay(50);
+            //await Task.Delay(50);
             await recomedationSavedButton.FadeTo(1, 100);
-            await Navigation.PushModalAsync(new NavigationPage(new RecomedationSavedPage()));
+            await Navigation.PushModalAsync(new NavigationCustomPage(new RecomedationSavedPage()));
         }
 
 

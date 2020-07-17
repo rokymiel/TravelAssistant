@@ -1,20 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TravelAssistant.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:custom="clr-namespace:TravelAssistant.Custom"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TravelAssistant.App">
     <Application.Resources>
-        <AppThemeColor x:Key="PancakeBackgroundColor"
-                       Light="White"
-                       Dark="#333333"/>
-        <AppThemeColor x:Key="LabelColor"
-                       Light="Black"
-                       Dark="White"/>
-        <AppThemeColor x:Key="BackgroundColor"
-                       Light="White"
-                       Dark="Black"/>
-        <AppThemeColor x:Key="DetailsColor"
-                       Light="WhiteSmoke"
-                       Dark="SlateGray"/>
-        <AppThemeColor x:Key="BackColor"
-                       Light="WhiteSmoke"
-                       Dark="Black"/>
+
+
+        <Color x:Key="DarkCardBackgroundColor">#333333</Color>
+        <Color x:Key="LightCardBackgroundColor">White</Color>
+
+        <Color x:Key="DarkLabelColor">White</Color>
+        <Color x:Key="LightLabelColor">Black</Color>
+
+        <Color x:Key="DarkBackgroundColor">Black</Color>
+        <Color x:Key="LightBackgroundColor">White</Color>
+
+        <Color x:Key="DarkDetailsColor">#333333</Color>
+        <Color x:Key="LightDetailsColor">WhiteSmoke</Color>
+
+        <Color x:Key="DarkBackColor">Black</Color>
+        <Color x:Key="LightBackColor">WhiteSmoke</Color>
+
+        <Style x:Key="TextStyle" TargetType="Label">
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource LightLabelColor}, Dark={StaticResource DarkLabelColor}}" />
+        </Style>
+        <Style x:Key="CardStyle" TargetType="yummy:PancakeView">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}" />
+        </Style>
+        <Style x:Key="BackgroundStyle" TargetType="yummy:PancakeView">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
+        </Style>
+        <Style x:Key="DetailsStyle" TargetType="yummy:PancakeView" >
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightDetailsColor}, Dark={StaticResource DarkDetailsColor}}" />
+        </Style>
+        <Style x:Key="BackStyle" TargetType="SwipeView" >
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightBackColor}, Dark={StaticResource DarkBackColor}}" />
+        </Style>
+
+        <Style x:Key="NavigationStyle" TargetType="NavigationPage" >
+            <Setter Property="BarBackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
+        </Style>
+
     </Application.Resources>
 </Application>

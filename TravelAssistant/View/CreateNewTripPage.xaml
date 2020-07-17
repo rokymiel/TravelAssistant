@@ -7,13 +7,13 @@
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <StackLayout Padding="10">
-                <yummy:PancakeView Margin="10" BackgroundColor="{DynamicResource PancakeBackgroundColor}" HasShadow="True" CornerRadius="20">
+                <yummy:PancakeView Margin="10" Style="{StaticResource CardStyle}" HasShadow="True" CornerRadius="20">
                     <StackLayout Margin="20" Orientation="Vertical">
                         <Label Text="Название(не обязательно)" FontSize="Subtitle"/>
                         <Entry x:Name="nameOfTripEntry" Placeholder="Введите название поездки"/>
                     </StackLayout>
                 </yummy:PancakeView>
-                <yummy:PancakeView Margin="10" BackgroundColor="{DynamicResource PancakeBackgroundColor}" HasShadow="True" CornerRadius="20">
+                <yummy:PancakeView Margin="10" Style="{StaticResource CardStyle}" HasShadow="True" CornerRadius="20">
                     <StackLayout Margin="20" Orientation="Vertical">
                         <Label Text="Страна" FontSize="Subtitle"/>
                         <Entry x:Name="countryOfTripEntry" Placeholder="Введите название поездки"/>
@@ -21,7 +21,7 @@
                         <Entry x:Name="cityOfTripEntry" Placeholder="Введите название поездки"/>
                     </StackLayout>
                 </yummy:PancakeView>
-                <yummy:PancakeView Margin="10" BackgroundColor="{DynamicResource PancakeBackgroundColor}" HasShadow="True" CornerRadius="20">
+                <yummy:PancakeView Margin="10" Style="{StaticResource CardStyle}" HasShadow="True" CornerRadius="20">
                     <StackLayout Margin="20" Orientation="Vertical">
                         <Label Text="Начало поездки" FontSize="Subtitle"/>
                         <DatePicker x:Name="beginingOfTripDatePicker"/>

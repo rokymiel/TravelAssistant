@@ -9,9 +9,9 @@
             <yummy:PancakeView Margin="10,20,10,5" 
                                CornerRadius="20"
                                Elevation="5"
-                               BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                               Style="{StaticResource CardStyle}">
                 <StackLayout Padding="15" Orientation="Horizontal" >
-                    <Label Text="Текущая поездка" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                    <Label Text="Текущая поездка"  FontSize="Medium" VerticalOptions="Center"/>
                     <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                 </StackLayout>
                 <yummy:PancakeView.GestureRecognizers>
@@ -21,9 +21,9 @@
             <yummy:PancakeView Margin="10,5,10,5" 
                                CornerRadius="20"
                                Elevation="5"
-                               BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                               Style="{StaticResource CardStyle}">
                 <StackLayout Padding="15" Orientation="Horizontal" >
-                    <Label Text="Финансы" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                    <Label Text="Финансы"  FontSize="Medium" VerticalOptions="Center"/>
                     <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                 </StackLayout>
                 <yummy:PancakeView.GestureRecognizers>
@@ -33,9 +33,9 @@
             <yummy:PancakeView Margin="10,5,10,5" 
                                CornerRadius="20"
                                Elevation="5"
-                               BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                               Style="{StaticResource CardStyle}">
                 <StackLayout Padding="15" Orientation="Horizontal" >
-                    <Label Text="О приложении" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                    <Label Text="О приложении" FontSize="Medium" VerticalOptions="Center"/>
                     <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                 </StackLayout>
                 <yummy:PancakeView.GestureRecognizers>
@@ -45,7 +45,7 @@
             <yummy:PancakeView Margin="10,70,10,10" 
                                CornerRadius="20"
                                Elevation="5"
-                               BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                               Style="{StaticResource CardStyle}">
                 <StackLayout Padding="15" Orientation="Horizontal" >
                     <Label Text="Выйти из поездки" TextColor="Red" FontSize="Medium" VerticalOptions="Center"/>
                 </StackLayout>
@@ -58,19 +58,19 @@
                     <TableSection>
                         <ViewCell Tapped="OnTrip_Tapped" >
                             <StackLayout Padding="10" Orientation="Horizontal" >
-                                <Label Text="Текущая поездка" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                                <Label Text="Текущая поездка"  FontSize="Medium" VerticalOptions="Center"/>
                                 <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell Tapped="OnFinanceTabbed" >
                             <StackLayout Padding="10" Orientation="Horizontal" >
-                                <Label Text="Финансы" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                                <Label Text="Финансы"  FontSize="Medium" VerticalOptions="Center"/>
                                 <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell Tapped="AboutApp_Tapped">
                             <StackLayout Padding="10" Orientation="Horizontal" >
-                                <Label Text="О приложении" TextColor="{DynamicResource LabelColor}" FontSize="Medium" VerticalOptions="Center"/>
+                                <Label Text="О приложении"  FontSize="Medium" VerticalOptions="Center"/>
                                 <Label Text="❯" TextColor="Gray" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </ViewCell>

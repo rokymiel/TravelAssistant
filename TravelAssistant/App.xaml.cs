@@ -1,13 +1,16 @@
 ﻿using System;
 using Plugin.LocalNotification;
+using TravelAssistant.Custom;
 using TravelAssistant.Managers;
 using TravelAssistant.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace TravelAssistant
 {
-    public partial class App : Application
+    public partial class App : Xamarin.Forms.Application
     {
         string dbNotesPath = FileAccessManager.GetLocalFilePath("notes.db3");
         string dbRemindersPath = FileAccessManager.GetLocalFilePath("reminders.db3");
@@ -27,6 +30,7 @@ namespace TravelAssistant
 
         public App()
         {
+            Device.SetFlags(new string[] { "AppTheme_Experimental", "SwipeView_Experimental" });
             InitializeComponent();
             notesManger = new SQLManager<Note>(dbNotesPath);
             remindersManger = new SQLManager<Reminder>(dbRemindersPath);
@@ -39,11 +43,14 @@ namespace TravelAssistant
             
             if (Properties.ContainsKey("mainPage"))
             {
+                //var navigationPage = new Xamarin.Forms.NavigationPage(new MainPage(tripsManager.GetTripById(Properties["mainPage"].ToString())));
+                //navigationPage.On<iOS>().SetPrefersLargeTitles(true);
                 MainPage = new MainPage(tripsManager.GetTripById(Properties["mainPage"].ToString()));
             }
             else
             {
-                MainPage = new NavigationPage(new AllTripsPage());
+                var navi = new NavigationCustomPage(new AllTripsPage()) { SetLargeTitleIos = true };
+                MainPage = navi;
             }
 
         }

@@ -16,7 +16,7 @@
                             HorizontalScrollBarVisibility="Never"
                             VerticalScrollBarVisibility="Never"
                             SelectionMode="Single"
-                            
+                            BackgroundColor="Transparent"
                             
                             ItemsSource="{Binding places}" ItemsLayout="VerticalList">
             <CollectionView.Header>
@@ -41,10 +41,10 @@
                         </SwipeView.RightItems>
                         <StackLayout BackgroundColor="Transparent">
 
-                        <yummy:PancakeView CornerRadius="20" Margin="10" HasShadow="True" BackgroundColor="{DynamicResource PancakeBackgroundColor}">
+                        <yummy:PancakeView CornerRadius="20" Margin="10" HasShadow="True" Style="{StaticResource CardStyle}">
                             <StackLayout Margin="20">
-                                <Label x:Name="placeNameLabel" TextColor="{DynamicResource LabelColor}" FontSize="Subtitle" Text="{Binding Name}" />
-                                <Label x:Name="placeAdress" TextColor="{DynamicResource LabelColor}" Text="{Binding Address}"/>
+                                <Label x:Name="placeNameLabel"  FontSize="Subtitle" Text="{Binding Name}" />
+                                <Label x:Name="placeAdress"  Text="{Binding Address}"/>
                             </StackLayout>
                         </yummy:PancakeView>
                     </StackLayout>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TravelAssistant.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace TravelAssistant.View
 {
@@ -14,6 +16,8 @@ namespace TravelAssistant.View
         ObservableCollection<Place> places;
         public RecomedationSavedPage()
         {
+            
+            
             InitializeComponent();
             places = new ObservableCollection<Place>();
             App.placesManager.GetTripItems<Place>(MainPage.CurrentTrip.Id).ForEach(x => places.Add(x));

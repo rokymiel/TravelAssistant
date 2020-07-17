@@ -17,7 +17,7 @@ namespace TravelAssistant.View
         {
             Money = money;
             InitializeComponent();
-            Animation = new Rg.Plugins.Popup.Animations.MoveAnimation();
+            Animation = new Rg.Plugins.Popup.Animations.MoveAnimation() { DurationIn = 200, DurationOut = 200 };
             cakeView.BindingContext = Money;
         }
         protected override void OnAppearing()
@@ -43,9 +43,9 @@ namespace TravelAssistant.View
                 case GestureStatus.Running:
 
                     //Console.WriteLine(e.TotalY);
-                    if (e.TotalY + savedTranslationY > 0)
+                    if (e.TotalY/3 + savedTranslationY > 0)
                     {
-                        cakeView.TranslationY = e.TotalY + savedTranslationY;
+                        cakeView.TranslationY = e.TotalY/3 + savedTranslationY;
                         lastTranslationY = cakeView.TranslationY;
                         //Math.Max(Math.Min(0, cakeView.Y + e.TotalY),-Math.Abs(Content.Height - page.Height));
                     }
@@ -54,6 +54,7 @@ namespace TravelAssistant.View
                     savedTranslationY = lastTranslationY;
                     if (savedTranslationY <= GetHeight * 0.14)
                     {
+                        await cakeView.TranslateTo(0,0,300);
                         savedTranslationY = cakeView.TranslationY = 0;
                     }
                     else
@@ -65,5 +66,6 @@ namespace TravelAssistant.View
                     break;
             }
         }
+
     }
 }

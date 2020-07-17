@@ -52,7 +52,7 @@
                     </control:SegmentedControl.Children>
                 </control:SegmentedControl>
 
-                <yummy:PancakeView Margin="10" CornerRadius="10" BackgroundColor="{DynamicResource DetailsColor}">
+                <yummy:PancakeView Margin="10" CornerRadius="10" Style="{StaticResource DetailsStyle}">
                     <StackLayout>
                         <StackLayout x:Name="addLayout" Padding="10" IsVisible="False">
 

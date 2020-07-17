@@ -9,6 +9,7 @@ using Plugin.Media;
 using TravelAssistant.Managers;
 using TravelAssistant.Models;
 using Xamarin.Forms;
+using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms.PancakeView;
 
 namespace TravelAssistant.View
@@ -45,7 +46,7 @@ namespace TravelAssistant.View
             notesCountLabel.Text = $"Всего: {notesCount}";
             remindersCountLabel.Text = $"Всего: {remindersCount}";
         }
-        
+
         async void OnNotesClicked(System.Object sender, System.EventArgs e)
         {
             await AnimationManager.StartScalePancakeView(sender);
@@ -76,7 +77,8 @@ namespace TravelAssistant.View
             {
                 return;
             }
-            await Navigation.PushModalAsync(new ImagePage(item.Image));
+            await Navigation.PushPopupAsync(new ImagePopupPage(item.Image));
+            //await Navigation.PushModalAsync(new ImagePage(item.Image));
         }
 
         async void OnDocumentSelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)

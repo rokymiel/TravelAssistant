@@ -2,30 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="TravelAssistant.View.TripDetailsPage">
+             x:Class="TravelAssistant.View.TripDetailsPage"
+             Title="Текущая поездка"
+             >
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10" x:Name="tripLayout">
-                <Label Text="Текущая поездка" FontAttributes="Bold" FontSize="Title" TextColor="{DynamicResource LabelColor}"/>
-                <Label Text="Местоположение" Margin="0,20,0,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="{DynamicResource LabelColor}"/>
-                <yummy:PancakeView BackgroundColor="{DynamicResource PancakeBackgroundColor}" Margin="0,10,0,10" HasShadow="True" CornerRadius="20">
+                
+                <Label Text="Местоположение" Margin="0,20,0,0" FontAttributes="Bold" FontSize="Subtitle" />
+                <yummy:PancakeView Style="{StaticResource CardStyle}" Margin="0,10,0,10" HasShadow="True" CornerRadius="20">
                     <StackLayout Margin="20">
-                        <Label Text="Страна" TextColor="{DynamicResource LabelColor}" FontSize="Subtitle" LineBreakMode="NoWrap"/>
-                        <Label Text="{Binding Country}" TextColor="{DynamicResource LabelColor}"/>
+                        <Label Text="Страна" FontSize="Subtitle" LineBreakMode="NoWrap"/>
+                        <Label Text="{Binding Country}" />
 
-                        <Label Text="Город" FontSize="Subtitle" TextColor="{DynamicResource LabelColor}"/>
-                        <Label Text="{Binding City}" TextColor="{DynamicResource LabelColor}"/>
+                        <Label Text="Город" FontSize="Subtitle" />
+                        <Label Text="{Binding City}"/>
                     </StackLayout>
                 </yummy:PancakeView>
-                <Label Text="Даты поездки" FontAttributes="Bold" FontSize="Subtitle" TextColor="{DynamicResource LabelColor}"/>
-                <yummy:PancakeView BackgroundColor="{DynamicResource PancakeBackgroundColor}" Margin="0,10,0,10" HasShadow="True" CornerRadius="20">
+                <Label Text="Даты поездки" FontAttributes="Bold" FontSize="Subtitle" />
+                <yummy:PancakeView Style="{StaticResource CardStyle}" Margin="0,10,0,10" HasShadow="True" CornerRadius="20">
                     <StackLayout Margin="20">
                         
-                        <Label x:Name="beginingLabel" TextColor="{DynamicResource LabelColor}" FontSize="Subtitle"/>
-                        <Label x:Name="endingLabel" TextColor="{DynamicResource LabelColor}" FontSize="Subtitle"/>
+                        <Label x:Name="beginingLabel" FontSize="Subtitle"/>
+                        <Label x:Name="endingLabel" FontSize="Subtitle"/>
                     </StackLayout>
                 </yummy:PancakeView>
-                <yummy:PancakeView BackgroundColor="{DynamicResource PancakeBackgroundColor}" Margin="0,50,0,0" Elevation="5" CornerRadius="20">
+                <yummy:PancakeView Style="{StaticResource CardStyle}" Margin="0,50,0,0" Elevation="5" CornerRadius="20">
                     <StackLayout Margin="10">
                         <Label Text="Выйти" FontSize="Subtitle" HorizontalOptions="CenterAndExpand"  TextColor="Red"/>
                     </StackLayout>

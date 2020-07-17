@@ -21,7 +21,7 @@ namespace TravelAssistant.View
             allMoneyLabel.Text = string.Format($"{Money.AllMoney:N}");
             currentMoneyLabel.Text = string.Format($"{Money.CurrentMoney:N}"); ;
             spentMoneyLabel.Text = string.Format($"{Money.AllMoney - Money.CurrentMoney:N}");
-            Animation = new Rg.Plugins.Popup.Animations.MoveAnimation();
+            Animation = new Rg.Plugins.Popup.Animations.MoveAnimation() { DurationIn = 200, DurationOut = 200 };
         }
         protected override void OnAppearing()
         {

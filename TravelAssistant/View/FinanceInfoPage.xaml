@@ -10,18 +10,18 @@
                  x:Name="page"
                  >
 
-    <yummy:PancakeView x:Name="cakeView" BackgroundColor="{DynamicResource BackgroundColor}"  VerticalOptions="EndAndExpand" CornerRadius="20,20,0,0" >
+    <yummy:PancakeView x:Name="cakeView" Style="{StaticResource BackgroundStyle}" VerticalOptions="EndAndExpand" CornerRadius="20,20,0,0" >
         <StackLayout >
             <yummy:PancakeView CornerRadius="20,20,0,0"   VerticalOptions="Start" BackgroundColor="#da1c5a">
                 <StackLayout Orientation="Horizontal" >
-                    <yummy:PancakeView HorizontalOptions="CenterAndExpand" Margin="10" HeightRequest="50" WidthRequest="50" BackgroundColor="{DynamicResource PancakeBackgroundColor}" CornerRadius="15">
+                    <yummy:PancakeView HorizontalOptions="CenterAndExpand" Margin="10" HeightRequest="50" WidthRequest="50" Style="{StaticResource CardStyle}" CornerRadius="15">
 
                         <Image Source="finIcon.png"   />
 
                     </yummy:PancakeView>
                 </StackLayout>
             </yummy:PancakeView>
-            <yummy:PancakeView BackgroundColor="{DynamicResource DetailsColor}" CornerRadius="20" Padding="20" Margin="10">
+            <yummy:PancakeView Style="{StaticResource DetailsStyle}" CornerRadius="20" Padding="20" Margin="10">
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
 
